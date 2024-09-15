@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux arm64 arm"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux arm64 arm"
 IUSE="libobjc2 native-exceptions"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
@@ -77,7 +77,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Multilib-strict
-	sed -e "s#/lib#/$(get_libdir)#" -i FilesystemLayouts/fhs-system || die "sed failed"
+	sed -e "s#/@libdir@#/$(get_libdir)#" -i FilesystemLayouts/fhs-system || die "sed failed"
 	cp "${FILESDIR}"/gnustep-5.{csh,sh} "${T}"/
 	eprefixify "${T}"/gnustep-5.{csh,sh}
 

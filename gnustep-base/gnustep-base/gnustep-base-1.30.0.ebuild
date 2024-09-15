@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux arm64 arm"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux arm64 arm"
 IUSE="+gnutls +iconv +icu +libffi zeroconf"
 
 RDEPEND="${GNUSTEP_CORE_DEPEND}
@@ -34,7 +34,6 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.0-no_compress_man.patch
-	"${FILESDIR}"/${PN}-1.29.0-libxml2-2.11.patch
 )
 
 src_configure() {

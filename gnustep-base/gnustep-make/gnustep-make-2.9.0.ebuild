@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 inherit gnustep-base prefix toolchain-funcs
 
 DESCRIPTION="GNUstep Makefile Package"
@@ -24,7 +24,7 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 		) )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.9.0-no_compress_man_pages.patch )
+PATCHES=( "${FILESDIR}"/${P}-no_compress_man_pages.patch )
 
 pkg_setup() {
 	# Determine libobjc.so to use

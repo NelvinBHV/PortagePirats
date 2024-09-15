@@ -1,0 +1,10 @@
+--- SOGo-4.0.7/GNUmakefile	2019-02-27 17:09:30.000000000 +0100
++++ GNUmakefile	2019-03-15 11:38:37.984819748 +0100
+@@ -11,6 +11,7 @@
+ 	UI		\
+ 	Tools		\
+ 	Tests/Unit	\
++	ActiveSync	\
+ 
+ 
+ include $(GNUSTEP_MAKEFILES)/aggregate.make

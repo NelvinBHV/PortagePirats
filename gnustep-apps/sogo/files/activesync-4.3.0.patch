@@ -1,0 +1,10 @@
+--- GNUmakefile.old	2020-01-25 08:51:03.521455568 +0100
++++ GNUmakefile	2020-01-25 08:51:26.767645641 +0100
+@@ -11,6 +11,7 @@
+ 	UI		\
+ 	Tools		\
+ 	Tests/Unit	\
++	ActiveSync      \
+ 
+ 
+ include $(GNUSTEP_MAKEFILES)/aggregate.make

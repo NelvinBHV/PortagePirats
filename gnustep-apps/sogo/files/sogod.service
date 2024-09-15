@@ -1,0 +1,18 @@
+[Unit]
+Description=SOGo is a groupware server
+After=network.target
+After=postgresql.service
+After=mariadb.service
+After=mysql.service
+
+[Service]
+Environment="SOGOD_WORKERS=3"
+EnvironmentFile=-/etc/conf.d/sogod
+Type=forking
+ExecStart=/usr/sbin/sogod -WOWorkersCount ${SOGOD_WORKERS} -WOPidFile /run/sogo/sogo.pid -WOLogFile /var/log/sogo/sogo.log "${SOGOD_OPTS}"
+RuntimeDirectory=sogo
+PIDFile=/run/sogo/sogo.pid
+User=sogo
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=tvheadend
+After=srv-records.mount
+After=oscam.service
+Requires=srv-records.mount
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/tvheadend
+ExecStart=/usr/bin/tvheadend -u $TVHEADEND_USER -g $TVHEADEND_GROUP $TVHEADEND_OPTIONS
+Restart=always
+RestartSec=5s
+StandardOutput=append:/var/log/tvheadend.log
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
+

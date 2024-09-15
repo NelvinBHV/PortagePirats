@@ -1,0 +1,8 @@
+#!/bin/bash
+source <(grep SOGoMailSpoolPath /etc/sogo/sogo.conf | sed -e 's/[[:blank:]]//g' -e 's/;//g')
+
+test -x /usr/sbin/tmpreaper || exit 0
+test -d $SOGoMailSpoolPath || exit 0
+
+/usr/sbin/tmpreaper 24 "$SOGoMailSpoolPath"
+find "$SOGoMailSpoolPath" -depth -mindepth 1 -type d -empty -exec /bin/rmdir {} \; 2> /dev/null

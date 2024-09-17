@@ -1,6 +1,6 @@
 diff -Nru fotema-1.14.1.old/core/src/machine_learning/face_extractor.rs fotema-1.14.1/core/src/machine_learning/face_extractor.rs
---- fotema-1.14.1.old/core/src/machine_learning/face_extractor.rs	2024-09-17 01:15:23.359235105 +0200
-+++ fotema-1.14.1/core/src/machine_learning/face_extractor.rs	2024-09-17 01:15:23.427234080 +0200
+--- fotema-1.14.1.old/core/src/machine_learning/face_extractor.rs	2024-09-18 01:15:05.788566197 +0200
++++ fotema-1.14.1/core/src/machine_learning/face_extractor.rs	2024-09-18 01:15:05.860565140 +0200
 @@ -353,7 +353,7 @@
          let file = gio::File::for_path(source_path);
  
@@ -11,8 +11,8 @@ diff -Nru fotema-1.14.1.old/core/src/machine_learning/face_extractor.rs fotema-1
          let frame = image.next_frame().await?;
          let bytes = frame.texture().save_to_png_bytes();
 diff -Nru fotema-1.14.1.old/core/src/photo/thumbnail.rs fotema-1.14.1/core/src/photo/thumbnail.rs
---- fotema-1.14.1.old/core/src/photo/thumbnail.rs	2024-09-17 01:15:23.359235105 +0200
-+++ fotema-1.14.1/core/src/photo/thumbnail.rs	2024-09-17 01:15:23.419234201 +0200
+--- fotema-1.14.1.old/core/src/photo/thumbnail.rs	2024-09-18 01:15:05.792566138 +0200
++++ fotema-1.14.1/core/src/photo/thumbnail.rs	2024-09-18 01:15:05.852565257 +0200
 @@ -121,7 +121,7 @@
          let file = gio::File::for_path(source_path);
  
@@ -23,8 +23,8 @@ diff -Nru fotema-1.14.1.old/core/src/photo/thumbnail.rs fotema-1.14.1/core/src/p
          let image = loader.load().await?;
  
 diff -Nru fotema-1.14.1.old/src/app/components/viewer/view_one.rs fotema-1.14.1/src/app/components/viewer/view_one.rs
---- fotema-1.14.1.old/src/app/components/viewer/view_one.rs	2024-09-17 01:15:23.391234623 +0200
-+++ fotema-1.14.1/src/app/components/viewer/view_one.rs	2024-09-17 01:15:23.431234020 +0200
+--- fotema-1.14.1.old/src/app/components/viewer/view_one.rs	2024-09-18 01:15:05.824565668 +0200
++++ fotema-1.14.1/src/app/components/viewer/view_one.rs	2024-09-18 01:15:05.864565081 +0200
 @@ -351,7 +351,7 @@
                      let file = gio::File::for_path(visual_path);
  

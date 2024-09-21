@@ -11,6 +11,7 @@ inherit cmake desktop udev xdg-utils
 DESCRIPTION="EpsonScan2 Scanner Software"
 HOMEPAGE="https://support.epson.net/linux/en/epsonscan2.php"
 SRC_URI="https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=JA&CN2=US&CTI=171&PRN=Linux%20src%20package&OSC=LX&DL -> ${P}-1.src.tar.gz"
+FETCHCOMMAND="wget --user-agent="${USERAGENT}" \${URI} -O \${DISTDIR}/\${FILE}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -32,6 +33,11 @@ DEPEND="dev-libs/boost
 	virtual/libusb"
 
 RDEPEND="${DEPEND}"
+
+src_fetch() {
+	local USERAGENT="Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0"
+	FETCHCOMMAND="/usr/bin/wget --user-agent=\"${USERAGENT}\" -t 5 -T 60 -O ${DISTDIR}/${FILE} ${URI}" default
+}
 
 src_unpack() {
 	unpack ${A}

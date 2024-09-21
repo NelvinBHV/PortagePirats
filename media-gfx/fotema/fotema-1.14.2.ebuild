@@ -6,7 +6,7 @@ EAPI=8
 CRATES="
 	ab_glyph@0.2.28
 	ab_glyph_rasterizer@0.1.8
-	addr2line@0.22.0
+	addr2line@0.24.1
 	adler2@2.0.0
 	adler@1.0.2
 	ahash@0.8.11
@@ -14,12 +14,7 @@ CRATES="
 	aligned-vec@0.5.0
 	android-tzdata@0.1.1
 	android_system_properties@0.1.5
-	anstream@0.6.15
-	anstyle-parse@0.2.5
-	anstyle-query@1.1.1
-	anstyle-wincon@3.0.4
-	anstyle@1.0.8
-	anyhow@1.0.87
+	anyhow@1.0.89
 	approx@0.5.1
 	arbitrary@1.3.2
 	arc-swap@1.7.1
@@ -33,7 +28,7 @@ CRATES="
 	async-io@2.3.4
 	async-lock@3.4.0
 	async-net@2.0.0
-	async-process@2.2.4
+	async-process@2.3.0
 	async-recursion@1.1.1
 	async-signal@0.2.10
 	async-task@4.7.1
@@ -44,7 +39,7 @@ CRATES="
 	autocfg@1.3.0
 	av1-grain@0.2.3
 	avif-serialize@0.8.1
-	backtrace@0.3.73
+	backtrace@0.3.74
 	base64@0.21.7
 	base64@0.22.1
 	basic-toml@0.1.9
@@ -63,12 +58,12 @@ CRATES="
 	bytemuck@1.18.0
 	byteorder-lite@0.1.0
 	byteorder@1.5.0
-	bytes@1.7.1
+	bytes@1.7.2
 	cairo-rs@0.18.5
 	cairo-rs@0.20.1
 	cairo-sys-rs@0.18.2
 	cairo-sys-rs@0.20.0
-	cc@1.1.18
+	cc@1.1.21
 	cexpr@0.6.0
 	cfg-expr@0.15.8
 	cfg-expr@0.16.0
@@ -78,7 +73,6 @@ CRATES="
 	clang-sys@1.8.1
 	clang@2.0.0
 	color_quant@1.1.0
-	colorchoice@1.0.2
 	concurrent-queue@2.5.0
 	console@0.15.8
 	const-random-macro@0.1.16
@@ -121,7 +115,7 @@ CRATES="
 	fastrand@2.1.1
 	fdeflate@0.3.4
 	ffmpeg-next@7.0.4
-	ffmpeg-sys-next@7.0.2
+	ffmpeg-sys-next@7.0.3
 	field-offset@0.3.6
 	filetime@0.2.25
 	find-crate@0.6.3
@@ -168,20 +162,20 @@ CRATES="
 	gettext-rs@0.7.1
 	gettext-sys@0.21.4
 	gif@0.13.1
-	gimli@0.29.0
+	gimli@0.31.0
 	gio-sys@0.18.1
 	gio-sys@0.20.1
 	gio@0.18.4
 	gio@0.20.1
 	glib-macros@0.18.5
-	glib-macros@0.20.2
+	glib-macros@0.20.3
 	glib-sys@0.18.1
 	glib-sys@0.20.2
 	glib@0.18.5
-	glib@0.20.2
+	glib@0.20.3
 	glob@0.3.1
-	glycin-utils@2.0.0-beta
-	glycin@2.0.0-beta
+	glycin-utils@2.0.0
+	glycin@2.0.1
 	gobject-sys@0.18.0
 	gobject-sys@0.20.1
 	graphene-rs@0.20.1
@@ -220,7 +214,7 @@ CRATES="
 	hyper-rustls@0.27.3
 	hyper-tls@0.5.0
 	hyper-tls@0.6.0
-	hyper-util@0.1.7
+	hyper-util@0.1.8
 	hyper@0.14.30
 	hyper@1.4.1
 	i18n-config@0.4.7
@@ -228,7 +222,7 @@ CRATES="
 	i18n-embed-impl@0.8.3
 	i18n-embed@0.15.0
 	iana-time-zone-haiku@0.1.2
-	iana-time-zone@0.1.60
+	iana-time-zone@0.1.61
 	idna@0.5.0
 	image-webp@0.1.3
 	image@0.24.9
@@ -242,7 +236,6 @@ CRATES="
 	intl-memoizer@0.5.2
 	intl_pluralrules@7.0.2
 	ipnet@2.10.0
-	is_terminal_polyfill@1.70.1
 	itertools@0.11.0
 	itertools@0.12.1
 	itertools@0.13.0
@@ -281,7 +274,7 @@ CRATES="
 	maybe-rayon@0.1.1
 	memchr@2.7.4
 	memfd@0.6.4
-	memmap2@0.9.4
+	memmap2@0.9.5
 	memmap@0.7.0
 	memoffset@0.9.1
 	mime@0.3.17
@@ -318,8 +311,8 @@ CRATES="
 	objc_id@0.1.1
 	object@0.36.4
 	once_cell@1.19.0
-	opencv-binding-generator@0.90.2
-	opencv@0.92.3
+	opencv-binding-generator@0.91.0
+	opencv@0.93.0
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
 	openssl-sys@0.9.103
@@ -346,7 +339,7 @@ CRATES="
 	pkg-config@0.3.30
 	png@0.17.13
 	polling@3.7.3
-	portable-atomic@1.7.0
+	portable-atomic@1.8.0
 	powerfmt@0.2.0
 	ppv-lite86@0.2.20
 	proc-macro-crate@1.3.1
@@ -369,7 +362,7 @@ CRATES="
 	rawpointer@0.2.1
 	rayon-core@1.12.1
 	rayon@1.10.0
-	redox_syscall@0.5.3
+	redox_syscall@0.5.4
 	redox_users@0.4.6
 	refinery-core@0.8.14
 	refinery-macros@0.8.14
@@ -395,19 +388,19 @@ CRATES="
 	rustc-demangle@0.1.24
 	rustc-hash@1.1.0
 	rustc_version@0.4.1
-	rustix@0.38.36
+	rustix@0.38.37
 	rustls-pemfile@1.0.4
 	rustls-pemfile@2.1.3
 	rustls-pki-types@1.8.0
-	rustls-webpki@0.102.7
-	rustls@0.23.12
+	rustls-webpki@0.102.8
+	rustls@0.23.13
 	rustversion@1.0.17
 	ryu@1.0.18
 	safe_arch@0.7.2
 	same-file@1.0.6
 	schannel@0.1.24
 	scopeguard@1.2.0
-	security-framework-sys@2.11.1
+	security-framework-sys@2.12.0
 	security-framework@2.11.1
 	self_cell@0.10.3
 	self_cell@1.0.4
@@ -472,7 +465,7 @@ CRATES="
 	toml_datetime@0.6.8
 	toml_edit@0.19.15
 	toml_edit@0.20.7
-	toml_edit@0.22.20
+	toml_edit@0.22.21
 	tower-layer@0.3.3
 	tower-service@0.3.3
 	tower@0.4.13
@@ -489,13 +482,12 @@ CRATES="
 	unic-langid-impl@0.9.5
 	unic-langid@0.9.5
 	unicode-bidi@0.3.15
-	unicode-ident@1.0.12
-	unicode-normalization@0.1.23
-	unicode-width@0.1.13
+	unicode-ident@1.0.13
+	unicode-normalization@0.1.24
+	unicode-width@0.1.14
 	untrusted@0.9.0
 	ureq@2.10.1
 	url@2.5.2
-	utf8parse@0.2.2
 	v_frame@0.3.8
 	valuable@0.1.0
 	vcpkg@0.2.15
@@ -513,7 +505,7 @@ CRATES="
 	wasm-bindgen-shared@0.2.93
 	wasm-bindgen@0.2.93
 	web-sys@0.3.70
-	webpki-roots@0.26.5
+	webpki-roots@0.26.6
 	weezl@0.1.8
 	wide@0.7.28
 	winapi-i686-pc-windows-gnu@0.4.0

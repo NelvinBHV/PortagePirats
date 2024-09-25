@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-RESTRICT="mirror"
+RESTRICT="mirror strip"
 
 inherit systemd
 
@@ -38,6 +38,13 @@ src_install() {
 	dodir /opt/eset/
 	cp -r "${S}/opt/eset/" "${D}/opt/"
 	dodir /var/opt/eset
+	keepdir /var/opt/eset/eea/cache
+	keepdir /var/opt/eset/eea/cache/data
+	keepdir /var/opt/eset/eea/dumps
+	keepdir /var/opt/eset/eea/installer
+	keepdir /var/opt/eset/eea/updated
+	keepdir /var/opt/eset/eea/updated/modules
+	keepdir /var/opt/eset/eea/vapm
 	cp -r "${S}/var/opt/eset" "${D}/var/opt/"
 	keepdir /var/log/eset/eea
 	dodir /var/log/eset/eea

@@ -18,7 +18,13 @@ KEYWORDS="~amd64"
 IUSE="systemd"
 REQUIRED_USE="systemd"
 
-DEPEND=""
+DEPEND="
+	acct-group/eset-eea-daemons
+	acct-user/eset-eea-confd
+	acct-user/eset-eea-logd
+	acct-user/eset-eea-scand
+	acct-user/eset-eea-updated
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 src_unpack() {

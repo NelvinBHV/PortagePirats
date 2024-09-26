@@ -6,3 +6,4 @@ EAPI=8
 inherit acct-group
 
 DESCRIPTION="System group for ESET EEA Daemons"
+ACCT_GROUP_ID="-1"

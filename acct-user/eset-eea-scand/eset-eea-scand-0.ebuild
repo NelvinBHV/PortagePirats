@@ -9,5 +9,6 @@ DESCRIPTION="User for ESET EEA Scan Daemon"
 ACCT_USER_HOME="/opt/eset/eea"
 ACCT_USER_SHELL="/sbin/nologin"
 ACCT_USER_GROUPS=( eset-eea-daemons )
+ACCT_USER_ID="-1"
 
 acct-user_add_deps

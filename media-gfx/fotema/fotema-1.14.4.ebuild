@@ -155,7 +155,7 @@ CRATES="
 	gdk4-wayland@0.9.1
 	gdk4-x11-sys@0.9.0
 	gdk4-x11@0.9.0
-	gdk4@0.9.0
+	gdk4@0.9.2
 	gdk@0.18.0
 	generic-array@0.14.7
 	getrandom@0.2.15
@@ -166,7 +166,7 @@ CRATES="
 	gio-sys@0.18.1
 	gio-sys@0.20.1
 	gio@0.18.4
-	gio@0.20.1
+	gio@0.20.4
 	glib-macros@0.18.5
 	glib-macros@0.20.3
 	glib-sys@0.18.1
@@ -312,7 +312,7 @@ CRATES="
 	object@0.36.4
 	once_cell@1.19.0
 	opencv-binding-generator@0.91.0
-	opencv@0.93.0
+	opencv@0.93.1
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
 	openssl-sys@0.9.103
@@ -578,82 +578,82 @@ KEYWORDS="amd64"
 IUSE="enable-symlink"
 
 DEPEND="
-    dev-libs/openssl:=
-    gui-libs/libadwaita
-    media-libs/fontconfig
-    media-libs/graphene
-    media-libs/lcms:2
-    media-libs/libshumate:=
-    media-libs/opencv:=[contribdnn]
-    media-video/ffmpeg:=
-    sci-libs/onnx
-    sys-libs/libseccomp
-    x11-libs/cairo
-    x11-libs/gdk-pixbuf:2
-    x11-libs/pango
-    media-libs/glycin-loaders
+	dev-libs/openssl:=
+	gui-libs/libadwaita
+	media-libs/fontconfig
+	media-libs/graphene
+	media-libs/lcms:2
+	media-libs/libshumate:=
+	media-libs/opencv:=[contribdnn]
+	media-video/ffmpeg:=
+	sci-libs/onnx
+	sys-libs/libseccomp
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/pango
+	media-libs/glycin-loaders
 "
 RDEPEND="${DEPEND}
-    gnome-base/dconf
+	gnome-base/dconf
 "
 BDEPEND="${BDEPEND}
-    virtual/pkgconfig"
+	virtual/pkgconfig"
 ECARGO_VENDOR=${S}/vendor
 PATCHES=(
-    "${FILESDIR}/fotema-${PV}-sandbox.patch"
-    "${FILESDIR}/fotema-${PV}-desktop.patch"
+	"${FILESDIR}/fotema-${PV}-sandbox.patch"
+	"${FILESDIR}/fotema-${PV}-desktop.patch"
+	"${FILESDIR}/fotema-${PV}-application-id.patch"
 )
 
 src_unpack() {
-    default
-    cargo_src_unpack
+	default
+	cargo_src_unpack
 }
 
 src_prepare() {
-    # Apply changes for gentoo
-    sed -i "/cargo_env = \[ CARGO_HOME= \+ meson.project_build_root() \/ cargo-home \]/d" ${S}/src/meson.build || die "sed failed"
-    sed -i "/env,/d" ${S}/src/meson.build || die "sed failed"
-    sed -i "/cargo_env,/d" ${S}/src/meson.build || die "sed failed"
-    if [ -x "${S}/build-aux/dist-vendor.sh" ]; then
-        bash "${S}/build-aux/dist-vendor.sh"
-    fi
-    if use enable-symlink; then
-        eapply "${FILESDIR}/fotema-${PV}-symlink.patch"
-    fi
-    eapply_user
-    default
-
+	# Apply changes for gentoo
+	sed -i "/cargo_env = \[ CARGO_HOME= \+ meson.project_build_root() \/ cargo-home \]/d" ${S}/src/meson.build || die "sed failed"
+	sed -i "/env,/d" ${S}/src/meson.build || die "sed failed"
+	sed -i "/cargo_env,/d" ${S}/src/meson.build || die "sed failed"
+	if [ -x "${S}/build-aux/dist-vendor.sh" ]; then
+		bash "${S}/build-aux/dist-vendor.sh"
+	fi
+	if use enable-symlink; then
+		eapply "${FILESDIR}/fotema-${PV}-symlink.patch"
+	fi
+	eapply_user
+	default
 }
 
 src_configure() {
-    export ORT_STRATEGY=system
-    meson_src_configure
+	export ORT_STRATEGY=system
+	meson_src_configure
 }
 
 src_compile() {
-    meson_src_compile
+	meson_src_compile
 }
 
 src_install() {
-    meson_src_install
-    dodir /usr/lib64
-    insinto /usr/lib64
-    doins "${WORKDIR}/onnxruntime-linux-x64-1.16.0/lib/libonnxruntime.so" \
-        "${WORKDIR}/onnxruntime-linux-x64-1.16.0/lib/libonnxruntime.so.1.16.0"
+	meson_src_install
+	dodir /usr/lib64
+	insinto /usr/lib64
+	doins "${WORKDIR}/onnxruntime-linux-x64-1.16.0/lib/libonnxruntime.so" \
+	"${WORKDIR}/onnxruntime-linux-x64-1.16.0/lib/libonnxruntime.so.1.16.0"
 }
 
 pkg_postinst() {
-    gnome2_schemas_update
-    gnome2_gdk_pixbuf_update
-    xdg_desktop_database_update
-    xdg_mimeinfo_database_update
-    xdg_icon_cache_update
+	gnome2_schemas_update
+	gnome2_gdk_pixbuf_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-    gnome2_schemas_update
-    gnome2_gdk_pixbuf_update
-    xdg_desktop_database_update
-    xdg_mimeinfo_database_update
-    xdg_icon_cache_update
+	gnome2_schemas_update
+	gnome2_gdk_pixbuf_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_icon_cache_update
 }

@@ -602,7 +602,6 @@ ECARGO_VENDOR=${S}/vendor
 PATCHES=(
 	"${FILESDIR}/fotema-${PV}-sandbox.patch"
 	"${FILESDIR}/fotema-${PV}-desktop.patch"
-	"${FILESDIR}/fotema-${PV}-application-id.patch"
 )
 
 src_unpack() {

@@ -9,7 +9,7 @@ inherit autotools git-r3
 DESCRIPTION="TV streaming server for Linux"
 HOMEPAGE="https://tvheadend.org/"
 EGIT_REPO_URI="https://github.com/tvheadend/tvheadend.git"
-EGIT_COMMIT="28de5c092c657ffbbffa422c2ca3c07ba513c567"
+EGIT_COMMIT="eee5cdadf244b80efddedb944a55c9cdbb0ff6c9"
 
 LICENSE="GPL-3"
 SLOT="0"

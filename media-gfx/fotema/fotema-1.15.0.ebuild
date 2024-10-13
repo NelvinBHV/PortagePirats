@@ -563,14 +563,15 @@ declare -A GIT_CRATES=(
 
 inherit cargo meson gnome2-utils xdg-utils
 
-ESCRIPTION="Fotema - A photo gallery for Linux"
+RESTRICT="fetch"
+DESCRIPTION="Fotema - A photo gallery for Linux"
 HOMEPAGE="https://github.com/blissd/fotema"
 SRC_URI="${CARGO_CRATE_URIS}
 https://github.com/blissd/fotema/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 https://github.com/microsoft/onnxruntime/releases/download/v1.16.0/onnxruntime-linux-x64-1.16.0.tgz"
 LICENSE="GPL-3.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="-*"
 IUSE="enable-symlink"
 
 DEPEND="
@@ -600,6 +601,10 @@ PATCHES=(
 	"${FILESDIR}/fotema-${PV}-desktop.patch"
 )
 
+pkg_pretend() {
+	einfo "This package is masked because there is currently no"
+	einfo "dev-libs/glib package available with version 2.81 or higher."
+}
 src_unpack() {
 	default
 	cargo_src_unpack

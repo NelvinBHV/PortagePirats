@@ -1,6 +1,6 @@
-diff -Nru fotema-1.15.0.old/core/src/machine_learning/face_extractor.rs fotema-1.15.0/core/src/machine_learning/face_extractor.rs
---- fotema-1.15.0.old/core/src/machine_learning/face_extractor.rs	2024-10-15 01:20:15.058507327 +0200
-+++ fotema-1.15.0/core/src/machine_learning/face_extractor.rs	2024-10-15 01:20:15.830495767 +0200
+diff -Nru fotema-1.15.1.old/core/src/machine_learning/face_extractor.rs fotema-1.15.1/core/src/machine_learning/face_extractor.rs
+--- fotema-1.15.1.old/core/src/machine_learning/face_extractor.rs	2024-10-16 01:18:50.319794193 +0200
++++ fotema-1.15.1/core/src/machine_learning/face_extractor.rs	2024-10-16 01:18:50.731787835 +0200
 @@ -353,7 +353,7 @@
          let file = gio::File::for_path(source_path);
  
@@ -10,9 +10,9 @@ diff -Nru fotema-1.15.0.old/core/src/machine_learning/face_extractor.rs fotema-1
          let image = loader.load().await?;
          let frame = image.next_frame().await?;
          let bytes = frame.texture().save_to_png_bytes();
-diff -Nru fotema-1.15.0.old/core/src/photo/thumbnail.rs fotema-1.15.0/core/src/photo/thumbnail.rs
---- fotema-1.15.0.old/core/src/photo/thumbnail.rs	2024-10-15 01:20:15.090506847 +0200
-+++ fotema-1.15.0/core/src/photo/thumbnail.rs	2024-10-15 01:20:15.754496905 +0200
+diff -Nru fotema-1.15.1.old/core/src/photo/thumbnail.rs fotema-1.15.1/core/src/photo/thumbnail.rs
+--- fotema-1.15.1.old/core/src/photo/thumbnail.rs	2024-10-16 01:18:50.331794008 +0200
++++ fotema-1.15.1/core/src/photo/thumbnail.rs	2024-10-16 01:18:50.723787958 +0200
 @@ -121,7 +121,7 @@
          let file = gio::File::for_path(source_path);
  
@@ -22,9 +22,9 @@ diff -Nru fotema-1.15.0.old/core/src/photo/thumbnail.rs fotema-1.15.0/core/src/p
  
          let image = loader.load().await?;
  
-diff -Nru fotema-1.15.0.old/src/app/components/viewer/view_one.rs fotema-1.15.0/src/app/components/viewer/view_one.rs
---- fotema-1.15.0.old/src/app/components/viewer/view_one.rs	2024-10-15 01:20:15.670498163 +0200
-+++ fotema-1.15.0/src/app/components/viewer/view_one.rs	2024-10-15 01:20:15.882494988 +0200
+diff -Nru fotema-1.15.1.old/src/app/components/viewer/view_one.rs fotema-1.15.1/src/app/components/viewer/view_one.rs
+--- fotema-1.15.1.old/src/app/components/viewer/view_one.rs	2024-10-16 01:18:50.691788452 +0200
++++ fotema-1.15.1/src/app/components/viewer/view_one.rs	2024-10-16 01:18:50.739787711 +0200
 @@ -353,7 +353,7 @@
                      let file = gio::File::for_path(visual_path);
  

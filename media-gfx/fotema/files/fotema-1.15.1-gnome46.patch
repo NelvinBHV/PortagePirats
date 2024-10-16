@@ -1,6 +1,6 @@
 diff -Nru fotema-1.15.1.old/Cargo.toml fotema-1.15.1/Cargo.toml
---- fotema-1.15.1.old/Cargo.toml	2024-10-16 01:16:24.426047021 +0200
-+++ fotema-1.15.1/Cargo.toml	2024-10-16 01:16:24.594044425 +0200
+--- fotema-1.15.1.old/Cargo.toml	2024-10-17 01:16:33.882500677 +0200
++++ fotema-1.15.1/Cargo.toml	2024-10-17 01:16:33.958499511 +0200
 @@ -16,6 +16,7 @@
  lto = "thin"
  

@@ -38,7 +38,7 @@ CRATES="
 	atomic-waker@1.1.2
 	autocfg@1.4.0
 	av1-grain@0.2.3
-	avif-serialize@0.8.1
+	avif-serialize@0.8.2
 	backtrace@0.3.74
 	base64@0.21.7
 	base64@0.22.1
@@ -55,7 +55,7 @@ CRATES="
 	boyer-moore-magiclen@0.2.20
 	built@0.7.4
 	bumpalo@3.16.0
-	bytemuck@1.18.0
+	bytemuck@1.19.0
 	byteorder-lite@0.1.0
 	byteorder@1.5.0
 	bytes@1.7.2
@@ -216,8 +216,8 @@ CRATES="
 	hyper-tls@0.5.0
 	hyper-tls@0.6.0
 	hyper-util@0.1.9
-	hyper@0.14.30
-	hyper@1.4.1
+	hyper@0.14.31
+	hyper@1.5.0
 	i18n-config@0.4.7
 	i18n-embed-fl@0.9.1
 	i18n-embed-impl@0.8.3
@@ -225,11 +225,11 @@ CRATES="
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.61
 	idna@0.5.0
-	image-webp@0.1.3
+	image-webp@0.2.0
 	image@0.24.9
-	image@0.25.2
+	image@0.25.3
 	imageproc@0.25.0
-	imgref@1.10.1
+	imgref@1.11.0
 	indexmap@2.6.0
 	indicatif@0.17.8
 	instant@0.1.13
@@ -251,7 +251,7 @@ CRATES="
 	lebe@0.5.2
 	libadwaita-sys@0.7.0
 	libadwaita@0.7.0
-	libc@0.2.159
+	libc@0.2.160
 	libfuzzer-sys@0.4.7
 	libloading@0.7.4
 	libloading@0.8.5
@@ -311,12 +311,12 @@ CRATES="
 	objc_id@0.1.1
 	object@0.36.5
 	once_cell@1.20.2
-	opencv-binding-generator@0.91.0
-	opencv@0.93.1
+	opencv-binding-generator@0.92.0
+	opencv@0.93.3
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
-	openssl-sys@0.9.103
-	openssl@0.10.66
+	openssl-sys@0.9.104
+	openssl@0.10.68
 	option-ext@0.2.0
 	ordered-stream@0.2.0
 	ort@1.16.3
@@ -345,9 +345,9 @@ CRATES="
 	proc-macro-crate@3.2.0
 	proc-macro-error-attr@1.0.4
 	proc-macro-error@1.0.4
-	proc-macro2@1.0.87
-	profiling-procmacros@1.0.15
-	profiling@1.0.15
+	proc-macro2@1.0.88
+	profiling-procmacros@1.0.16
+	profiling@1.0.16
 	qoi@0.4.1
 	quick-error@2.0.1
 	quote@1.0.37
@@ -389,10 +389,10 @@ CRATES="
 	rustix@0.38.37
 	rustls-pemfile@1.0.4
 	rustls-pemfile@2.2.0
-	rustls-pki-types@1.9.0
+	rustls-pki-types@1.10.0
 	rustls-webpki@0.102.8
-	rustls@0.23.14
-	rustversion@1.0.17
+	rustls@0.23.15
+	rustversion@1.0.18
 	ryu@1.0.18
 	safe_arch@0.7.2
 	same-file@1.0.6

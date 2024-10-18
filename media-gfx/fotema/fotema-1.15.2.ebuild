@@ -599,7 +599,7 @@ ECARGO_VENDOR=${S}/vendor
 PATCHES=(
 	"${FILESDIR}/fotema-${PV}-sandbox.patch"
 	"${FILESDIR}/fotema-${PV}-desktop.patch"
-	"${FILESDIR}/fotema-${PV}-gnome46.patch"
+#	"${FILESDIR}/fotema-${PV}-gnome46.patch"
 )
 
 #pkg_pretend() {

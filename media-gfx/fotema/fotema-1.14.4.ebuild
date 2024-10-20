@@ -4,9 +4,9 @@
 
 EAPI=8
 CRATES="
-	ab_glyph@0.2.29
+	ab_glyph@0.2.28
 	ab_glyph_rasterizer@0.1.8
-	addr2line@0.24.2
+	addr2line@0.24.1
 	adler2@2.0.0
 	adler@1.0.2
 	ahash@0.8.11
@@ -20,7 +20,7 @@ CRATES="
 	arc-swap@1.7.1
 	arg_enum_proc_macro@0.3.4
 	arrayvec@0.7.6
-	ashpd@0.9.2
+	ashpd@0.9.1
 	async-broadcast@0.7.1
 	async-channel@2.3.1
 	async-executor@1.13.1
@@ -32,22 +32,22 @@ CRATES="
 	async-recursion@1.1.1
 	async-signal@0.2.10
 	async-task@4.7.1
-	async-trait@0.1.83
+	async-trait@0.1.82
 	atk-sys@0.18.0
 	atk@0.18.0
 	atomic-waker@1.1.2
-	autocfg@1.4.0
+	autocfg@1.3.0
 	av1-grain@0.2.3
-	avif-serialize@0.8.2
+	avif-serialize@0.8.1
 	backtrace@0.3.74
 	base64@0.21.7
 	base64@0.22.1
 	basic-toml@0.1.9
-	bindgen@0.70.1
+	bindgen@0.69.4
 	bit_field@0.10.2
 	bitflags@1.3.2
 	bitflags@2.6.0
-	bitreader@0.3.10
+	bitreader@0.3.8
 	bitstream-io@2.5.3
 	block-buffer@0.10.4
 	block@0.1.6
@@ -55,7 +55,7 @@ CRATES="
 	boyer-moore-magiclen@0.2.20
 	built@0.7.4
 	bumpalo@3.16.0
-	bytemuck@1.19.0
+	bytemuck@1.18.0
 	byteorder-lite@0.1.0
 	byteorder@1.5.0
 	bytes@1.7.2
@@ -63,10 +63,10 @@ CRATES="
 	cairo-rs@0.20.1
 	cairo-sys-rs@0.18.2
 	cairo-sys-rs@0.20.0
-	cc@1.1.30
+	cc@1.1.21
 	cexpr@0.6.0
 	cfg-expr@0.15.8
-	cfg-expr@0.17.0
+	cfg-expr@0.16.0
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
 	chrono@0.4.38
@@ -111,15 +111,15 @@ CRATES="
 	exr@1.72.0
 	fallible-iterator@0.3.0
 	fallible-streaming-iterator@0.1.9
-	fast_image_resize@5.0.0
+	fast_image_resize@4.2.1
 	fastrand@2.1.1
-	fdeflate@0.3.5
-	ffmpeg-next@7.1.0
-	ffmpeg-sys-next@7.1.0
+	fdeflate@0.3.4
+	ffmpeg-next@7.0.4
+	ffmpeg-sys-next@7.0.3
 	field-offset@0.3.6
 	filetime@0.2.25
 	find-crate@0.6.3
-	flate2@1.0.34
+	flate2@1.0.33
 	float_eq@1.0.1
 	fluent-bundle@0.15.3
 	fluent-langneg@0.13.0
@@ -134,59 +134,59 @@ CRATES="
 	foreign-types@0.5.0
 	form_urlencoded@1.2.1
 	fragile@2.0.0
-	futures-channel@0.3.31
-	futures-core@0.3.31
-	futures-executor@0.3.31
-	futures-io@0.3.31
+	futures-channel@0.3.30
+	futures-core@0.3.30
+	futures-executor@0.3.30
+	futures-io@0.3.30
 	futures-lite@2.3.0
-	futures-macro@0.3.31
-	futures-sink@0.3.31
-	futures-task@0.3.31
+	futures-macro@0.3.30
+	futures-sink@0.3.30
+	futures-task@0.3.30
 	futures-timer@3.0.3
-	futures-util@0.3.31
-	futures@0.3.31
+	futures-util@0.3.30
+	futures@0.3.30
 	gdk-pixbuf-sys@0.18.0
-	gdk-pixbuf-sys@0.20.4
+	gdk-pixbuf-sys@0.20.1
 	gdk-pixbuf@0.18.5
-	gdk-pixbuf@0.20.4
+	gdk-pixbuf@0.20.1
 	gdk-sys@0.18.0
-	gdk4-sys@0.9.2
-	gdk4-wayland-sys@0.9.2
-	gdk4-wayland@0.9.2
-	gdk4-x11-sys@0.9.2
-	gdk4-x11@0.9.2
+	gdk4-sys@0.9.0
+	gdk4-wayland-sys@0.9.0
+	gdk4-wayland@0.9.1
+	gdk4-x11-sys@0.9.0
+	gdk4-x11@0.9.0
 	gdk4@0.9.2
 	gdk@0.18.0
 	generic-array@0.14.7
 	getrandom@0.2.15
-	gettext-rs@0.7.2
-	gettext-sys@0.22.5
+	gettext-rs@0.7.1
+	gettext-sys@0.21.4
 	gif@0.13.1
-	gimli@0.31.1
+	gimli@0.31.0
 	gio-sys@0.18.1
-	gio-sys@0.20.4
+	gio-sys@0.20.1
 	gio@0.18.4
 	gio@0.20.4
 	glib-macros@0.18.5
-	glib-macros@0.20.4
+	glib-macros@0.20.3
 	glib-sys@0.18.1
-	glib-sys@0.20.4
+	glib-sys@0.20.2
 	glib@0.18.5
-	glib@0.20.4
+	glib@0.20.3
 	glob@0.3.1
 	glycin-utils@2.0.0
 	glycin@2.0.1
 	gobject-sys@0.18.0
-	gobject-sys@0.20.4
-	graphene-rs@0.20.4
-	graphene-sys@0.20.4
-	gsk4-sys@0.9.2
-	gsk4@0.9.2
+	gobject-sys@0.20.1
+	graphene-rs@0.20.1
+	graphene-sys@0.20.1
+	gsk4-sys@0.9.0
+	gsk4@0.9.0
 	gtk-sys@0.18.0
 	gtk3-macros@0.18.0
 	gtk4-macros@0.9.1
-	gtk4-sys@0.9.2
-	gtk4@0.9.2
+	gtk4-sys@0.9.0
+	gtk4@0.9.1
 	gtk@0.18.1
 	gufo-common@0.1.3
 	gufo-exif@0.1.3
@@ -196,7 +196,6 @@ CRATES="
 	h3o@0.6.4
 	half@2.4.1
 	hashbrown@0.14.5
-	hashbrown@0.15.0
 	hashlink@0.9.1
 	heck@0.4.1
 	heck@0.5.0
@@ -208,16 +207,16 @@ CRATES="
 	http-body@1.0.1
 	http@0.2.12
 	http@1.1.0
-	httparse@1.9.5
+	httparse@1.9.4
 	httpdate@1.0.3
 	humansize@2.1.3
 	humantime@2.1.0
 	hyper-rustls@0.27.3
 	hyper-tls@0.5.0
 	hyper-tls@0.6.0
-	hyper-util@0.1.9
-	hyper@0.14.31
-	hyper@1.5.0
+	hyper-util@0.1.8
+	hyper@0.14.30
+	hyper@1.4.1
 	i18n-config@0.4.7
 	i18n-embed-fl@0.9.1
 	i18n-embed-impl@0.8.3
@@ -225,33 +224,34 @@ CRATES="
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.61
 	idna@0.5.0
-	image-webp@0.2.0
+	image-webp@0.1.3
 	image@0.24.9
-	image@0.25.3
+	image@0.25.2
 	imageproc@0.25.0
-	imgref@1.11.0
-	indexmap@2.6.0
+	imgref@1.10.1
+	indexmap@2.5.0
 	indicatif@0.17.8
 	instant@0.1.13
 	interpolate_name@0.2.4
 	intl-memoizer@0.5.2
 	intl_pluralrules@7.0.2
-	ipnet@2.10.1
+	ipnet@2.10.0
 	itertools@0.11.0
 	itertools@0.12.1
 	itertools@0.13.0
 	itoa@1.0.11
 	jobserver@0.1.32
 	jpeg-decoder@0.3.1
-	js-sys@0.3.72
+	js-sys@0.3.70
 	kamadak-exif@0.5.5
 	lazy_static@1.5.0
+	lazycell@1.3.0
 	lcms2-sys@4.0.5
 	lcms2@6.1.0
 	lebe@0.5.2
 	libadwaita-sys@0.7.0
 	libadwaita@0.7.0
-	libc@0.2.160
+	libc@0.2.158
 	libfuzzer-sys@0.4.7
 	libloading@0.7.4
 	libloading@0.8.5
@@ -309,35 +309,37 @@ CRATES="
 	objc-foundation@0.1.1
 	objc@0.2.7
 	objc_id@0.1.1
-	object@0.36.5
-	once_cell@1.20.2
-	opencv-binding-generator@0.92.0
-	opencv@0.93.3
+	object@0.36.4
+	once_cell@1.19.0
+	opencv-binding-generator@0.91.0
+	opencv@0.93.1
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
-	openssl-sys@0.9.104
-	openssl@0.10.68
+	openssl-sys@0.9.103
+	openssl@0.10.66
 	option-ext@0.2.0
 	ordered-stream@0.2.0
 	ort@1.16.3
 	overload@0.1.1
-	owned_ttf_parser@0.25.0
+	owned_ttf_parser@0.24.0
 	pango-sys@0.18.0
-	pango-sys@0.20.4
+	pango-sys@0.20.1
 	pango@0.18.3
-	pango@0.20.4
+	pango@0.20.1
 	parking@2.2.1
 	parking_lot@0.12.3
 	parking_lot_core@0.9.10
 	paste@1.0.15
 	percent-encoding@2.3.1
+	pin-project-internal@1.1.5
 	pin-project-lite@0.2.14
+	pin-project@1.1.5
 	pin-utils@0.1.0
 	piper@0.2.4
-	pkg-config@0.3.31
-	png@0.17.14
+	pkg-config@0.3.30
+	png@0.17.13
 	polling@3.7.3
-	portable-atomic@1.9.0
+	portable-atomic@1.8.0
 	powerfmt@0.2.0
 	ppv-lite86@0.2.20
 	proc-macro-crate@1.3.1
@@ -345,9 +347,9 @@ CRATES="
 	proc-macro-crate@3.2.0
 	proc-macro-error-attr@1.0.4
 	proc-macro-error@1.0.4
-	proc-macro2@1.0.88
-	profiling-procmacros@1.0.16
-	profiling@1.0.16
+	proc-macro2@1.0.86
+	profiling-procmacros@1.0.15
+	profiling@1.0.15
 	qoi@0.4.1
 	quick-error@2.0.1
 	quote@1.0.37
@@ -360,21 +362,21 @@ CRATES="
 	rawpointer@0.2.1
 	rayon-core@1.12.1
 	rayon@1.10.0
-	redox_syscall@0.5.7
+	redox_syscall@0.5.4
 	redox_users@0.4.6
 	refinery-core@0.8.14
 	refinery-macros@0.8.14
 	refinery@0.8.14
 	regex-automata@0.1.10
-	regex-automata@0.4.8
+	regex-automata@0.4.7
 	regex-syntax@0.6.29
-	regex-syntax@0.8.5
-	regex@1.11.0
+	regex-syntax@0.8.4
+	regex@1.10.6
 	relm4-css@0.9.0
-	relm4-macros@0.9.1
-	relm4@0.9.1
+	relm4-macros@0.9.0
+	relm4@0.9.0
 	reqwest@0.11.27
-	reqwest@0.12.8
+	reqwest@0.12.7
 	rgb@0.8.50
 	ring@0.17.8
 	rmp-serde@1.3.0
@@ -388,15 +390,15 @@ CRATES="
 	rustc_version@0.4.1
 	rustix@0.38.37
 	rustls-pemfile@1.0.4
-	rustls-pemfile@2.2.0
-	rustls-pki-types@1.10.0
+	rustls-pemfile@2.1.3
+	rustls-pki-types@1.8.0
 	rustls-webpki@0.102.8
-	rustls@0.23.15
-	rustversion@1.0.18
+	rustls@0.23.13
+	rustversion@1.0.17
 	ryu@1.0.18
 	safe_arch@0.7.2
 	same-file@1.0.6
-	schannel@0.1.26
+	schannel@0.1.24
 	scopeguard@1.2.0
 	security-framework-sys@2.12.0
 	security-framework@2.11.1
@@ -407,7 +409,7 @@ CRATES="
 	serde_derive@1.0.210
 	serde_json@1.0.128
 	serde_repr@0.1.19
-	serde_spanned@0.6.8
+	serde_spanned@0.6.7
 	serde_urlencoded@0.7.1
 	sha1@0.10.6
 	sha2@0.10.8
@@ -430,7 +432,7 @@ CRATES="
 	strum_macros@0.26.4
 	subtle@2.6.1
 	syn@1.0.109
-	syn@2.0.79
+	syn@2.0.77
 	sync_wrapper@0.1.2
 	sync_wrapper@1.0.1
 	system-configuration-sys@0.5.0
@@ -438,13 +440,13 @@ CRATES="
 	system-configuration@0.5.1
 	system-configuration@0.6.1
 	system-deps@6.2.2
-	system-deps@7.0.3
-	tar@0.4.42
+	system-deps@7.0.2
+	tar@0.4.41
 	target-lexicon@0.12.16
-	temp-dir@0.1.14
-	tempfile@3.13.0
-	thiserror-impl@1.0.64
-	thiserror@1.0.64
+	temp-dir@0.1.13
+	tempfile@3.12.0
+	thiserror-impl@1.0.63
+	thiserror@1.0.63
 	thread_local@1.1.8
 	tiff@0.9.1
 	time-core@0.1.2
@@ -463,21 +465,23 @@ CRATES="
 	toml_datetime@0.6.8
 	toml_edit@0.19.15
 	toml_edit@0.20.7
-	toml_edit@0.22.22
+	toml_edit@0.22.21
+	tower-layer@0.3.3
 	tower-service@0.3.3
+	tower@0.4.13
 	tracing-attributes@0.1.27
 	tracing-core@0.1.32
 	tracing-log@0.2.0
 	tracing-subscriber@0.3.18
 	tracing@0.1.40
 	try-lock@0.2.5
-	ttf-parser@0.25.0
+	ttf-parser@0.24.1
 	type-map@0.5.0
 	typenum@1.17.0
 	uds_windows@1.1.0
 	unic-langid-impl@0.9.5
 	unic-langid@0.9.5
-	unicode-bidi@0.3.17
+	unicode-bidi@0.3.15
 	unicode-ident@1.0.13
 	unicode-normalization@0.1.24
 	unicode-width@0.1.14
@@ -494,13 +498,13 @@ CRATES="
 	walkdir@2.5.0
 	want@0.3.1
 	wasi@0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-backend@0.2.95
-	wasm-bindgen-futures@0.4.45
-	wasm-bindgen-macro-support@0.2.95
-	wasm-bindgen-macro@0.2.95
-	wasm-bindgen-shared@0.2.95
-	wasm-bindgen@0.2.95
-	web-sys@0.3.72
+	wasm-bindgen-backend@0.2.93
+	wasm-bindgen-futures@0.4.43
+	wasm-bindgen-macro-support@0.2.93
+	wasm-bindgen-macro@0.2.93
+	wasm-bindgen-shared@0.2.93
+	wasm-bindgen@0.2.93
+	web-sys@0.3.70
 	webpki-roots@0.26.6
 	weezl@0.1.8
 	wide@0.7.28
@@ -537,7 +541,7 @@ CRATES="
 	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.6
 	winnow@0.5.40
-	winnow@0.6.20
+	winnow@0.6.18
 	winreg@0.50.0
 	xattr@1.3.1
 	xdg-home@1.3.0
@@ -599,13 +603,8 @@ ECARGO_VENDOR=${S}/vendor
 PATCHES=(
 	"${FILESDIR}/fotema-${PV}-sandbox.patch"
 	"${FILESDIR}/fotema-${PV}-desktop.patch"
-#	"${FILESDIR}/fotema-${PV}-gnome46.patch"
 )
 
-#pkg_pretend() {
-#	einfo "This package is masked because there is currently no"
-#	einfo "dev-libs/glib package available with version 2.81 or higher."
-#}
 src_unpack() {
 	default
 	cargo_src_unpack

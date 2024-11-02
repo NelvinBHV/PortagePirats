@@ -9,14 +9,14 @@ RESTRICT="mirror"
 DESCRIPTION="oscam: Open Source Conditional Access Modul"
 HOMEPAGE="https://git.streamboard.tv/common/oscam"
 EGIT_REPO_URI="https://git.streamboard.tv/common/oscam.git"
-EGIT_COMMIT="44d9b86ca0fe2e964862efab80a3ec2321360d65"
+EGIT_COMMIT="d04b935adbbd7d7184617aee5bbd7494c72f766e"
 
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 arm"
 
-IUSE_ADDON="webif webif_livelog webif_jquery with_compress_webif with_ssl have_dvbapi with_extended_cw with_neutrino read_sdt_charsets cs_anticasc with_debug module_monitor with_lb cs_cacheex cs_cacheex_aio cw_cycle_check lcdsupport ledsupport clockfix ipv6support with_arm_neon"
+IUSE_ADDON="webif webif_livelog webif_jquery with_compress_webif with_ssl have_dvbapi with_extended_cw with_neutrino read_sdt_charsets cs_anticasc with_debug module_monitor with_lb cs_cacheex cs_cacheex_aio cw_cycle_check lcdsupport ledsupport clockfix ipv6support with_arm_neon with_signing"
 IUSE_MODULE="module_camd33 module_camd35 module_camd35_tcp module_newcamd module_cccam module_cccshare module_gbox module_radegast module_scam module_serial module_constcw module_pandora module_ghttp module_streamrelay"
 IUSE_READER="reader_nagra reader_nagra_merlin reader_irdeto reader_conax reader_cryptoworks reader_seca reader_viaccess reader_videoguard reader_dre reader_tongfang reader_bulcrypt reader_griffin reader_dgcrypt"
 IUSE_CARD="cardreader_phoenix cardreader_internal cardreader_sc8in1 cardreader_mp35 cardreader_smargo cardreader_db2com cardreader_stapi cardreader_stapi5 cardreader_stinger cardreader_drecas"

@@ -326,7 +326,7 @@ CRATES="
 	pkg-config@0.3.31
 	png@0.17.14
 	polling@3.7.4
-	portable-atomic@1.9.0
+	portable-atomic@1.10.0
 	powerfmt@0.2.0
 	ppv-lite86@0.2.20
 	proc-macro-crate@3.2.0
@@ -596,7 +596,6 @@ BDEPEND="${BDEPEND}
 	virtual/pkgconfig"
 ECARGO_VENDOR=${S}/vendor
 PATCHES=(
-	"${FILESDIR}/fotema-${PV}-sandbox.patch"
 	"${FILESDIR}/fotema-${PV}-desktop.patch"
 )
 

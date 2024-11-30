@@ -1,6 +1,6 @@
 diff -Nru fotema-1.18.1.old/core/src/photo/scanner.rs fotema-1.18.1/core/src/photo/scanner.rs
---- fotema-1.18.1.old/core/src/photo/scanner.rs	2024-11-29 01:37:01.924177274 +0100
-+++ fotema-1.18.1/core/src/photo/scanner.rs	2024-11-29 01:37:02.140173906 +0100
+--- fotema-1.18.1.old/core/src/photo/scanner.rs	2024-11-30 01:36:52.919894380 +0100
++++ fotema-1.18.1/core/src/photo/scanner.rs	2024-11-30 01:36:53.171890464 +0100
 @@ -45,6 +45,7 @@
          ];
  
@@ -10,8 +10,8 @@ diff -Nru fotema-1.18.1.old/core/src/photo/scanner.rs fotema-1.18.1/core/src/pho
              .inspect(|x| {
                  let _ = x
 diff -Nru fotema-1.18.1.old/core/src/video/scanner.rs fotema-1.18.1/core/src/video/scanner.rs
---- fotema-1.18.1.old/core/src/video/scanner.rs	2024-11-29 01:37:01.928177212 +0100
-+++ fotema-1.18.1/core/src/video/scanner.rs	2024-11-29 01:37:02.144173843 +0100
+--- fotema-1.18.1.old/core/src/video/scanner.rs	2024-11-30 01:36:52.919894380 +0100
++++ fotema-1.18.1/core/src/video/scanner.rs	2024-11-30 01:36:53.179890340 +0100
 @@ -35,6 +35,7 @@
          let suffixes = [String::from("mov"), String::from("mp4")];
  

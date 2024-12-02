@@ -54,13 +54,13 @@ CRATES="
 	bytemuck@1.20.0
 	byteorder-lite@0.1.0
 	byteorder@1.5.0
-	bytes@1.8.0
+	bytes@1.9.0
 	cairo-rs@0.20.5
 	cairo-sys-rs@0.20.0
-	cc@1.2.1
+	cc@1.2.2
 	cexpr@0.6.0
 	cfg-expr@0.15.8
-	cfg-expr@0.17.1
+	cfg-expr@0.17.2
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
 	chrono@0.4.38
@@ -99,8 +99,8 @@ CRATES="
 	env_filter@0.1.2
 	env_logger@0.11.5
 	equivalent@1.0.1
-	errno@0.3.9
-	event-listener-strategy@0.5.2
+	errno@0.3.10
+	event-listener-strategy@0.5.3
 	event-listener@5.3.1
 	exr@1.73.0
 	fallible-iterator@0.3.0
@@ -177,7 +177,7 @@ CRATES="
 	h3o@0.7.0
 	half@2.4.1
 	hashbrown@0.14.5
-	hashbrown@0.15.1
+	hashbrown@0.15.2
 	hashlink@0.9.1
 	heck@0.4.1
 	heck@0.5.0
@@ -222,7 +222,7 @@ CRATES="
 	image@0.25.5
 	imageproc@0.25.0
 	imgref@1.11.0
-	indexmap@2.6.0
+	indexmap@2.7.0
 	indicatif@0.17.9
 	interpolate_name@0.2.4
 	intl-memoizer@0.5.2
@@ -231,10 +231,10 @@ CRATES="
 	itertools@0.11.0
 	itertools@0.12.1
 	itertools@0.13.0
-	itoa@1.0.13
+	itoa@1.0.14
 	jobserver@0.1.32
 	jpeg-decoder@0.3.1
-	js-sys@0.3.72
+	js-sys@0.3.74
 	kamadak-exif@0.6.1
 	lazy_static@1.5.0
 	lcms2-sys@4.0.5
@@ -242,10 +242,10 @@ CRATES="
 	lebe@0.5.2
 	libadwaita-sys@0.7.1
 	libadwaita@0.7.1
-	libc@0.2.164
+	libc@0.2.167
 	libfuzzer-sys@0.4.8
 	libloading@0.7.4
-	libloading@0.8.5
+	libloading@0.8.6
 	libm@0.2.11
 	libredox@0.1.3
 	libseccomp-sys@0.2.1
@@ -272,7 +272,7 @@ CRATES="
 	mime@0.3.17
 	minimal-lexical@0.2.1
 	miniz_oxide@0.8.0
-	mio@1.0.2
+	mio@1.0.3
 	mp4parse@0.11.2
 	mutate_once@0.1.1
 	nalgebra@0.30.1
@@ -378,7 +378,7 @@ CRATES="
 	rustls-pemfile@2.2.0
 	rustls-pki-types@1.10.0
 	rustls-webpki@0.102.8
-	rustls@0.23.18
+	rustls@0.23.19
 	rustversion@1.0.18
 	ryu@1.0.18
 	safe_arch@0.7.2
@@ -409,7 +409,7 @@ CRATES="
 	slab@0.4.9
 	sm_motion_photo@0.1.5
 	smallvec@1.13.2
-	socket2@0.5.7
+	socket2@0.5.8
 	spin@0.9.8
 	stable_deref_trait@1.2.0
 	static_assertions@1.1.0
@@ -417,7 +417,7 @@ CRATES="
 	strum@0.26.3
 	strum_macros@0.26.4
 	subtle@2.6.1
-	syn@2.0.89
+	syn@2.0.90
 	sync_wrapper@0.1.2
 	sync_wrapper@1.0.2
 	synstructure@0.13.1
@@ -449,13 +449,13 @@ CRATES="
 	toml_datetime@0.6.8
 	toml_edit@0.22.22
 	tower-service@0.3.3
-	tracing-attributes@0.1.27
-	tracing-core@0.1.32
+	tracing-attributes@0.1.28
+	tracing-core@0.1.33
 	tracing-log@0.2.0
-	tracing-subscriber@0.3.18
-	tracing@0.1.40
+	tracing-subscriber@0.3.19
+	tracing@0.1.41
 	try-lock@0.2.5
-	ttf-parser@0.25.0
+	ttf-parser@0.25.1
 	type-map@0.5.0
 	typenum@1.17.0
 	uds_windows@1.1.0
@@ -479,13 +479,13 @@ CRATES="
 	walkdir@2.5.0
 	want@0.3.1
 	wasi@0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-backend@0.2.95
-	wasm-bindgen-futures@0.4.45
-	wasm-bindgen-macro-support@0.2.95
-	wasm-bindgen-macro@0.2.95
-	wasm-bindgen-shared@0.2.95
-	wasm-bindgen@0.2.95
-	web-sys@0.3.72
+	wasm-bindgen-backend@0.2.97
+	wasm-bindgen-futures@0.4.47
+	wasm-bindgen-macro-support@0.2.97
+	wasm-bindgen-macro@0.2.97
+	wasm-bindgen-shared@0.2.97
+	wasm-bindgen@0.2.97
+	web-sys@0.3.74
 	web-time@1.1.0
 	webpki-roots@0.26.7
 	weezl@0.1.8

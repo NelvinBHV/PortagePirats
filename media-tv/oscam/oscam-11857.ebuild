@@ -9,7 +9,7 @@ RESTRICT="mirror"
 DESCRIPTION="oscam: Open Source Conditional Access Modul"
 HOMEPAGE="https://git.streamboard.tv/common/oscam"
 EGIT_REPO_URI="https://git.streamboard.tv/common/oscam.git"
-EGIT_COMMIT="2e8b0cba3dfda09142a837a6a635a5a4c769a62d"
+EGIT_COMMIT="527d8e1a9bab59b77216083e45742c61cd0ed7d1"
 
 
 LICENSE="GPL-2"

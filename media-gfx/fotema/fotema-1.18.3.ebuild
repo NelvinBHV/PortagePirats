@@ -13,7 +13,7 @@ CRATES="
 	aligned-vec@0.5.0
 	android-tzdata@0.1.1
 	android_system_properties@0.1.5
-	anyhow@1.0.93
+	anyhow@1.0.94
 	approx@0.5.1
 	arbitrary@1.4.1
 	arc-swap@1.7.1
@@ -57,13 +57,13 @@ CRATES="
 	bytes@1.9.0
 	cairo-rs@0.20.5
 	cairo-sys-rs@0.20.0
-	cc@1.2.2
+	cc@1.2.3
 	cexpr@0.6.0
 	cfg-expr@0.15.8
 	cfg-expr@0.17.2
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
-	chrono@0.4.38
+	chrono@0.4.39
 	clang-sys@1.8.1
 	clang@2.0.0
 	color_quant@1.1.0
@@ -105,9 +105,9 @@ CRATES="
 	exr@1.73.0
 	fallible-iterator@0.3.0
 	fallible-streaming-iterator@0.1.9
-	fast_image_resize@5.0.0
-	fastrand@2.2.0
-	fdeflate@0.3.6
+	fast_image_resize@5.1.0
+	fastrand@2.3.0
+	fdeflate@0.3.7
 	ffmpeg-next@7.1.0
 	ffmpeg-sys-next@7.1.0
 	field-offset@0.3.6
@@ -188,7 +188,7 @@ CRATES="
 	http-body@0.4.6
 	http-body@1.0.1
 	http@0.2.12
-	http@1.1.0
+	http@1.2.0
 	httparse@1.9.5
 	httpdate@1.0.3
 	humansize@2.1.3
@@ -234,7 +234,7 @@ CRATES="
 	itoa@1.0.14
 	jobserver@0.1.32
 	jpeg-decoder@0.3.1
-	js-sys@0.3.74
+	js-sys@0.3.76
 	kamadak-exif@0.6.1
 	lazy_static@1.5.0
 	lcms2-sys@4.0.5
@@ -242,7 +242,7 @@ CRATES="
 	lebe@0.5.2
 	libadwaita-sys@0.7.1
 	libadwaita@0.7.1
-	libc@0.2.167
+	libc@0.2.168
 	libfuzzer-sys@0.4.8
 	libloading@0.7.4
 	libloading@0.8.6
@@ -303,7 +303,7 @@ CRATES="
 	object@0.36.5
 	once_cell@1.20.2
 	opencv-binding-generator@0.93.0
-	opencv@0.93.4
+	opencv@0.93.5
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
 	openssl-sys@0.9.104
@@ -324,7 +324,7 @@ CRATES="
 	pin-utils@0.1.0
 	piper@0.2.4
 	pkg-config@0.3.31
-	png@0.17.14
+	png@0.17.15
 	polling@3.7.4
 	portable-atomic@1.10.0
 	powerfmt@0.2.0
@@ -347,7 +347,7 @@ CRATES="
 	rawpointer@0.2.1
 	rayon-core@1.12.1
 	rayon@1.10.0
-	redox_syscall@0.5.7
+	redox_syscall@0.5.8
 	redox_users@0.4.6
 	refinery-core@0.8.14
 	refinery-macros@0.8.14
@@ -373,12 +373,12 @@ CRATES="
 	rustc-demangle@0.1.24
 	rustc-hash@1.1.0
 	rustc_version@0.4.1
-	rustix@0.38.41
+	rustix@0.38.42
 	rustls-pemfile@1.0.4
 	rustls-pemfile@2.2.0
 	rustls-pki-types@1.10.0
 	rustls-webpki@0.102.8
-	rustls@0.23.19
+	rustls@0.23.20
 	rustversion@1.0.18
 	ryu@1.0.18
 	safe_arch@0.7.2
@@ -388,10 +388,10 @@ CRATES="
 	security-framework-sys@2.12.1
 	security-framework@2.11.1
 	self_cell@0.10.3
-	self_cell@1.0.4
+	self_cell@1.1.0
 	semver@1.0.23
-	serde@1.0.215
-	serde_derive@1.0.215
+	serde@1.0.216
+	serde_derive@1.0.216
 	serde_json@1.0.133
 	serde_repr@0.1.19
 	serde_spanned@0.6.8
@@ -436,14 +436,14 @@ CRATES="
 	thread_local@1.1.8
 	tiff@0.9.1
 	time-core@0.1.2
-	time-macros@0.2.18
-	time@0.3.36
+	time-macros@0.2.19
+	time@0.3.37
 	tiny-keccak@2.0.2
 	tinystr@0.7.6
 	tokio-native-tls@0.3.1
-	tokio-rustls@0.26.0
-	tokio-util@0.7.12
-	tokio@1.41.1
+	tokio-rustls@0.26.1
+	tokio-util@0.7.13
+	tokio@1.42.0
 	toml@0.5.11
 	toml@0.8.19
 	toml_datetime@0.6.8
@@ -465,7 +465,7 @@ CRATES="
 	unicode-width@0.1.14
 	unicode-width@0.2.0
 	untrusted@0.9.0
-	ureq@2.10.1
+	ureq@2.12.1
 	url@2.5.4
 	utf16_iter@1.0.5
 	utf8_iter@1.0.4
@@ -479,13 +479,13 @@ CRATES="
 	walkdir@2.5.0
 	want@0.3.1
 	wasi@0.11.0+wasi-snapshot-preview1
-	wasm-bindgen-backend@0.2.97
-	wasm-bindgen-futures@0.4.47
-	wasm-bindgen-macro-support@0.2.97
-	wasm-bindgen-macro@0.2.97
-	wasm-bindgen-shared@0.2.97
-	wasm-bindgen@0.2.97
-	web-sys@0.3.74
+	wasm-bindgen-backend@0.2.99
+	wasm-bindgen-futures@0.4.49
+	wasm-bindgen-macro-support@0.2.99
+	wasm-bindgen-macro@0.2.99
+	wasm-bindgen-shared@0.2.99
+	wasm-bindgen@0.2.99
+	web-sys@0.3.76
 	web-time@1.1.0
 	webpki-roots@0.26.7
 	weezl@0.1.8

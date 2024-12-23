@@ -35,8 +35,6 @@ RDEPEND="
     $(python_gen_cond_dep 'dev-python/protobuf[${PYTHON_USEDEP}]')
     $(python_gen_cond_dep 'dev-python/scipy[${PYTHON_USEDEP}]')
     $(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
-    $(python_gen_cond_dep 'dev-python/tensorboard[${PYTHON_USEDEP}]')
-    $(python_gen_cond_dep 'dev-python/tensorboard-data-server[${PYTHON_USEDEP}]')
     $(python_gen_cond_dep 'dev-python/typing-extensions[${PYTHON_USEDEP}]')
     $(python_gen_cond_dep 'dev-python/wrapt[${PYTHON_USEDEP}]')
     cuda? ( dev-util/nvidia-cuda-toolkit )

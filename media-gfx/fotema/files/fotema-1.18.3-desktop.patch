@@ -1,6 +1,6 @@
 diff -Nru fotema-1.18.3.old/data/app.fotema.Fotema.desktop.in.in fotema-1.18.3/data/app.fotema.Fotema.desktop.in.in
---- fotema-1.18.3.old/data/app.fotema.Fotema.desktop.in.in	2025-01-05 08:42:07.774046342 +0100
-+++ fotema-1.18.3/data/app.fotema.Fotema.desktop.in.in	2025-01-05 08:42:07.838045266 +0100
+--- fotema-1.18.3.old/data/app.fotema.Fotema.desktop.in.in	2025-01-06 01:32:10.286241514 +0100
++++ fotema-1.18.3/data/app.fotema.Fotema.desktop.in.in	2025-01-06 01:32:10.342240587 +0100
 @@ -8,7 +8,7 @@
  # Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
  Keywords=Gnome;GTK;Pictures;Photos;Photography;Viewer;

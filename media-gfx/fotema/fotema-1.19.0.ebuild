@@ -30,7 +30,7 @@ CRATES="
 	async-recursion@1.1.1
 	async-signal@0.2.10
 	async-task@4.7.1
-	async-trait@0.1.83
+	async-trait@0.1.85
 	atomic-waker@1.1.2
 	autocfg@1.4.0
 	av1-grain@0.2.3
@@ -57,7 +57,7 @@ CRATES="
 	bytes@1.9.0
 	cairo-rs@0.20.7
 	cairo-sys-rs@0.20.7
-	cc@1.2.6
+	cc@1.2.7
 	cexpr@0.6.0
 	cfg-expr@0.15.8
 	cfg-expr@0.17.2
@@ -158,9 +158,9 @@ CRATES="
 	glib-macros@0.20.7
 	glib-sys@0.20.7
 	glib@0.20.7
-	glob@0.3.1
+	glob@0.3.2
 	glycin-utils@2.0.2
-	glycin@2.0.2
+	glycin@2.0.3
 	gobject-sys@0.20.7
 	graphene-rs@0.20.7
 	graphene-sys@0.20.7
@@ -174,7 +174,7 @@ CRATES="
 	h2@0.3.26
 	h2@0.4.7
 	h3o-bit@0.1.1
-	h3o@0.7.1
+	h3o@0.6.4
 	half@2.4.1
 	hashbrown@0.14.5
 	hashbrown@0.15.2
@@ -200,9 +200,9 @@ CRATES="
 	hyper@0.14.32
 	hyper@1.5.2
 	i18n-config@0.4.7
-	i18n-embed-fl@0.9.2
+	i18n-embed-fl@0.9.3
 	i18n-embed-impl@0.8.4
-	i18n-embed@0.15.2
+	i18n-embed@0.15.3
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.61
 	icu_collections@1.5.0
@@ -231,6 +231,7 @@ CRATES="
 	itertools@0.11.0
 	itertools@0.12.1
 	itertools@0.13.0
+	itertools@0.14.0
 	itoa@1.0.14
 	jobserver@0.1.32
 	jpeg-decoder@0.3.1
@@ -320,7 +321,7 @@ CRATES="
 	parking_lot_core@0.9.10
 	paste@1.0.15
 	percent-encoding@2.3.1
-	pin-project-lite@0.2.15
+	pin-project-lite@0.2.16
 	pin-utils@0.1.0
 	piper@0.2.4
 	pkg-config@0.3.31
@@ -361,7 +362,7 @@ CRATES="
 	relm4-macros@0.9.1
 	relm4@0.9.1
 	reqwest@0.11.27
-	reqwest@0.12.11
+	reqwest@0.12.12
 	rgb@0.8.50
 	ring@0.17.8
 	rmp-serde@1.3.0
@@ -385,14 +386,14 @@ CRATES="
 	same-file@1.0.6
 	schannel@0.1.27
 	scopeguard@1.2.0
-	security-framework-sys@2.13.0
+	security-framework-sys@2.14.0
 	security-framework@2.11.1
 	self_cell@0.10.3
 	self_cell@1.1.0
 	semver@1.0.24
-	serde@1.0.216
-	serde_derive@1.0.216
-	serde_json@1.0.134
+	serde@1.0.217
+	serde_derive@1.0.217
+	serde_json@1.0.135
 	serde_repr@0.1.19
 	serde_spanned@0.6.8
 	serde_urlencoded@0.7.1
@@ -417,7 +418,7 @@ CRATES="
 	strum@0.26.3
 	strum_macros@0.26.4
 	subtle@2.6.1
-	syn@2.0.92
+	syn@2.0.95
 	sync_wrapper@0.1.2
 	sync_wrapper@1.0.2
 	synstructure@0.13.1
@@ -430,7 +431,7 @@ CRATES="
 	tar@0.4.43
 	target-lexicon@0.12.16
 	temp-dir@0.1.14
-	tempfile@3.14.0
+	tempfile@3.15.0
 	thiserror-impl@1.0.69
 	thiserror@1.0.69
 	thread_local@1.1.8
@@ -490,7 +491,7 @@ CRATES="
 	web-time@1.1.0
 	webpki-roots@0.26.7
 	weezl@0.1.8
-	wide@0.7.30
+	wide@0.7.31
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.9
 	winapi-x86_64-pc-windows-gnu@0.4.0
@@ -523,11 +524,11 @@ CRATES="
 	windows_x86_64_gnullvm@0.52.6
 	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.6
-	winnow@0.6.20
+	winnow@0.6.22
 	winreg@0.50.0
 	write16@1.0.0
 	writeable@0.5.5
-	xattr@1.3.1
+	xattr@1.4.0
 	xdg-home@1.3.0
 	yeslogic-fontconfig-sys@6.0.0
 	yoke-derive@0.7.5

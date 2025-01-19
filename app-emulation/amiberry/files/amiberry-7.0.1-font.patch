@@ -1,0 +1,12 @@
+diff -Nru amiberry-7.0.1.old/src/osdep/amiberry_gui.cpp amiberry-7.0.1/src/osdep/amiberry_gui.cpp
+--- amiberry-7.0.1.old/src/osdep/amiberry_gui.cpp	2025-01-19 09:09:54.140014319 +0100
++++ amiberry-7.0.1/src/osdep/amiberry_gui.cpp	2025-01-19 09:09:55.139998664 +0100
+@@ -1940,7 +1940,7 @@
+ 
+ void load_default_theme()
+ {
+-	gui_theme.font_name = "AmigaTopaz.ttf";
++	gui_theme.font_name = "/usr/share/fonts/liberation-fonts/LiberationMono-Regular.ttf";
+ 	gui_theme.font_size = 15;
+ 	gui_theme.font_color = { 0, 0, 0 };
+ 	gui_theme.base_color = { 170, 170, 170 };

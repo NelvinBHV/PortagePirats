@@ -1,0 +1,48 @@
+diff -Nru amiberry-7.0.1.old/src/osdep/amiberry.cpp amiberry-7.0.1/src/osdep/amiberry.cpp
+--- amiberry-7.0.1.old/src/osdep/amiberry.cpp	2025-01-19 09:09:54.140014319 +0100
++++ amiberry-7.0.1/src/osdep/amiberry.cpp	2025-01-19 09:09:54.244012691 +0100
+@@ -3837,7 +3837,7 @@
+ 		return {tmp};
+ 	}
+ 	const auto env_home_dir = getenv("AMIBERRY_HOME_DIR");
+-	const auto user_home_dir = getenv("HOME");
++	const auto user_home_dir = "/opt/Amiga";
+ 
+ 	// 1: Check if the $AMIBERRY_HOME_DIR ENV variable is set
+ 	if (env_home_dir != nullptr && my_existsdir(env_home_dir))
+@@ -3871,7 +3871,7 @@
+ std::string get_config_directory(bool portable_mode)
+ {
+ #ifdef __MACH__
+-    const auto user_home_dir = getenv("HOME");
++    const auto user_home_dir = "/opt/Amiga";
+     if (!directory_exists(user_home_dir, "/Amiberry"))
+     {
+         my_mkdir((std::string(user_home_dir) + "/Amiberry").c_str());
+@@ -3892,7 +3892,7 @@
+ 	}
+ 
+ 	const auto env_conf_dir = getenv("AMIBERRY_CONFIG_DIR");
+-	const auto user_home_dir = getenv("HOME");
++	const auto user_home_dir = "/opt/Amiga";
+ 
+ 	// 1: Check if the $AMIBERRY_CONFIG_DIR ENV variable is set
+ 	if (env_conf_dir != nullptr && my_existsdir(env_conf_dir))
+@@ -3973,7 +3973,7 @@
+         return AMIBERRY_LIBDIR;
+     }
+ 	// 3: Check for ~/Amiberry/plugins
+-    const auto user_home_dir = getenv("HOME");
++    const auto user_home_dir = "/opt/Amiga";
+     if (user_home_dir != nullptr)
+     {
+         if (!directory_exists(user_home_dir, "/Amiberry"))
+@@ -4154,7 +4154,7 @@
+ 		if (!my_existsdir(xdg_data_home.c_str()))
+ 		{
+ 			// Create the XDG_DATA_HOME directory if it doesn't exist
+-			const auto user_home_dir = getenv("HOME");
++			const auto user_home_dir = "/opt/Amiga";
+ 			if (user_home_dir != nullptr)
+ 			{
+ 				std::string destination = std::string(user_home_dir) + "/.local";

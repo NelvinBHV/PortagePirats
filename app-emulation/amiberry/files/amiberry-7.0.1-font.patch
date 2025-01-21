@@ -1,6 +1,6 @@
 diff -Nru amiberry-7.0.1.old/src/osdep/amiberry_gui.cpp amiberry-7.0.1/src/osdep/amiberry_gui.cpp
---- amiberry-7.0.1.old/src/osdep/amiberry_gui.cpp	2025-01-20 01:20:23.612307531 +0100
-+++ amiberry-7.0.1/src/osdep/amiberry_gui.cpp	2025-01-20 01:20:24.616290355 +0100
+--- amiberry-7.0.1.old/src/osdep/amiberry_gui.cpp	2025-01-21 01:21:36.313911074 +0100
++++ amiberry-7.0.1/src/osdep/amiberry_gui.cpp	2025-01-21 01:21:37.461891458 +0100
 @@ -1940,7 +1940,7 @@
  
  void load_default_theme()

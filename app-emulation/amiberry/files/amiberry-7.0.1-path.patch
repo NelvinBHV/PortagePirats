@@ -1,6 +1,6 @@
 diff -Nru amiberry-7.0.1.old/src/osdep/amiberry.cpp amiberry-7.0.1/src/osdep/amiberry.cpp
---- amiberry-7.0.1.old/src/osdep/amiberry.cpp	2025-01-21 01:21:36.309911142 +0100
-+++ amiberry-7.0.1/src/osdep/amiberry.cpp	2025-01-21 01:21:36.413909365 +0100
+--- amiberry-7.0.1.old/src/osdep/amiberry.cpp	2025-01-22 01:21:42.404700823 +0100
++++ amiberry-7.0.1/src/osdep/amiberry.cpp	2025-01-22 01:21:42.504699151 +0100
 @@ -3837,7 +3837,7 @@
  		return {tmp};
  	}

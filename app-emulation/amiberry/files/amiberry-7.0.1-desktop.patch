@@ -1,6 +1,6 @@
 diff -Nru amiberry-7.0.1.old/packaging/linux/Amiberry.desktop amiberry-7.0.1/packaging/linux/Amiberry.desktop
---- amiberry-7.0.1.old/packaging/linux/Amiberry.desktop	2025-01-27 01:32:03.885836404 +0100
-+++ amiberry-7.0.1/packaging/linux/Amiberry.desktop	2025-01-27 01:32:06.013800838 +0100
+--- amiberry-7.0.1.old/packaging/linux/Amiberry.desktop	2025-01-28 01:32:52.464807984 +0100
++++ amiberry-7.0.1/packaging/linux/Amiberry.desktop	2025-01-28 01:32:55.236761582 +0100
 @@ -31,3 +31,5 @@
  
  # Describes the encoding for the desktop entry

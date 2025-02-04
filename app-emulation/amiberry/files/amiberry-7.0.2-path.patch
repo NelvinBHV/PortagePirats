@@ -1,7 +1,7 @@
-diff -Nru amiberry-7.0.1.old/src/osdep/amiberry.cpp amiberry-7.0.1/src/osdep/amiberry.cpp
---- amiberry-7.0.1.old/src/osdep/amiberry.cpp	2025-02-02 01:35:35.425430104 +0100
-+++ amiberry-7.0.1/src/osdep/amiberry.cpp	2025-02-02 01:35:35.529428385 +0100
-@@ -3837,7 +3837,7 @@
+diff -Nru amiberry-7.0.2.old/src/osdep/amiberry.cpp amiberry-7.0.2/src/osdep/amiberry.cpp
+--- amiberry-7.0.2.old/src/osdep/amiberry.cpp	2025-02-04 05:41:41.510661860 +0100
++++ amiberry-7.0.2/src/osdep/amiberry.cpp	2025-02-04 05:41:41.618660522 +0100
+@@ -3965,7 +3965,7 @@
  		return {tmp};
  	}
  	const auto env_home_dir = getenv("AMIBERRY_HOME_DIR");
@@ -10,7 +10,7 @@ diff -Nru amiberry-7.0.1.old/src/osdep/amiberry.cpp amiberry-7.0.1/src/osdep/ami
  
  	// 1: Check if the $AMIBERRY_HOME_DIR ENV variable is set
  	if (env_home_dir != nullptr && my_existsdir(env_home_dir))
-@@ -3871,7 +3871,7 @@
+@@ -3999,7 +3999,7 @@
  std::string get_config_directory(bool portable_mode)
  {
  #ifdef __MACH__
@@ -19,7 +19,7 @@ diff -Nru amiberry-7.0.1.old/src/osdep/amiberry.cpp amiberry-7.0.1/src/osdep/ami
      if (!directory_exists(user_home_dir, "/Amiberry"))
      {
          my_mkdir((std::string(user_home_dir) + "/Amiberry").c_str());
-@@ -3892,7 +3892,7 @@
+@@ -4020,7 +4020,7 @@
  	}
  
  	const auto env_conf_dir = getenv("AMIBERRY_CONFIG_DIR");
@@ -27,8 +27,8 @@ diff -Nru amiberry-7.0.1.old/src/osdep/amiberry.cpp amiberry-7.0.1/src/osdep/ami
 +	const auto user_home_dir = "/opt/Amiga";
  
  	// 1: Check if the $AMIBERRY_CONFIG_DIR ENV variable is set
- 	if (env_conf_dir != nullptr && my_existsdir(env_conf_dir))
-@@ -3973,7 +3973,7 @@
+ 	if (env_conf_dir != nullptr)
+@@ -4090,7 +4090,7 @@
          return AMIBERRY_LIBDIR;
      }
  	// 3: Check for ~/Amiberry/plugins
@@ -37,7 +37,7 @@ diff -Nru amiberry-7.0.1.old/src/osdep/amiberry.cpp amiberry-7.0.1/src/osdep/ami
      if (user_home_dir != nullptr)
      {
          if (!directory_exists(user_home_dir, "/Amiberry"))
-@@ -4154,7 +4154,7 @@
+@@ -4369,7 +4369,7 @@
  		if (!my_existsdir(xdg_data_home.c_str()))
  		{
  			// Create the XDG_DATA_HOME directory if it doesn't exist

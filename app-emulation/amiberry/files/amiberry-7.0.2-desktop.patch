@@ -1,0 +1,9 @@
+diff -Nru amiberry-7.0.2.old/packaging/linux/Amiberry.desktop amiberry-7.0.2/packaging/linux/Amiberry.desktop
+--- amiberry-7.0.2.old/packaging/linux/Amiberry.desktop	2025-02-04 05:41:41.326664141 +0100
++++ amiberry-7.0.2/packaging/linux/Amiberry.desktop	2025-02-04 05:41:43.442637922 +0100
+@@ -31,3 +31,5 @@
+ 
+ # Describes the encoding for the desktop entry
+ Encoding=UTF-8
++
++StartupWMClass = amiberry

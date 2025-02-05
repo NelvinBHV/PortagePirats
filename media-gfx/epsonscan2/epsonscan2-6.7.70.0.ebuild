@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}"
 pkg_nofetch() {
 	einfo "Please download ${P}-1.src.tar.gz manually"
 	einfo "You can use wget for this:"
-	einfo "wget --user-agent=\"Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0\" \"https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=JA&CN2=US&CTI=171&PRN=Linux%20src%20package&OSC=LX&DL\" -O /var/cache/distfiles/epsonscan2-6.7.70.0-1.src.tar.gz"
+	einfo "wget --user-agent=\"Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0\" \"https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=JA&CN2=US&CTI=171&PRN=Linux%20src%20package&OSC=LX&DL\" -O /var/cache/distfiles/epsonscan2-6.7.70.0-1.src.tar.gz"
 }
 
 

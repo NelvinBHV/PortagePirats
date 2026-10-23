@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>root@wg-zuhause.de</email>
+		<name>Local PortagePirats overlay</name>
+	</maintainer>
+	<use>
+		<flag name="slirp">Enable user-mode networking for the emulated PowerPC system</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">BlitterStudio/amiberry-qemu-uae</remote-id>
+	</upstream>
+</pkgmetadata>

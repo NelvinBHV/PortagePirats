@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>root@wg-zuhause.de</email>
+		<name>Local PortagePirats overlay</name>
+	</maintainer>
+	<use>
+		<flag name="aga">Enable Amiga Advanced Graphics Architecture support</flag>
+		<flag name="ecs">Enable Amiga Enhanced Chip Set support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">AmigaPorts/ACE</remote-id>
+	</upstream>
+</pkgmetadata>

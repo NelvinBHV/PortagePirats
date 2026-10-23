@@ -1,0 +1,59 @@
+From: PortagePirats <root@wg-zuhause.de>
+Subject: [PATCH] Work around broken NDK 3.2 CIA inline wrappers
+
+The CIA resource SFD passes its resource base explicitly in a6.  The sfdc
+1.12 public wrappers nevertheless reference the undefined CIA_BASE_NAME.
+Use the generated base helpers and pass the explicit resource as their
+inline base.  Keep the regular public wrappers for other toolchains.
+
+--- a/src/ace/managers/system.c
++++ b/src/ace/managers/system.c
+@@ -21,6 +21,19 @@
+ #include <proto/graphics.h> // Bartman's compiler needs this
+ #include <proto/cia.h>
+ #include <workbench/startup.h>
++
++#if defined(__GNUC__) && defined(__AbleICR_base)
++#define ACE_ABLE_ICR(resource, mask) \
++	__AbleICR_base((resource), (resource), (mask))
++#define ACE_ADD_ICR_VECTOR(resource, bit, interrupt) \
++	__AddICRVector_base((resource), (resource), (bit), (interrupt))
++#define ACE_REM_ICR_VECTOR(resource, bit, interrupt) \
++	__RemICRVector_base((resource), (resource), (bit), (interrupt))
++#else
++#define ACE_ABLE_ICR AbleICR
++#define ACE_ADD_ICR_VECTOR AddICRVector
++#define ACE_REM_ICR_VECTOR RemICRVector
++#endif
+ #if defined(BARTMAN_GCC)
+ #include <bartman/gcc8_c_support.h> // Idle measurement
+ #endif
+@@ -705,8 +718,8 @@ static void systemOsDisable(void) {
+ 		g_pCustom->intreq = 0x7FFF;
+ 
+ 		// Query CIA ICR bits set by OS for later CIA takeover restore
+-		s_pOsCiaIcr[CIA_A] = AbleICR(s_pCiaResource[CIA_A], 0);
+-		s_pOsCiaIcr[CIA_B] = AbleICR(s_pCiaResource[CIA_B], 0);
++		s_pOsCiaIcr[CIA_A] = ACE_ABLE_ICR(s_pCiaResource[CIA_A], 0);
++		s_pOsCiaIcr[CIA_B] = ACE_ABLE_ICR(s_pCiaResource[CIA_B], 0);
+ 
+ 		// Disable CIA interrupts
+ 		g_pCia[CIA_A]->icr = 0x7F;
+@@ -780,7 +793,7 @@ void ciaIcrHandlerAdd(UBYTE ubCia, UBYTE ubIcrBit) {
+ 	s_pOsCiaIcrHandlers[ubCia][ubIcrBit].is_Node.ln_Pri = 127;
+ 	s_pOsCiaIcrHandlers[ubCia][ubIcrBit].is_Node.ln_Type = NT_INTERRUPT;
+ 	// AddICRVector auto-activates ints, leave it be to mimic what ACE does on no-os side
+-	if(AddICRVector(s_pCiaResource[ubCia], ubIcrBit, &s_pOsCiaIcrHandlers[ubCia][ubIcrBit])) {
++	if(ACE_ADD_ICR_VECTOR(s_pCiaResource[ubCia], ubIcrBit, &s_pOsCiaIcrHandlers[ubCia][ubIcrBit])) {
+ 		logWrite("CIA %c ICR %d add failed", (ubCia == CIA_A) ? 'A' : 'B', ubIcrBit);
+ 	}
+ 	// TODO: check if AddICRVector allocated the same timer as desired using
+@@ -796,7 +809,7 @@ void ciaIcrHandlerAdd(UBYTE ubCia, UBYTE ubIcrBit) {
+ }
+ 
+ void ciaIcrHandlerRemove(UBYTE ubCia, UBYTE ubIcrBit) {
+-	RemICRVector(s_pCiaResource[ubCia], ubIcrBit, &s_pOsCiaIcrHandlers[ubCia][ubIcrBit]);
++	ACE_REM_ICR_VECTOR(s_pCiaResource[ubCia], ubIcrBit, &s_pOsCiaIcrHandlers[ubCia][ubIcrBit]);
+ }
+ 
+ /**

@@ -1,0 +1,15 @@
+[Unit]
+Description=Dispatch initramfs password requests to unl0kr
+ConditionPathExists=!/run/plymouth/pid
+DefaultDependencies=no
+After=plymouth-start.service
+Before=paths.target cryptsetup.target
+Conflicts=emergency.service shutdown.target systemd-ask-password-console.path
+Before=emergency.service shutdown.target systemd-ask-password-console.path
+
+[Path]
+DirectoryNotEmpty=/run/systemd/ask-password
+MakeDirectory=yes
+
+[Install]
+WantedBy=paths.target

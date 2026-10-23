@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>
+    ZGloom ist eine SDL2-basierte Reimplementierung des Amiga-Shooters Gloom.
+    Das Paket installiert die Engine zusammen mit den klassischen
+    Gloom-Daten aus dem verlinkten GloomAmiga-Archiv nach
+    /usr/share/games/zgloom.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Swizpig/ZGloom</remote-id>
+    <remote-id type="github">earok/GloomAmiga</remote-id>
+  </upstream>
+</pkgmetadata>

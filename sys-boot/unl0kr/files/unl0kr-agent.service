@@ -1,0 +1,11 @@
+[Unit]
+Description=Run unl0kr for initramfs password requests
+ConditionPathExists=!/run/plymouth/pid
+DefaultDependencies=no
+After=plymouth-start.service
+Conflicts=emergency.service shutdown.target initrd-switch-root.target
+Before=emergency.service shutdown.target initrd-switch-root.target
+
+[Service]
+Type=simple
+ExecStart=/usr/libexec/unl0kr-agent

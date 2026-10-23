@@ -1,0 +1,3 @@
+# Causes a kernel panic during HID driver registration on SteamMachine.
+# Keep masked until the driver is redesigned and tested without autoloading.
+sys-kernel/hid-sharkoon-sgk36w

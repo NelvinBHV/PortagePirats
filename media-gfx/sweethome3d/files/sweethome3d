@@ -1,0 +1,31 @@
+#!/bin/sh
+
+app_home=/usr/share/sweethome3d
+native_home=/usr/@GENTOO_LIBDIR@/sweethome3d
+
+# Sweet Home 3D 7.5 targets Java 8. These module openings are required when
+# the application runs with the current Gentoo OpenJDK releases.
+java_options="${SWEETHOME3D_JAVA_OPTS:--Xmx4g}"
+export LD_LIBRARY_PATH="${native_home}/yafaray${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+
+if [ "$#" -gt 0 ]; then
+	exec java ${java_options} \
+		--add-opens=java.desktop/java.awt=ALL-UNNAMED \
+		--add-opens=java.desktop/sun.awt=ALL-UNNAMED \
+		-Djava.library.path="${native_home}/java3d:${native_home}/yafaray" \
+		-Djogamp.gluegen.UseTempJarCache=false \
+		-Dcom.eteks.sweethome3d.applicationId=SweetHome3D#Gentoo \
+		-Dcom.eteks.sweethome3d.applicationFolders="${HOME}/.eteks/sweethome3d:/usr/share/sweethome3d" \
+		-cp "${app_home}/lib/*" \
+		com.eteks.sweethome3d.SweetHome3D -open "$1"
+fi
+
+exec java ${java_options} \
+	--add-opens=java.desktop/java.awt=ALL-UNNAMED \
+	--add-opens=java.desktop/sun.awt=ALL-UNNAMED \
+	-Djava.library.path="${native_home}/java3d:${native_home}/yafaray" \
+	-Djogamp.gluegen.UseTempJarCache=false \
+	-Dcom.eteks.sweethome3d.applicationId=SweetHome3D#Gentoo \
+	-Dcom.eteks.sweethome3d.applicationFolders="${HOME}/.eteks/sweethome3d:/usr/share/sweethome3d" \
+	-cp "${app_home}/lib/*" \
+	com.eteks.sweethome3d.SweetHome3D

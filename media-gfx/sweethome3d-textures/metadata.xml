@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>root@wg-zuhause.de</email>
+		<name>Local PortagePirats overlay</name>
+	</maintainer>
+	<use>
+		<flag name="contributions">Install 57 textures contributed by the Sweet Home 3D community</flag>
+		<flag name="eteks-scopia">Install 340 textures from eTeks and Scopia</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sweethome3d</remote-id>
+	</upstream>
+</pkgmetadata>

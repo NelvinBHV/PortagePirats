@@ -1,0 +1,14 @@
+BDEPEND=dev-util/amiga-cmake-cross-toolchains app-alternatives/ninja >=dev-build/cmake-3.28.5
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-embedded/m68k-amigaos-gcc-16.2_rc13-r1
+DESCRIPTION=C game engine and hardware abstraction layer for classic Amiga
+EAPI=8
+HOMEPAGE=https://github.com/AmigaPorts/ACE
+INHERIT=cmake flag-o-matic
+IUSE=+aga debug ecs
+KEYWORDS=amd64
+LICENSE=MPL-2.0 MIT public-domain
+SLOT=0
+SRC_URI=https://github.com/AmigaPorts/ACE/archive/996c79de4ddf06d3d0a2e4ec1d3e71af78d9fc5b.tar.gz -> amiga-c-engine-0.0.1_p20261004.tar.gz
+_eclasses_=toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	flag-o-matic	fd3558f73f6503093adee69adf41020d	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	ninja-utils	d063ea1900a793f93eb095010d6d9156	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	3530055400d05e64deaba3042af30af6
+_md5_=df1fb2266df375054b20f00527869c77

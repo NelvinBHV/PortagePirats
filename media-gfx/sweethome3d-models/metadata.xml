@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>root@wg-zuhause.de</email>
+		<name>Local PortagePirats overlay</name>
+	</maintainer>
+	<use>
+		<flag name="blendswap-cc0">Install 175 public-domain models from BlendSwap</flag>
+		<flag name="blendswap-cc-by">Install 135 CC-BY models from BlendSwap</flag>
+		<flag name="contributions">Install 511 models contributed by the Sweet Home 3D community</flag>
+		<flag name="katorlegaz">Install 90 models by KatorLegaz</flag>
+		<flag name="lucapresidente">Install 64 models by LucaPresidente</flag>
+		<flag name="scopia">Install 500 models from Scopia</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sweethome3d</remote-id>
+	</upstream>
+</pkgmetadata>

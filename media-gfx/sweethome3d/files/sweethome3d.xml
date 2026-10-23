@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-sweethome3d">
+		<comment>Sweet Home 3D project</comment>
+		<glob pattern="*.sh3d"/>
+		<glob pattern="*.sh3x"/>
+	</mime-type>
+	<mime-type type="application/x-sweethome3d-furniture-library">
+		<comment>Sweet Home 3D furniture library</comment>
+		<glob pattern="*.sh3f"/>
+	</mime-type>
+	<mime-type type="application/x-sweethome3d-textures-library">
+		<comment>Sweet Home 3D textures library</comment>
+		<glob pattern="*.sh3t"/>
+	</mime-type>
+	<mime-type type="application/x-sweethome3d-plugin">
+		<comment>Sweet Home 3D plugin</comment>
+		<glob pattern="*.sh3p"/>
+	</mime-type>
+	<mime-type type="application/x-sweethome3d-language-library">
+		<comment>Sweet Home 3D language library</comment>
+		<glob pattern="*.sh3l"/>
+	</mime-type>
+</mime-info>

@@ -1,0 +1,185 @@
+#!/bin/bash
+#
+# Bereitet regulär heruntergeladene Herstellerarchive fuer den Import in den
+# Sweet-Home-3D Furniture Library Editor vor. Das Skript bewahrt die originale
+# Verzeichnisstruktur und konvertiert nur Formate, die Assimp sicher lesen kann.
+
+set -Eeuo pipefail
+
+usage() {
+	cat <<'EOF'
+Benutzung:
+  sweethome3d-manufacturer-import --manufacturer NAME --input PFAD [--output PFAD]
+
+Optionen:
+  --manufacturer NAME  Herstellername, beispielsweise nobilia oder Miele
+  --input PFAD         Downloadarchiv oder bereits entpacktes Verzeichnis
+  --output PFAD        Zielbasis (Standard: ~/Dokumente/SweetHome3D/Hersteller)
+  --force              Vorhandenes Ziel in einen neuen Zeitstempel-Ordner schreiben
+  --help               Diese Hilfe anzeigen
+
+Unterstuetzte Archive: ZIP und von bsdtar lesbare TAR-Archive.
+Direkt: OBJ, DAE, KMZ, 3DS. Konvertierung nach OBJ: FBX, GLTF/GLB, IFC,
+IFCZIP, STEP/STP, STL, PLY, 3MF, DXF und X3D.
+EOF
+}
+
+die() {
+	printf 'FEHLER: %s\n' "$*" >&2
+	exit 1
+}
+
+slugify() {
+	local value=${1,,}
+	value=${value//ä/ae}
+	value=${value//ö/oe}
+	value=${value//ü/ue}
+	value=${value//ß/ss}
+	value=$(printf '%s' "${value}" | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g')
+	printf '%s\n' "${value}"
+}
+
+check_archive_paths() {
+	local archive=$1 entry
+	while IFS= read -r entry; do
+		[[ -z ${entry} ]] && continue
+		[[ ${entry} != /* ]] || die "Archiv enthaelt einen absoluten Pfad: ${entry}"
+		[[ /${entry}/ != *'/../'* ]] || die "Archiv enthaelt einen unsicheren Pfad: ${entry}"
+	done < <(bsdtar -tf "${archive}")
+}
+
+manufacturer=''
+input=''
+output_base="${HOME}/Dokumente/SweetHome3D/Hersteller"
+force=0
+
+while (( $# > 0 )); do
+	case $1 in
+		--manufacturer)
+			(( $# >= 2 )) || die "Wert fuer --manufacturer fehlt"
+			manufacturer=$2
+			shift 2
+			;;
+		--input)
+			(( $# >= 2 )) || die "Wert fuer --input fehlt"
+			input=$2
+			shift 2
+			;;
+		--output)
+			(( $# >= 2 )) || die "Wert fuer --output fehlt"
+			output_base=$2
+			shift 2
+			;;
+		--force)
+			force=1
+			shift
+			;;
+		--help|-h)
+			usage
+			exit 0
+			;;
+		*)
+			die "Unbekannte Option: $1"
+			;;
+	esac
+done
+
+[[ -n ${manufacturer} ]] || die "--manufacturer ist erforderlich"
+[[ -n ${input} ]] || die "--input ist erforderlich"
+[[ -e ${input} ]] || die "Eingabe existiert nicht: ${input}"
+
+for command in assimp bsdtar cp date find mkdir realpath sed sort wc; do
+	command -v "${command}" >/dev/null || die "Benoetigtes Programm fehlt: ${command}"
+done
+
+manufacturer_slug=$(slugify "${manufacturer}")
+[[ -n ${manufacturer_slug} ]] || die "Herstellername ergibt keinen gueltigen Ordnernamen"
+
+target="${output_base}/${manufacturer_slug}"
+if [[ -e ${target} ]]; then
+	if (( force == 0 )); then
+		die "Ziel existiert bereits: ${target} (gegebenenfalls --force verwenden)"
+	fi
+	target="${target}-$(date +%Y%m%d-%H%M%S)"
+fi
+
+original="${target}/Original"
+prepared="${target}/Vorbereitet"
+mkdir -p "${original}" "${prepared}"
+
+if [[ -d ${input} ]]; then
+	cp -a "${input}/." "${original}/"
+else
+	check_archive_paths "${input}"
+	bsdtar -xf "${input}" -C "${original}"
+fi
+
+# Die vollstaendige Struktur wird kopiert, damit OBJ-Materialdateien und extern
+# referenzierte Texturen relativ zum Modell erhalten bleiben.
+cp -a "${original}/." "${prepared}/"
+
+direct_list="${target}/direkt-importierbar.txt"
+converted_list="${target}/konvertiert.txt"
+unsupported_list="${target}/nicht-automatisch-konvertierbar.txt"
+failed_list="${target}/konvertierungsfehler.txt"
+: >"${direct_list}"
+: >"${converted_list}"
+: >"${unsupported_list}"
+: >"${failed_list}"
+
+while IFS= read -r -d '' model; do
+	relative=${model#"${prepared}/"}
+	extension=${model##*.}
+	extension=${extension,,}
+	case ${extension} in
+		obj|dae|kmz|3ds)
+			printf '%s\n' "${relative}" >>"${direct_list}"
+			;;
+		fbx|gltf|glb|ifc|ifczip|step|stp|stl|ply|3mf|dxf|x3d)
+			converted="${model%.*}.sweet-home-3d.obj"
+			if assimp export "${model}" "${converted}" -f obj >/dev/null 2>&1; then
+				printf '%s\n' "${converted#"${prepared}/"}" >>"${converted_list}"
+			else
+				printf '%s\n' "${relative}" >>"${failed_list}"
+			fi
+			;;
+		rfa|rvt|max|skp|dwg)
+			printf '%s\n' "${relative}" >>"${unsupported_list}"
+			;;
+	esac
+done < <(find "${prepared}" -type f -print0)
+
+sort -u -o "${direct_list}" "${direct_list}"
+sort -u -o "${converted_list}" "${converted_list}"
+sort -u -o "${unsupported_list}" "${unsupported_list}"
+sort -u -o "${failed_list}" "${failed_list}"
+
+direct_count=$(wc -l <"${direct_list}")
+converted_count=$(wc -l <"${converted_list}")
+unsupported_count=$(wc -l <"${unsupported_list}")
+failed_count=$(wc -l <"${failed_list}")
+
+cat >"${target}/IMPORTIEREN.txt" <<EOF
+Hersteller: ${manufacturer}
+Quelle: $(realpath "${input}")
+Erstellt: $(date --iso-8601=seconds)
+
+Direkt importierbar: ${direct_count}
+Nach OBJ konvertiert: ${converted_count}
+Nicht automatisch konvertierbar: ${unsupported_count}
+Konvertierungsfehler: ${failed_count}
+
+1. Starte sweethome3d-furniture-editor.
+2. Importiere die Eintraege aus direkt-importierbar.txt und konvertiert.txt
+   aus dem Unterordner Vorbereitet.
+3. Kontrolliere Ausrichtung, Masse, Kategorie, Hersteller und Modelllizenz.
+4. Speichere die fertige Bibliothek als ${manufacturer_slug}.sh3f.
+5. Importiere diese SH3F-Datei in Sweet Home 3D.
+
+Die Originaldownloads bleiben unveraendert im Unterordner Original erhalten.
+EOF
+
+printf 'Vorbereitung abgeschlossen: %s\n' "${target}"
+printf 'Direkt: %s, konvertiert: %s, nicht unterstuetzt: %s, Fehler: %s\n' \
+	"${direct_count}" "${converted_count}" "${unsupported_count}" "${failed_count}"
+printf 'Naechster Schritt: sweethome3d-furniture-editor\n'

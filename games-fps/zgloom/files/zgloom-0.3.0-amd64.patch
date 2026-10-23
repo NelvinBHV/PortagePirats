@@ -1,0 +1,1503 @@
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/config.cpp .patchgen-zgloom/config.cpp
+--- /tmp/ZGloom-v0.3.0/config.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/config.cpp	2026-03-20 16:31:26.959839031 +0100
+@@ -6,6 +6,7 @@
+ #include <SDL2/SDL_mixer.h>
+ #include <iostream>
+ #include <fstream>
++#include <algorithm>
+ 
+ namespace Config
+ {
+@@ -296,12 +297,12 @@
+ 		configkeys[KEY_SRIGHT] = SDL_SCANCODE_D;
+ 		configkeys[KEY_STRAFEMOD] = SDL_SCANCODE_LALT;
+ 
+-		renderwidth = 320;
+-		renderheight = 256;
+-		windowwidth = 960;
+-		windowheight = 768;
++		renderwidth = 1920;
++		renderheight = 1080;
++		windowwidth = 1920;
++		windowheight = 1080;
+ 
+-		focallength = 128;
++		focallength = renderwidth / 2;
+ 
+ 		mousesens = 5;
+ 		bloodsize = 2;
+@@ -309,7 +310,7 @@
+ 		multithread = false;
+ 		debug = false;
+ 		vsync = false;
+-		fullscreen = false;
++		fullscreen = true;
+ 		switchsticks = false;
+ 
+ 		musvol = 5;
+@@ -330,6 +331,8 @@
+ 
+ 		file.open("config.txt");
+ 
++		bool focallengthset = false;
++
+ 		if (file.is_open())
+ 		{
+ 			while (!file.eof())
+@@ -372,6 +375,7 @@
+ 					if (command == "focallength")
+ 					{
+ 						focallength = std::stoi(line);
++						focallengthset = true;
+ 					}
+ 					if (command == "mousesensitivity")
+ 					{
+@@ -410,6 +414,16 @@
+ 
+ 			file.close();
+ 		}
++
++		renderwidth = std::max(renderwidth, 320);
++		renderheight = std::max(renderheight, 256);
++		windowwidth = std::max(windowwidth, 320);
++		windowheight = std::max(windowheight, 256);
++
++		if (!focallengthset)
++		{
++			focallength = renderwidth / 2;
++		}
+ 	}
+ 
+ 	int GetKey(keyenum k)
+@@ -580,10 +594,10 @@
+ 
+ 			file << "\n";
+ 
+-			file << ";The size of the game render bitmap. Bumping this up may lead to more overflow issues in the renderer. But you can get, say, 16:9 by using 460x256 or something in a larger window\n";
++			file << ";The size of the game render bitmap. 1920x1080 works and keeps a 16:9 scene.\n";
+ 			file << "rendersize " << renderwidth << " " << renderheight << "\n";
+ 
+-			file << ";The size of the actual window/fullscreen res. Guess this should be a multiple of the above for pixel perfect\n";
++			file << ";The size of the actual window/fullscreen output. Output is aspect-fitted automatically.\n";
+ 			file << "windowsize " << windowwidth << " " << windowheight << "\n";
+ 
+ 			file << ";vsync on or off?\n";
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/crmfile.h .patchgen-zgloom/crmfile.h
+--- /tmp/ZGloom-v0.3.0/crmfile.h	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/crmfile.h	2026-03-20 16:17:13.774734321 +0100
+@@ -34,7 +34,11 @@
+ 			}
+ 
+ 			/*  read header and get file size  */
+-			fread(header, 14, 1, file);
++			if (fread(header, 14, 1, file) != 1)
++			{
++				fclose(file);
++				return false;
++			}
+ 			fseek(file, 0, SEEK_END);
+ 			filesize = ftell(file);
+ 
+@@ -50,7 +54,13 @@
+ 				// assume unpacked
+ 				fseek(file, 0, SEEK_SET);
+ 				data = static_cast<uint8_t*>(malloc(filesize));
+-				fread(data, filesize, 1, file);
++				if (fread(data, filesize, 1, file) != 1)
++				{
++					fclose(file);
++					free(data);
++					data = nullptr;
++					return false;
++				}
+ 				size = filesize;
+ 				fclose(file);
+ 				return true;
+@@ -70,7 +80,15 @@
+ 
+ 			/*  read file  */
+ 			rewind(file);
+-			fread(indata, 1, filesize, file);
++			if (fread(indata, 1, filesize, file) != static_cast<size_t>(filesize))
++			{
++				fclose(file);
++				free(indata);
++				free(data);
++				free(outdata);
++				data = nullptr;
++				return false;
++			}
+ 			fclose(file);
+ 
+ 			/*  decrunch!  */
+@@ -96,4 +114,4 @@
+ 		{
+ 			if (data) free(data);
+ 		}
+-};
+\ No newline at end of file
++};
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/decrunchmania.cpp .patchgen-zgloom/decrunchmania.cpp
+--- /tmp/ZGloom-v0.3.0/decrunchmania.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/decrunchmania.cpp	2026-03-20 16:17:13.774734321 +0100
+@@ -1,6 +1,12 @@
+ 
+ #include "decrunchmania.h"
+ 
++#include <cstdint>
++
++namespace {
++constexpr unsigned int CRM2_MAGIC = ('C' << 24) | ('r' << 16) | ('M' << 8) | '2';
++}
++
+ 
+ static void writew(void *data, unsigned short w);
+ static void writel(void *data, unsigned int l);
+@@ -189,7 +195,7 @@
+     if(data == 0)
+         return 0;
+ 
+-    return readl(data) == 'CrM2' ? readl((unsigned char*)data+6) : 0;
++    return readl(data) == CRM2_MAGIC ? readl((unsigned char*)data+6) : 0;
+ }
+ 
+ /*  returns MinSecDist, headroom needed for some files */
+@@ -198,7 +204,7 @@
+ 	if (data == 0)
+ 		return 0;
+ 
+-	return readl(data) == 'CrM2' ? readw((unsigned char*)data + 4) : 0;
++	return readl(data) == CRM2_MAGIC ? readw((unsigned char*)data + 4) : 0;
+ }
+ 
+ 
+@@ -252,7 +258,7 @@
+     d7 -= d1;
+     if(d7t >= (short)d1)
+         goto gbnoloop;
+-    d7 += (unsigned short)a5;
++    d7 += 17;
+     d3 = d3l = 0;
+     d3 = readw(a2 -= 2);
+     d3l = (d3l&0xffff0000) | d3; d3 = d3l <<= d7;
+@@ -299,7 +305,7 @@
+     if(d5 != 0xffff)
+         goto rtlop;
+     
+-    d5 = (unsigned short)a3;
++    d5 = reinterpret_cast<std::uintptr_t>(a3);
+     d5--;
+ 
+ rtlp2:
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/font.cpp .patchgen-zgloom/font.cpp
+--- /tmp/ZGloom-v0.3.0/font.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/font.cpp	2026-03-20 16:57:19.685871445 +0100
+@@ -241,9 +241,14 @@
+ 	}
+ }
+ 
+-void Font::PrintMultiLineMessage(std::string message, int y, SDL_Surface* dest)
++void Font::PrintMultiLineMessage(std::string message, int y, SDL_Surface* dest, int scale)
+ {
+-	size_t charsinline = dest->w / w;
++	size_t charsinline = dest->w / (w * scale);
++
++	if (charsinline == 0)
++	{
++		charsinline = 1;
++	}
+ 
+ 	while (message.size() > charsinline)
+ 	{
+@@ -251,12 +256,12 @@
+ 		{
+ 			if ((message[i] == ' ') && (i <= (int)charsinline))
+ 			{
+-				PrintMessage(message.substr(0, i), y, dest, 1);
++				PrintMessage(message.substr(0, i), y, dest, scale);
+ 				message = message.substr(i + 1, std::string::npos);
+-				y += h;
++				y += h * scale;
+ 				break;
+ 			}
+ 		}
+ 	}
+-	PrintMessage(message, y, dest, 1);
+-}
+\ No newline at end of file
++	PrintMessage(message, y, dest, scale);
++}
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/font.h .patchgen-zgloom/font.h
+--- /tmp/ZGloom-v0.3.0/font.h	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/font.h	2026-03-20 16:57:19.685871445 +0100
+@@ -12,7 +12,7 @@
+ 	void SetPal(SDL_Surface* palsurface); 
+ 	void Blit(int x, int y, int character, SDL_Surface* dest, int scale);
+ 	void PrintMessage(std::string message,  int y, SDL_Surface* dest, int scale);
+-	void PrintMultiLineMessage(std::string message, int y, SDL_Surface* dest);
++	void PrintMultiLineMessage(std::string message, int y, SDL_Surface* dest, int scale = 1);
+ 	
+ 	private:
+ 
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/gloommap.cpp .patchgen-zgloom/gloommap.cpp
+--- /tmp/ZGloom-v0.3.0/gloommap.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/gloommap.cpp	2026-03-20 16:43:22.913860552 +0100
+@@ -2,6 +2,7 @@
+ #include "gloommaths.h"
+ #include "monsterlogic.h"
+ #include "soundhandler.h"
++#include "hdassets.h"
+ 
+ static uint16_t Get16(const uint8_t* p)
+ {
+@@ -192,6 +193,8 @@
+ 		palette[p + 1][1] |= palette[p + 1][1] << 4;
+ 		palette[p + 1][2] |= palette[p + 1][2] << 4;
+ 	}
++
++	HDAssets::LoadPNG(HDAssets::MakeOverridePath(fname), hd_width, hd_height, hd_pixels);
+ }
+ 
+ void Texture::DumpDebug(const char* name)
+@@ -199,7 +202,7 @@
+ 	//dump a ppm file
+ 	FILE* file = fopen(name, "wb");
+ 
+-	fprintf(file, "P6\n64 %i\n255\n", columns.size());
++	fprintf(file, "P6\n64 %zu\n255\n", columns.size());
+ 
+ 	for (size_t c = 0; c < columns.size(); c++)
+ 	{
+@@ -487,6 +490,8 @@
+ 		palpos++;
+ 	}
+ 
++	HDAssets::LoadPNG(HDAssets::MakeOverridePath(name), hd_width, hd_height, hd_pixels);
++
+ 	return;
+ }
+ 
+@@ -968,4 +973,4 @@
+ 	counter++;
+ }
+ 
+-uint64_t MapObject::counter;
+\ No newline at end of file
++uint64_t MapObject::counter;
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/gloommap.h .patchgen-zgloom/gloommap.h
+--- /tmp/ZGloom-v0.3.0/gloommap.h	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/gloommap.h	2026-03-20 16:43:00.497065864 +0100
+@@ -330,6 +330,9 @@
+ 	public:
+ 	std::vector<Column> columns;
+ 	uint8_t palette[256][3];
++	int hd_width = 0;
++	int hd_height = 0;
++	std::vector<uint32_t> hd_pixels;
+ 
+ 	void Load(const char* name);
+ 	void DumpDebug(const char* name);
+@@ -340,6 +343,9 @@
+ 	public:
+ 	uint8_t data[128][128];
+ 	uint8_t palette[256][3];
++	int hd_width = 0;
++	int hd_height = 0;
++	std::vector<uint32_t> hd_pixels;
+ 	void Load(const char* name);
+ 	void DumpDebug(const char* name);
+ };
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/hdassets.cpp .patchgen-zgloom/hdassets.cpp
+--- /tmp/ZGloom-v0.3.0/hdassets.cpp	1970-01-01 01:00:00.000000000 +0100
++++ .patchgen-zgloom/hdassets.cpp	2026-03-20 16:42:53.772978402 +0100
+@@ -0,0 +1,154 @@
++#include "hdassets.h"
++
++#include <png.h>
++
++#include <cstdio>
++#include <string>
++#include <vector>
++#include <sys/stat.h>
++
++namespace HDAssets
++{
++	bool FileExists(const std::string& path)
++	{
++		struct stat st;
++		return stat(path.c_str(), &st) == 0;
++	}
++
++	std::string StripExtension(const std::string& path)
++	{
++		size_t slash = path.find_last_of('/');
++		size_t dot = path.find_last_of('.');
++
++		if (dot == std::string::npos)
++		{
++			return path;
++		}
++
++		if ((slash != std::string::npos) && (dot < slash))
++		{
++			return path;
++		}
++
++		return path.substr(0, dot);
++	}
++
++	std::string MakeOverridePath(const std::string& path)
++	{
++		return "hd/" + StripExtension(path) + ".png";
++	}
++
++	std::string MakeFrameOverridePath(const std::string& path, size_t frame)
++	{
++		return "hd/" + StripExtension(path) + "/" + std::to_string(frame) + ".png";
++	}
++
++	bool LoadPNG(const std::string& path, int& width, int& height, std::vector<uint32_t>& pixels)
++	{
++		FILE* file = fopen(path.c_str(), "rb");
++		if (!file)
++		{
++			return false;
++		}
++
++		png_byte header[8];
++		if (fread(header, 1, sizeof(header), file) != sizeof(header) || png_sig_cmp(header, 0, sizeof(header)))
++		{
++			fclose(file);
++			return false;
++		}
++
++		png_structp png = png_create_read_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
++		if (!png)
++		{
++			fclose(file);
++			return false;
++		}
++
++		png_infop info = png_create_info_struct(png);
++		if (!info)
++		{
++			png_destroy_read_struct(&png, nullptr, nullptr);
++			fclose(file);
++			return false;
++		}
++
++		if (setjmp(png_jmpbuf(png)))
++		{
++			png_destroy_read_struct(&png, &info, nullptr);
++			fclose(file);
++			return false;
++		}
++
++		png_init_io(png, file);
++		png_set_sig_bytes(png, sizeof(header));
++		png_read_info(png, info);
++
++		width = static_cast<int>(png_get_image_width(png, info));
++		height = static_cast<int>(png_get_image_height(png, info));
++		png_byte color_type = png_get_color_type(png, info);
++		png_byte bit_depth = png_get_bit_depth(png, info);
++
++		if (bit_depth == 16)
++		{
++			png_set_strip_16(png);
++		}
++
++		if (color_type == PNG_COLOR_TYPE_PALETTE)
++		{
++			png_set_palette_to_rgb(png);
++		}
++
++		if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
++		{
++			png_set_expand_gray_1_2_4_to_8(png);
++		}
++
++		if (png_get_valid(png, info, PNG_INFO_tRNS))
++		{
++			png_set_tRNS_to_alpha(png);
++		}
++
++		if (color_type == PNG_COLOR_TYPE_GRAY || color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
++		{
++			png_set_gray_to_rgb(png);
++		}
++
++		if (!(color_type & PNG_COLOR_MASK_ALPHA))
++		{
++			png_set_add_alpha(png, 0xFF, PNG_FILLER_AFTER);
++		}
++
++		png_read_update_info(png, info);
++
++		std::vector<png_byte> raw(static_cast<size_t>(width) * height * 4);
++		std::vector<png_bytep> rows(static_cast<size_t>(height));
++
++		for (int y = 0; y < height; ++y)
++		{
++			rows[static_cast<size_t>(y)] = raw.data() + static_cast<size_t>(y) * width * 4;
++		}
++
++		png_read_image(png, rows.data());
++		png_read_end(png, nullptr);
++
++		png_destroy_read_struct(&png, &info, nullptr);
++		fclose(file);
++
++		pixels.resize(static_cast<size_t>(width) * height);
++		for (int y = 0; y < height; ++y)
++		{
++			for (int x = 0; x < width; ++x)
++			{
++				size_t src = (static_cast<size_t>(y) * width + x) * 4;
++				uint32_t r = raw[src + 0];
++				uint32_t g = raw[src + 1];
++				uint32_t b = raw[src + 2];
++				uint32_t a = raw[src + 3];
++				pixels[static_cast<size_t>(y) * width + x] = (a << 24) | (r << 16) | (g << 8) | b;
++			}
++		}
++
++		return true;
++	}
++}
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/hdassets.h .patchgen-zgloom/hdassets.h
+--- /tmp/ZGloom-v0.3.0/hdassets.h	1970-01-01 01:00:00.000000000 +0100
++++ .patchgen-zgloom/hdassets.h	2026-03-20 16:42:53.771127571 +0100
+@@ -0,0 +1,14 @@
++#pragma once
++
++#include <cstdint>
++#include <string>
++#include <vector>
++
++namespace HDAssets
++{
++	bool FileExists(const std::string& path);
++	bool LoadPNG(const std::string& path, int& width, int& height, std::vector<uint32_t>& pixels);
++	std::string StripExtension(const std::string& path);
++	std::string MakeOverridePath(const std::string& path);
++	std::string MakeFrameOverridePath(const std::string& path, size_t frame);
++}
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/hud.cpp .patchgen-zgloom/hud.cpp
+--- /tmp/ZGloom-v0.3.0/hud.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/hud.cpp	2026-03-20 17:09:02.356009337 +0100
+@@ -3,6 +3,55 @@
+ #include "config.h"
+ #include "objectgraphics.h"
+ #include "gloommaths.h"
++#include "hdassets.h"
++#include <algorithm>
++
++static SDL_Surface* CreateSurfaceFromPixels(int width, int height, const std::vector<uint32_t>& pixels)
++{
++	SDL_Surface* surface = SDL_CreateRGBSurface(0, width, height, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
++
++	if (!surface)
++	{
++		return nullptr;
++	}
++
++	for (int y = 0; y < height; y++)
++	{
++		for (int x = 0; x < width; x++)
++		{
++			uint32_t pixel = pixels[x + y * width];
++			uint8_t alpha = static_cast<uint8_t>(pixel >> 24);
++			uint32_t color = pixel & 0x00FFFFFF;
++
++			((uint32_t*)surface->pixels)[x + y * (surface->pitch / 4)] = alpha ? (0xFF000000 | color) : 0;
++		}
++	}
++
++	return surface;
++}
++
++static bool ReplaceSurfaceFromPNG(SDL_Surface*& surface, const std::string& path)
++{
++	int width = 0;
++	int height = 0;
++	std::vector<uint32_t> pixels;
++
++	if (!HDAssets::LoadPNG(path, width, height, pixels))
++	{
++		return false;
++	}
++
++	SDL_Surface* replacement = CreateSurfaceFromPixels(width, height, pixels);
++
++	if (!replacement)
++	{
++		return false;
++	}
++
++	SDL_FreeSurface(surface);
++	surface = replacement;
++	return true;
++}
+ 
+ // ripped from PPM conversion
+ static const uint32_t wepraw[5][81*3] =
+@@ -163,6 +212,15 @@
+ 		}
+ 	}
+ 
++	ReplaceSurfaceFromPNG(healthbar, HDAssets::MakeOverridePath("misc/healthbar"));
++	ReplaceSurfaceFromPNG(healthbaron, HDAssets::MakeOverridePath("misc/healthbaron"));
++	ReplaceSurfaceFromPNG(weaponbar, HDAssets::MakeOverridePath("misc/weaponbar"));
++
++	for (int i = 0; i < 5; i++)
++	{
++		ReplaceSurfaceFromPNG(weaponsprites[i], HDAssets::MakeFrameOverridePath("misc/weapons", i));
++	}
++
+ 
+ 	messages.push_back("dummy");
+ 	messages.push_back("health bonus!");
+@@ -198,10 +256,45 @@
+ 
+ 	for (size_t i = 0; i < gunshapes.size(); i++)
+ 	{
+-		// Do I need to worry about endianness here?
+ 		std::vector<uint32_t> tempdata;
++		int hdwidth = 0;
++		int hdheight = 0;
++		std::vector<uint32_t> hdpixels;
++		std::string hdpath = HDAssets::MakeFrameOverridePath("misc/gun", i);
++
++		if (HDAssets::LoadPNG(hdpath, hdwidth, hdheight, hdpixels))
++		{
++			int32_t oldw = gunshapes[i].w;
++			int32_t oldh = gunshapes[i].h;
++
++			if (oldw > 0)
++			{
++				gunshapes[i].xh = gunshapes[i].xh * hdwidth / oldw;
++			}
++			if (oldh > 0)
++			{
++				gunshapes[i].yh = gunshapes[i].yh * hdheight / oldh;
++			}
++
++			gunshapes[i].w = hdwidth;
++			gunshapes[i].h = hdheight;
++			gunsurfaces[i] = CreateSurfaceFromPixels(hdwidth, hdheight, hdpixels);
++			gunsurfacesblend[i] = SDL_CreateRGBSurface(0, hdwidth, hdheight, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
++
++			for (int y = 0; y < hdheight; y++)
++			{
++				for (int x = 0; x < hdwidth; x++)
++				{
++					uint32_t pixel = hdpixels[x + y * hdwidth];
++					uint8_t alpha = static_cast<uint8_t>(pixel >> 24);
++					((uint32_t*)gunsurfacesblend[i]->pixels)[x + y * (gunsurfacesblend[i]->pitch / 4)] =
++						alpha ? 0xFF808080 : 0x00000000;
++				}
++			}
++
++			continue;
++		}
+ 
+-		// get alpha right
+ 		tempdata = gunshapes[i].data;
+ 
+ 		for (auto &i : tempdata)
+@@ -244,7 +337,7 @@
+ 	srcrect.w = player.data.ms.hitpoints * 2 + 1;
+ 	srcrect.h = 9;
+ 
+-	int scale = surface->h / 256;
++	int scale = std::min(surface->w / 320, surface->h / 256);
+ 
+ 	if (scale < 1) scale = 1;
+ 
+@@ -272,8 +365,8 @@
+ 	for (int i = 0; i < (6 - player.data.ms.reload); i++)
+ 	{
+ 		dstrect.x = 11 + 40 - 10 * i;
+-		dstrect.w = weaponsprites[player.data.ms.weapon]->w * scale;
+-		dstrect.h = weaponsprites[player.data.ms.weapon]->h * scale;
++		dstrect.w = 9 * scale;
++		dstrect.h = 9 * scale;
+ 
+ 		dstrect.x *= scale;
+ 		SDL_BlitScaled(weaponsprites[player.data.ms.weapon], NULL, surface, &dstrect);
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/menuscreen.cpp .patchgen-zgloom/menuscreen.cpp
+--- /tmp/ZGloom-v0.3.0/menuscreen.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/menuscreen.cpp	2026-03-20 16:25:37.151893768 +0100
+@@ -1,12 +1,13 @@
+ #include "menuscreen.h"
+ #include "config.h"
++#include <algorithm>
+ 
+ void MenuScreen::Render(SDL_Surface* src, SDL_Surface* dest, Font& font)
+ {
+ 	SDL_BlitSurface(src, nullptr, dest, nullptr);
+ 	bool flash = (timer / 5) & 1;
+ 
+-	int scale = dest->h / 256;
++	int scale = std::min(dest->w / 320, dest->h / 256);
+ 	if (scale < 1) scale = 1;
+ 
+ 	if (status == MENUSTATUS_MAIN)
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/objectgraphics.cpp .patchgen-zgloom/objectgraphics.cpp
+--- /tmp/ZGloom-v0.3.0/objectgraphics.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/objectgraphics.cpp	2026-03-21 03:31:37.809867983 +0100
+@@ -2,7 +2,10 @@
+ #include "crmfile.h"
+ #include "binresources.h"
+ #include "config.h"
++#include "hdassets.h"
+ 
++#include <cmath>
++#include <string>
+ #include <vector>
+ 
+ static uint16_t Get16(const uint8_t* p)
+@@ -22,6 +25,9 @@
+ 	yh = Get16(indata + 2);
+ 	w = Get16(indata + 4);
+ 	h = Get16(indata + 6);
++	hd_w = 0;
++	hd_h = 0;
++	hd_data.clear();
+ 
+ 	data.resize(w*h);
+ 
+@@ -68,6 +74,11 @@
+ 
+ uint32_t ObjectGraphics::LoadGraphicBin(const uint8_t* bindata, std::vector<Shape>& shape)
+ {
++	return LoadGraphicBin(bindata, shape, std::string());
++}
++
++uint32_t ObjectGraphics::LoadGraphicBin(const uint8_t* bindata, std::vector<Shape>& shape, const std::string& basename)
++{
+ 	uint32_t frames;
+ 
+ 	frames = Get16(bindata + 2) << Get16(bindata + 0);
+@@ -95,6 +106,36 @@
+ 		shape[f].Load(bindata + frameoffsets[f], bindata + paletteoffset);
+ 	}
+ 
++	if (!basename.empty())
++	{
++		for (uint32_t f = 0; f < frames; f++)
++		{
++			int width = 0;
++			int height = 0;
++			std::vector<uint32_t> pixels;
++			std::string overridepath = HDAssets::MakeFrameOverridePath(basename, f);
++
++			if (!HDAssets::LoadPNG(overridepath, width, height, pixels))
++			{
++				continue;
++			}
++
++			shape[f].hd_w = width;
++			shape[f].hd_h = height;
++			shape[f].hd_data.resize(static_cast<size_t>(width) * height);
++
++			for (int y = 0; y < height; ++y)
++			{
++				for (int x = 0; x < width; ++x)
++				{
++					uint32_t pixel = pixels[static_cast<size_t>(y) * width + x];
++					uint8_t alpha = (pixel >> 24) & 0xFF;
++					shape[f].hd_data[static_cast<size_t>(y) + static_cast<size_t>(x) * height] = alpha < 8 ? 1u : (pixel & 0x00FFFFFF);
++				}
++			}
++		}
++	}
++
+ 	return maxw;
+ }
+ 
+@@ -134,6 +175,36 @@
+ 		shape[f].Load(file.data + frameoffsets[f], file.data + paletteoffset);
+ 	}
+ 
++	std::string basename(name);
++
++	for (uint32_t f = 0; f < frames; f++)
++	{
++		int width = 0;
++		int height = 0;
++		std::vector<uint32_t> pixels;
++		std::string overridepath = HDAssets::MakeFrameOverridePath(basename, f);
++
++		if (!HDAssets::LoadPNG(overridepath, width, height, pixels))
++		{
++			continue;
++		}
++
++		Shape original = shape[f];
++		shape[f].hd_w = width;
++		shape[f].hd_h = height;
++		shape[f].hd_data.resize(static_cast<size_t>(width) * height);
++
++		for (int y = 0; y < height; ++y)
++		{
++			for (int x = 0; x < width; ++x)
++			{
++				uint32_t pixel = pixels[static_cast<size_t>(y) * width + x];
++				uint8_t alpha = (pixel >> 24) & 0xFF;
++				shape[f].hd_data[static_cast<size_t>(y) + static_cast<size_t>(x) * height] = alpha < 8 ? 1u : (pixel & 0x00FFFFFF);
++			}
++		}
++	}
++
+ 	return maxw;
+ }
+ 
+@@ -150,17 +221,17 @@
+ 	maxwidths[OLT_DEMON]     = LoadGraphic(Config::GetObjectFilename(OGT_DEMON).c_str(), DemonShapes);
+ 	maxwidths[OLT_DEATHHEAD] = LoadGraphic(Config::GetObjectFilename(OGT_DEATHHEAD).c_str(), DeathheadShapes);
+ 	maxwidths[OLT_TROLL]     = LoadGraphic(Config::GetObjectFilename(OGT_TROLL).c_str(), TrollShapes);
+-	maxwidths[OLT_WEAPON1] = LoadGraphicBin(BinResource::bullet1, BulletShapes[0]);
+-	maxwidths[OLT_WEAPON2] = LoadGraphicBin(BinResource::bullet2, BulletShapes[1]);
+-	maxwidths[OLT_WEAPON3] = LoadGraphicBin(BinResource::bullet3, BulletShapes[2]);
+-	maxwidths[OLT_WEAPON4] = LoadGraphicBin(BinResource::bullet4, BulletShapes[3]);
+-	maxwidths[OLT_WEAPON5] = LoadGraphicBin(BinResource::bullet5, BulletShapes[4]);
+-
+-	LoadGraphicBin(BinResource::sparks1, SparkShapes[0]);
+-	LoadGraphicBin(BinResource::sparks2, SparkShapes[1]);
+-	LoadGraphicBin(BinResource::sparks3, SparkShapes[2]);
+-	LoadGraphicBin(BinResource::sparks4, SparkShapes[3]);
+-	LoadGraphicBin(BinResource::sparks5, SparkShapes[4]);
++	maxwidths[OLT_WEAPON1] = LoadGraphicBin(BinResource::bullet1, BulletShapes[0], "effects/bullet1");
++	maxwidths[OLT_WEAPON2] = LoadGraphicBin(BinResource::bullet2, BulletShapes[1], "effects/bullet2");
++	maxwidths[OLT_WEAPON3] = LoadGraphicBin(BinResource::bullet3, BulletShapes[2], "effects/bullet3");
++	maxwidths[OLT_WEAPON4] = LoadGraphicBin(BinResource::bullet4, BulletShapes[3], "effects/bullet4");
++	maxwidths[OLT_WEAPON5] = LoadGraphicBin(BinResource::bullet5, BulletShapes[4], "effects/bullet5");
++
++	LoadGraphicBin(BinResource::sparks1, SparkShapes[0], "effects/sparks1");
++	LoadGraphicBin(BinResource::sparks2, SparkShapes[1], "effects/sparks2");
++	LoadGraphicBin(BinResource::sparks3, SparkShapes[2], "effects/sparks3");
++	LoadGraphicBin(BinResource::sparks4, SparkShapes[3], "effects/sparks4");
++	LoadGraphicBin(BinResource::sparks5, SparkShapes[4], "effects/sparks5");
+ 
+ 	maxwidthsgore[OLT_MARINE] = LoadGraphic(Config::GetGoreFilename(OGT_MARINE).c_str(), MarineGore);
+ 	maxwidthsgore[OLT_BALDY] = LoadGraphic(Config::GetGoreFilename(OGT_BALDY).c_str(), BaldyGore);
+@@ -607,4 +678,4 @@
+ 
+ 
+ 	return;
+-}
+\ No newline at end of file
++}
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/objectgraphics.h .patchgen-zgloom/objectgraphics.h
+--- /tmp/ZGloom-v0.3.0/objectgraphics.h	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/objectgraphics.h	2026-03-21 03:31:48.750844455 +0100
+@@ -3,6 +3,7 @@
+ #include <cstdint>
+ #include <vector>
+ #include <cstdio>
++#include <string>
+ 
+ //#include "gloommap.h"
+ //#include "gamelogic.h"
+@@ -14,11 +15,14 @@
+ 		int32_t yh;
+ 		uint32_t w;
+ 		uint32_t h;
++		uint32_t hd_w;
++		uint32_t hd_h;
+ 
+ 		void Load(const uint8_t* indata, const uint8_t* palette);
+ 		void DumpDebug(const char* name);
+ 
+ 		std::vector<uint32_t> data;
++		std::vector<uint32_t> hd_data;
+ };
+ 
+ class ObjectLogic
+@@ -103,6 +107,7 @@
+ 		ObjectGraphics();
+ 		static uint32_t LoadGraphic(const char* name, std::vector<Shape>& shape);
+ 		static uint32_t LoadGraphicBin(const uint8_t* bindata, std::vector<Shape>& shape);
++		static uint32_t LoadGraphicBin(const uint8_t* bindata, std::vector<Shape>& shape, const std::string& basename);
+ 
+ 		std::vector<Shape> TokenShapes;
+ 		std::vector<Shape> MarineShapes;
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/renderer.cpp .patchgen-zgloom/renderer.cpp
+--- /tmp/ZGloom-v0.3.0/renderer.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/renderer.cpp	2026-03-20 20:06:30.052006978 +0100
+@@ -4,6 +4,123 @@
+ #include "gloommaths.h"
+ #include "objectgraphics.h"
+ #include "config.h"
++#include <algorithm>
++
++static uint8_t ClampByte(int value)
++{
++	if (value < 0) return 0;
++	if (value > 255) return 255;
++	return static_cast<uint8_t>(value);
++}
++
++static uint32_t SampleHDTexture(const std::vector<uint32_t>& pixels, int width, int height, int x, int y)
++{
++	if (pixels.empty() || width <= 0 || height <= 0)
++	{
++		return 0;
++	}
++
++	x %= width;
++	y %= height;
++
++	if (x < 0) x += width;
++	if (y < 0) y += height;
++
++	return pixels[static_cast<size_t>(y) * width + x];
++}
++
++static uint32_t SampleHDTextureLinear(const std::vector<uint32_t>& pixels, int width, int height, int32_t x_fp, int32_t y_fp)
++{
++	if (pixels.empty() || width <= 0 || height <= 0)
++	{
++		return 0;
++	}
++
++	int32_t w_fp = width << 16;
++	int32_t h_fp = height << 16;
++
++	x_fp %= w_fp;
++	y_fp %= h_fp;
++
++	if (x_fp < 0) x_fp += w_fp;
++	if (y_fp < 0) y_fp += h_fp;
++
++	int x0 = x_fp >> 16;
++	int y0 = y_fp >> 16;
++	int x1 = (x0 + 1) % width;
++	int y1 = (y0 + 1) % height;
++
++	int fx = (x_fp >> 8) & 0xFF;
++	int fy = (y_fp >> 8) & 0xFF;
++	int ifx = 256 - fx;
++	int ify = 256 - fy;
++
++	uint32_t c00 = pixels[static_cast<size_t>(y0) * width + x0];
++	uint32_t c10 = pixels[static_cast<size_t>(y0) * width + x1];
++	uint32_t c01 = pixels[static_cast<size_t>(y1) * width + x0];
++	uint32_t c11 = pixels[static_cast<size_t>(y1) * width + x1];
++
++	int w00 = ifx * ify;
++	int w10 = fx * ify;
++	int w01 = ifx * fy;
++	int w11 = fx * fy;
++
++	int a =
++		((static_cast<int>((c00 >> 24) & 0xFF) * w00) +
++		 (static_cast<int>((c10 >> 24) & 0xFF) * w10) +
++		 (static_cast<int>((c01 >> 24) & 0xFF) * w01) +
++		 (static_cast<int>((c11 >> 24) & 0xFF) * w11)) >> 16;
++
++	int r =
++		((static_cast<int>((c00 >> 16) & 0xFF) * w00) +
++		 (static_cast<int>((c10 >> 16) & 0xFF) * w10) +
++		 (static_cast<int>((c01 >> 16) & 0xFF) * w01) +
++		 (static_cast<int>((c11 >> 16) & 0xFF) * w11)) >> 16;
++
++	int g =
++		((static_cast<int>((c00 >> 8) & 0xFF) * w00) +
++		 (static_cast<int>((c10 >> 8) & 0xFF) * w10) +
++		 (static_cast<int>((c01 >> 8) & 0xFF) * w01) +
++		 (static_cast<int>((c11 >> 8) & 0xFF) * w11)) >> 16;
++
++	int b =
++		((static_cast<int>(c00 & 0xFF) * w00) +
++		 (static_cast<int>(c10 & 0xFF) * w10) +
++		 (static_cast<int>(c01 & 0xFF) * w01) +
++		 (static_cast<int>(c11 & 0xFF) * w11)) >> 16;
++
++	return (ClampByte(a) << 24) | (ClampByte(r) << 16) | (ClampByte(g) << 8) | ClampByte(b);
++}
++
++static uint32_t ApplyAtmosphere(uint32_t colour, int z, bool emissive)
++{
++	uint8_t r = (colour >> 16) & 0xFF;
++	uint8_t g = (colour >> 8) & 0xFF;
++	uint8_t b = colour & 0xFF;
++
++	int fog = (z - 1600) / 110;
++	if (fog < 0) fog = 0;
++	if (fog > 96) fog = 96;
++
++	const uint8_t fog_r = 8;
++	const uint8_t fog_g = 18;
++	const uint8_t fog_b = 20;
++
++	r = ClampByte(((int)r * (256 - fog) + fog_r * fog) >> 8);
++	g = ClampByte(((int)g * (256 - fog) + fog_g * fog) >> 8);
++	b = ClampByte(((int)b * (256 - fog) + fog_b * fog) >> 8);
++
++	int brightness = std::max({r, g, b});
++	if (emissive && brightness > 150)
++	{
++		int boost = std::min(56, (brightness - 150) / 2 + 18);
++		r = ClampByte(r + boost);
++		g = ClampByte(g + boost / 2);
++		b = ClampByte(b + boost);
++	}
++
++	return (r << 16) | (g << 8) | b;
++}
+ 
+ const uint32_t Renderer::darkpalettes[16][16] =
+ { { 0x00000000, 0x00000011, 0x00000022, 0x00000033, 0x00000044, 0x00000055, 0x00000066, 0x00000077, 0x00000088, 0x00000099, 0x000000aa, 0x000000bb, 0x000000cc, 0x000000dd, 0x000000ee, 0x000000ff },
+@@ -266,9 +383,25 @@
+ 				auto ix = qx.GetInt() & 0x7F;
+ 				auto iz = (qz.GetInt()+32) & 0x7F;
+ 
+-				uint8_t r = ceil.palette[ceil.data[ix][iz]][0];
+-				uint8_t g = ceil.palette[ceil.data[ix][iz]][1];
+-				uint8_t b = ceil.palette[ceil.data[ix][iz]][2];
++				uint8_t r;
++				uint8_t g;
++				uint8_t b;
++
++				if (!ceil.hd_pixels.empty())
++				{
++					int32_t tx_fp = static_cast<int32_t>((static_cast<int64_t>(qx.GetVal()) * ceil.hd_width) / 128);
++					int32_t ty_fp = static_cast<int32_t>((static_cast<int64_t>(qz.GetVal() + (32 << 16)) * ceil.hd_height) / 128);
++					uint32_t pixel = SampleHDTextureLinear(ceil.hd_pixels, ceil.hd_width, ceil.hd_height, tx_fp, ty_fp);
++					r = (pixel >> 16) & 0xFF;
++					g = (pixel >> 8) & 0xFF;
++					b = pixel & 0xFF;
++				}
++				else
++				{
++					r = ceil.palette[ceil.data[ix][iz]][0];
++					g = ceil.palette[ceil.data[ix][iz]][1];
++					b = ceil.palette[ceil.data[ix][iz]][2];
++				}
+ 
+ 				// dim it
+ 				uint32_t dimcol;
+@@ -281,6 +414,7 @@
+ 				{
+ 					ColourModify(r, g, b, dimcol, pal);
+ 				}
++				dimcol = ApplyAtmosphere(dimcol, z, false);
+ 
+ 				((uint32_t*)(rendersurface->pixels))[x + y*renderwidth] = dimcol;
+ 			}
+@@ -349,9 +483,25 @@
+ 				auto ix = qx.GetInt() & 0x7F;
+ 				auto iz = (qz.GetInt() + 32) & 0x7F;
+ 
+-				uint8_t r = floor.palette[floor.data[ix][iz]][0];
+-				uint8_t g = floor.palette[floor.data[ix][iz]][1];
+-				uint8_t b = floor.palette[floor.data[ix][iz]][2];
++				uint8_t r;
++				uint8_t g;
++				uint8_t b;
++
++				if (!floor.hd_pixels.empty())
++				{
++					int32_t tx_fp = static_cast<int32_t>((static_cast<int64_t>(qx.GetVal()) * floor.hd_width) / 128);
++					int32_t ty_fp = static_cast<int32_t>((static_cast<int64_t>(qz.GetVal() + (32 << 16)) * floor.hd_height) / 128);
++					uint32_t pixel = SampleHDTextureLinear(floor.hd_pixels, floor.hd_width, floor.hd_height, tx_fp, ty_fp);
++					r = (pixel >> 16) & 0xFF;
++					g = (pixel >> 8) & 0xFF;
++					b = pixel & 0xFF;
++				}
++				else
++				{
++					r = floor.palette[floor.data[ix][iz]][0];
++					g = floor.palette[floor.data[ix][iz]][1];
++					b = floor.palette[floor.data[ix][iz]][2];
++				}
+ 
+ 				// dim it
+ 				uint32_t dimcol;
+@@ -363,6 +513,7 @@
+ 				{
+ 					ColourModify(r, g, b, dimcol, pal);
+ 				}
++				dimcol = ApplyAtmosphere(dimcol, z, false);
+ 
+ 				((uint32_t*)(rendersurface->pixels))[x + y*renderwidth] = dimcol;
+ 			}
+@@ -373,7 +524,7 @@
+ 	}
+ }
+ 
+-void Renderer::DrawColumn(int32_t x, int32_t ystart, int32_t h, Column* texturedata, int32_t z, int32_t palused)
++void Renderer::DrawColumn(int32_t x, int32_t ystart, int32_t h, Column* texturedata, int32_t texcolumn, int32_t z, int32_t palused, int32_t basetexture)
+ {
+ 	Quick temp;
+ 	Quick tscale;
+@@ -409,11 +560,37 @@
+ 
+ 		//if (gloommap->GetTextures()[t / 1280].columns.size())
+ 		{
++			const Texture& texture = gloommap->GetTextures()[palused];
+ 			uint8_t colour = texturedata->data[row];
++			uint8_t r = 0;
++			uint8_t g = 0;
++			uint8_t b = 0;
++
++			if (!texture.hd_pixels.empty())
++			{
++				int32_t tileindex = basetexture % 20;
++				int32_t atlascolumns = static_cast<int32_t>(texture.columns.size());
++				int32_t atlascolumn = tileindex * 64 + texcolumn;
++				int32_t u_fp = static_cast<int32_t>((((static_cast<int64_t>(atlascolumn) << 16) + 0x8000) * texture.hd_width) / atlascolumns);
++				int32_t v_fp = static_cast<int32_t>((static_cast<int64_t>(tstart.GetVal()) * texture.hd_height) / 64);
++				uint32_t pixel = SampleHDTextureLinear(texture.hd_pixels, texture.hd_width, texture.hd_height, u_fp, v_fp);
++
++				if (((pixel >> 24) & 0xFF) == 0)
++				{
++					tstart = tstart + tscale;
++					continue;
++				}
+ 
+-			uint8_t r = gloommap->GetTextures()[palused].palette[colour][0];
+-			uint8_t g = gloommap->GetTextures()[palused].palette[colour][1];
+-			uint8_t b = gloommap->GetTextures()[palused].palette[colour][2];
++				r = (pixel >> 16) & 0xFF;
++				g = (pixel >> 8) & 0xFF;
++				b = pixel & 0xFF;
++			}
++			else
++			{
++				r = texture.palette[colour][0];
++				g = texture.palette[colour][1];
++				b = texture.palette[colour][2];
++			}
+ 
+ 			if (texturedata->flag && (colour == 0))
+ 			{
+@@ -436,6 +613,8 @@
+ 				{
+ 					ColourModify(r, g, b, dimcol, pal);
+ 				}
++				bool emissive = std::max({r, g, b}) > 170;
++				dimcol = ApplyAtmosphere(dimcol, z, emissive);
+ 				surface[x + y*renderwidth] = dimcol;
+ 			}
+ 		}
+@@ -568,7 +747,7 @@
+ 			int32_t h = (256 * focmult) / (int32_t)o.rotz;
+ 			int32_t ystart = halfrenderheight - ((int32_t)(256 - camera->y) * focmult) / o.rotz;
+ 
+-			if (o.rotz < zbuff[o.rotx]) DrawColumn(o.rotx, ystart, h, o.data.ts.column, o.rotz, o.data.ts.palette);
++			if (o.rotz < zbuff[o.rotx]) DrawColumn(o.rotx, ystart, h, o.data.ts.column, 0, o.rotz, o.data.ts.palette, 0);
+ 		}
+ 		else
+ 		{
+@@ -624,6 +803,9 @@
+ 					auto scale = o.data.ms.scale;
+ 					auto shapewidth = (*s)[frametouse].w;
+ 					auto shapeheight = (*s)[frametouse].h;
++					auto samplewidth = (*s)[frametouse].hd_w ? (*s)[frametouse].hd_w : (*s)[frametouse].w;
++					auto sampleheight = (*s)[frametouse].hd_h ? (*s)[frametouse].hd_h : (*s)[frametouse].h;
++					auto& sampled = (*s)[frametouse].hd_data.empty() ? (*s)[frametouse].data : (*s)[frametouse].hd_data;
+ 
+ 					ix *= focmult;
+ 					ix /= iz;
+@@ -648,8 +830,8 @@
+ 						tx.SetInt(0);
+ 						ty.SetInt(0);
+ 
+-						dx.SetInt(shapewidth);
+-						dy.SetInt(shapeheight);
++						dx.SetInt(samplewidth);
++						dy.SetInt(sampleheight);
+ 
+ 						temp.SetInt(w);
+ 						dx = dx / temp;
+@@ -684,7 +866,7 @@
+ 
+ 									if ((sx >= 0) && (sy >= 0))
+ 									{
+-										auto col = (*s)[frametouse].data[ty.GetInt() + tx.GetInt()*shapeheight];
++										auto col = sampled[ty.GetInt() + tx.GetInt() * sampleheight];
+ 
+ 										if (col != 1)
+ 										{
+@@ -779,7 +961,8 @@
+ 
+ 						// check for transparent column
+ 						int basetexture;
+-						Column* texcol = GetTexColumn(hitwall, m, basetexture);
++						int texcolumn;
++						Column* texcol = GetTexColumn(hitwall, m, basetexture, texcolumn);
+ 
+ 						if (texcol && texcol->flag)
+ 						{
+@@ -827,11 +1010,12 @@
+ 		floorstart[x] = ystart + h;
+ 
+ 		int basetexture;
+-		Column* texcol = GetTexColumn(hitzone, texpos, basetexture);
++		int texcolumn;
++		Column* texcol = GetTexColumn(hitzone, texpos, basetexture, texcolumn);
+ 
+ 		if (texcol)
+ 		{
+-			DrawColumn(x, ystart, h, texcol, z, basetexture / 20);
++			DrawColumn(x, ystart, h, texcol, texcolumn, z, basetexture / 20, basetexture);
+ 		}
+ 		zbuff[x] = z;
+ 		//debugVline(x, ystart, ystart+h, rendersurface, 0xFFFF0000 + 255 - z / 16);
+@@ -1071,7 +1255,7 @@
+ 	SDL_UnlockSurface(rendersurface);
+ }
+ 
+-Column* Renderer::GetTexColumn(int hitzone, Quick texpos, int& basetexture)
++Column* Renderer::GetTexColumn(int hitzone, Quick texpos, int& basetexture, int& texcolumn)
+ {
+ 	Quick scale;
+ 	Column* result = nullptr;
+@@ -1095,20 +1279,23 @@
+ 	if (textouse > 7) textouse = 7;
+ 
+ 	basetexture = gloommap->GetZones()[hitzone].t[textouse];
+-	int column = texpos.GetFrac() / (0x10000 / 64);
++	texcolumn = texpos.GetFrac() / (0x10000 / 64);
+ 
+ 	// EMPIRICAL F-F-F-F-FUDGE
+ 
+ 	if (gloommap->GetZones()[hitzone].sc < 0)
+ 	{
+-		column /= -gloommap->GetZones()[hitzone].sc * 2;
++		texcolumn /= -gloommap->GetZones()[hitzone].sc * 2;
+ 	}
+ 
++	if (texcolumn < 0) texcolumn = 0;
++	if (texcolumn > 63) texcolumn = 63;
++
+ 	Column** tc = gloommap->GetTexPointers();
+ 
+ 	if (tc[basetexture])
+ 	{
+-		result = tc[basetexture] + column;
++		result = tc[basetexture] + texcolumn;
+ 	}
+ 
+ 	return result;
+@@ -1124,4 +1311,3 @@
+ {
+ 	if (wallmutex) SDL_DestroyMutex(wallmutex);
+ }
+-
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/renderer.h .patchgen-zgloom/renderer.h
+--- /tmp/ZGloom-v0.3.0/renderer.h	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/renderer.h	2026-03-20 17:12:25.624608367 +0100
+@@ -75,11 +75,11 @@
+ 		bool Intersect(int16_t t, int16_t x0, int16_t x1) { return (t >= x0) && (t <= x1); };
+ 		void DrawMap();
+ 		int16_t CastColumn(int32_t x, int16_t& zone, Quick& t);
+-		void DrawColumn(int32_t x, int32_t ystart, int32_t h, Column* texturedata, int32_t z, int32_t palused);
++		void DrawColumn(int32_t x, int32_t ystart, int32_t h, Column* texturedata, int32_t texcolumn, int32_t z, int32_t palused, int32_t basetexture);
+ 		void DrawCeil(Camera* camera);
+ 		void DrawObjects(Camera* camera);
+ 		void DrawBlood(Camera* camera);
+-		Column* GetTexColumn(int hitzone, Quick texpos, int& basetexture);
++		Column* GetTexColumn(int hitzone, Quick texpos, int& basetexture, int& texcolumn);
+ 		void ProcessColumn(const uint32_t& x, const int16_t& y, std::vector<int32_t>& ceilend, std::vector<int32_t>& floorstart);
+ 
+ 		SDL_Surface* rendersurface;
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/titlescreen.cpp .patchgen-zgloom/titlescreen.cpp
+--- /tmp/ZGloom-v0.3.0/titlescreen.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/titlescreen.cpp	2026-03-20 16:57:19.686871428 +0100
+@@ -1,16 +1,19 @@
+ #include "titlescreen.h"
+ 
+-void TitleScreen::Render(SDL_Surface* src, SDL_Surface* dest, Font& font)
++void TitleScreen::Render(SDL_Surface* src, SDL_Surface* dest, Font& font, int scale, int yoffset)
+ {
+-	SDL_BlitSurface(src, nullptr, dest, nullptr);
++	if (src)
++	{
++		SDL_BlitSurface(src, nullptr, dest, nullptr);
++	}
+ 	bool flash = (timer / 5) & 1;
+ 
+ 	if (status == TITLESTATUS_MAIN)
+ 	{
+-		if (flash || (selection != MAINENTRY_PLAY)) font.PrintMessage("PLAY GLOOM", 150, dest, 1);
+-		if (flash || (selection != MAINENTRY_SELECT)) font.PrintMessage("LEVEL SELECT", 170, dest, 1);
+-		if (flash || (selection != MAINENTRY_ABOUT)) font.PrintMessage("ABOUT GLOOM", 190, dest, 1);
+-		if (flash || (selection != MAINENTRY_QUIT)) font.PrintMessage("EXIT GLOOM", 210, dest, 1);
++		if (flash || (selection != MAINENTRY_PLAY)) font.PrintMessage("PLAY GLOOM", yoffset + 150 * scale, dest, scale);
++		if (flash || (selection != MAINENTRY_SELECT)) font.PrintMessage("LEVEL SELECT", yoffset + 170 * scale, dest, scale);
++		if (flash || (selection != MAINENTRY_ABOUT)) font.PrintMessage("ABOUT GLOOM", yoffset + 190 * scale, dest, scale);
++		if (flash || (selection != MAINENTRY_QUIT)) font.PrintMessage("EXIT GLOOM", yoffset + 210 * scale, dest, scale);
+ 	}
+ 	else if (status == TITLESTATUS_SELECT)
+ 	{
+@@ -18,26 +21,24 @@
+ 		{
+ 			if ((i >= 0) && (i < (int)levelnames.size()))
+ 			{
+-				if (flash || (i!=selection)) font.PrintMessage(levelnames[i], 100+(i-selection)*10, dest, 1);
++				if (flash || (i!=selection)) font.PrintMessage(levelnames[i], yoffset + 100 * scale + (i - selection) * 10 * scale, dest, scale);
+ 			}
+ 		}
+ 	}
+ 	else
+ 	{
+-		font.PrintMessage("GLOOM", 30, dest, 1);
+-
+-		font.PrintMessage("A BLACK MAGIC GAME", 50, dest, 1);
+-
+-		font.PrintMessage("PROGRAMMED BY MARK SIBLY", 70, dest, 1);
+-		font.PrintMessage("GRAPHICS BY THE BUTLER BROTHERS", 80, dest, 1);
+-		font.PrintMessage("MUSIC BY KEV STANNARD", 90, dest, 1);
+-		font.PrintMessage("AUDIO BY US", 100, dest, 1);
+-		font.PrintMessage("PRODUCED BY US", 110, dest, 1);
+-		font.PrintMessage("DESIGNED BY US", 120, dest, 1);
+-		font.PrintMessage("GAME CODED IN DEVPAC2", 130, dest, 1);
+-		font.PrintMessage("UTILITIES CODED IN BLITZ BASIC 2", 140, dest, 1);
+-		font.PrintMessage("RENDERED IN DPAINT3 AND DPAINT4", 150, dest, 1);
+-		font.PrintMessage("DECRUNCHING CODE BY THOMAS SCHWARZ", 160, dest, 1);
++		font.PrintMessage("GLOOM", yoffset + 30 * scale, dest, scale);
++		font.PrintMessage("A BLACK MAGIC GAME", yoffset + 50 * scale, dest, scale);
++		font.PrintMessage("PROGRAMMED BY MARK SIBLY", yoffset + 70 * scale, dest, scale);
++		font.PrintMessage("GRAPHICS BY THE BUTLER BROTHERS", yoffset + 80 * scale, dest, scale);
++		font.PrintMessage("MUSIC BY KEV STANNARD", yoffset + 90 * scale, dest, scale);
++		font.PrintMessage("AUDIO BY US", yoffset + 100 * scale, dest, scale);
++		font.PrintMessage("PRODUCED BY US", yoffset + 110 * scale, dest, scale);
++		font.PrintMessage("DESIGNED BY US", yoffset + 120 * scale, dest, scale);
++		font.PrintMessage("GAME CODED IN DEVPAC2", yoffset + 130 * scale, dest, scale);
++		font.PrintMessage("UTILITIES CODED IN BLITZ BASIC 2", yoffset + 140 * scale, dest, scale);
++		font.PrintMessage("RENDERED IN DPAINT3 AND DPAINT4", yoffset + 150 * scale, dest, scale);
++		font.PrintMessage("DECRUNCHING CODE BY THOMAS SCHWARZ", yoffset + 160 * scale, dest, scale);
+ 	}
+ }
+ 
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/titlescreen.h .patchgen-zgloom/titlescreen.h
+--- /tmp/ZGloom-v0.3.0/titlescreen.h	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/titlescreen.h	2026-03-20 16:57:19.686871428 +0100
+@@ -17,7 +17,7 @@
+ 		};
+ 
+ 		TitleScreen();
+-		void Render(SDL_Surface* src, SDL_Surface* dest, Font& font);
++		void Render(SDL_Surface* src, SDL_Surface* dest, Font& font, int scale = 1, int yoffset = 0);
+ 		void Clock() { timer++; };
+ 		TitleReturn Update(SDL_Event& tevent, int& levelout);
+ 		void SetLevels(std::vector<std::string> names) 
+@@ -48,4 +48,3 @@
+ 		int timer;
+ 
+ };
+-
+diff -ruN '--exclude=.git' '--exclude=*.o' '--exclude=ZGloom' '--exclude=Makefile.dep' /tmp/ZGloom-v0.3.0/zgloom.cpp .patchgen-zgloom/zgloom.cpp
+--- /tmp/ZGloom-v0.3.0/zgloom.cpp	2020-05-24 16:15:31.000000000 +0200
++++ .patchgen-zgloom/zgloom.cpp	2026-03-20 16:57:19.686871428 +0100
+@@ -19,6 +19,25 @@
+ #include "titlescreen.h"
+ #include "menuscreen.h"
+ #include "hud.h"
++#include "hdassets.h"
++#include <algorithm>
++#include <cmath>
++
++static SDL_Rect GetAspectFitRect(int contentwidth, int contentheight, int targetwidth, int targetheight)
++{
++	double scale = std::min(
++		static_cast<double>(targetwidth) / contentwidth,
++		static_cast<double>(targetheight) / contentheight
++	);
++
++	SDL_Rect rect;
++	rect.w = std::max(1, static_cast<int>(std::lround(contentwidth * scale)));
++	rect.h = std::max(1, static_cast<int>(std::lround(contentheight * scale)));
++	rect.x = (targetwidth - rect.w) / 2;
++	rect.y = (targetheight - rect.h) / 2;
++
++	return rect;
++}
+ 
+ Uint32 my_callbackfunc(Uint32 interval, void *param)
+ {
+@@ -46,6 +65,44 @@
+ 	auto res = xmp_play_buffer((xmp_context)udata, stream, len, 0);
+ }
+ 
++static SDL_Surface* CreateSurfaceFromPixels(int width, int height, const std::vector<uint32_t>& pixels)
++{
++	SDL_Surface* surface = SDL_CreateRGBSurface(0, width, height, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
++
++	if (!surface)
++	{
++		return nullptr;
++	}
++
++	for (int y = 0; y < height; y++)
++	{
++		for (int x = 0; x < width; x++)
++		{
++			uint32_t pixel = pixels[x + y * width];
++			uint8_t alpha = static_cast<uint8_t>(pixel >> 24);
++			uint32_t color = pixel & 0x00FFFFFF;
++
++			((uint32_t*)surface->pixels)[x + y * (surface->pitch / 4)] = alpha ? (0xFF000000 | color) : 0;
++		}
++	}
++
++	return surface;
++}
++
++static SDL_Surface* LoadHDPic(const std::string& name)
++{
++	int width = 0;
++	int height = 0;
++	std::vector<uint32_t> pixels;
++
++	if (!HDAssets::LoadPNG(HDAssets::MakeOverridePath(name), width, height, pixels))
++	{
++		return nullptr;
++	}
++
++	return CreateSurfaceFromPixels(width, height, pixels);
++}
++
+ void LoadPic(std::string name, SDL_Surface* render8)
+ {
+ 	std::vector<uint8_t> pic;
+@@ -195,6 +252,8 @@
+ 	SDL_Surface* titlebitmap = SDL_CreateRGBSurface(0, 320, 256, 8, 0, 0, 0, 0);
+ 	SDL_Surface* render32 = SDL_CreateRGBSurface(0, renderwidth, renderheight, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
+ 	SDL_Surface* screen32 = SDL_CreateRGBSurface(0, 320, 256, 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000);
++	SDL_Surface* intermissionscreen_hd = nullptr;
++	SDL_Surface* titlebitmap_hd = nullptr;
+ 
+ 	ObjectGraphics objgraphics;
+ 	Renderer renderer;
+@@ -232,10 +291,12 @@
+ 	if (titlepic.data)
+ 	{
+ 		LoadPic(Config::GetPicsDir() + "title", titlebitmap);
++		titlebitmap_hd = LoadHDPic(Config::GetPicsDir() + "title");
+ 	}
+ 	else
+ 	{
+ 		LoadPic(Config::GetPicsDir() + "blackmagic", titlebitmap);
++		titlebitmap_hd = LoadHDPic(Config::GetPicsDir() + "blackmagic");
+ 	}
+ 
+ 	if (titlemusic.data)
+@@ -265,14 +326,8 @@
+ 	Mix_Volume(-1, Config::GetSFXVol()*12);
+ 	Mix_VolumeMusic(Config::GetMusicVol() * 12);
+ 
+-	//try and blit title etc into the middle of the screen
+-	SDL_Rect blitrect;
+-
+-	int screenscale = renderheight / 256;
+-	blitrect.w = 320 * screenscale;
+-	blitrect.h = 256 * screenscale;
+-	blitrect.x = (renderwidth - 320 * screenscale) / 2;
+-	blitrect.y = (renderheight - 256 * screenscale) / 2;
++	// aspect-fit 320x256 screens into the active render resolution
++	SDL_Rect blitrect = GetAspectFitRect(320, 256, renderwidth, renderheight);
+ 
+ 	SDL_SetRelativeMouseMode(SDL_TRUE);
+ 	
+@@ -298,6 +353,12 @@
+ 				{
+ 					scriptstring.insert(0, Config::GetPicsDir());
+ 					LoadPic(scriptstring, intermissionscreen);
++					if (intermissionscreen_hd)
++					{
++						SDL_FreeSurface(intermissionscreen_hd);
++						intermissionscreen_hd = nullptr;
++					}
++					intermissionscreen_hd = LoadHDPic(scriptstring);
+ 					SDL_SetPaletteColors(render8->format->palette, intermissionscreen->format->palette->colors, 0, 256);
+ 					break;
+ 				}
+@@ -442,8 +503,11 @@
+ 
+ 		if (state == STATE_TITLE)
+ 		{
+-			SDL_SetPaletteColors(render8->format->palette, titlebitmap->format->palette->colors, 0, 256);
+-			titlescreen.Render(titlebitmap, render8, smallfont);
++			if (!titlebitmap_hd)
++			{
++				SDL_SetPaletteColors(render8->format->palette, titlebitmap->format->palette->colors, 0, 256);
++				titlescreen.Render(titlebitmap, render8, smallfont);
++			}
+ 		}
+ 
+ 		while ((state!= STATE_SPOOLING) && SDL_PollEvent(&sEvent))
+@@ -653,11 +717,36 @@
+ 			menuscreen.Render(render32, render32, smallfont);
+ 		}
+ 
+-		if ((state == STATE_WAITING) || (state == STATE_TITLE))
++		if (state == STATE_WAITING)
+ 		{
+-			// SDL does not seem to like scaled 8->32 copy?
+-			SDL_BlitSurface(render8, NULL, screen32, NULL);
+-			SDL_BlitScaled(screen32, NULL, render32, &blitrect);
++			if (intermissionscreen_hd)
++			{
++				SDL_Rect hdrect = GetAspectFitRect(intermissionscreen_hd->w, intermissionscreen_hd->h, renderwidth, renderheight);
++				int textscale = std::max(1, std::min(hdrect.w / 320, hdrect.h / 256));
++				SDL_BlitScaled(intermissionscreen_hd, NULL, render32, &hdrect);
++				smallfont.PrintMultiLineMessage(intermissiontext, hdrect.y + (220 * hdrect.h) / 256, render32, textscale);
++			}
++			else
++			{
++				SDL_BlitSurface(render8, NULL, screen32, NULL);
++				SDL_BlitScaled(screen32, NULL, render32, &blitrect);
++			}
++		}
++
++		if (state == STATE_TITLE)
++		{
++			if (titlebitmap_hd)
++			{
++				SDL_Rect hdrect = GetAspectFitRect(titlebitmap_hd->w, titlebitmap_hd->h, renderwidth, renderheight);
++				int textscale = std::max(1, std::min(hdrect.w / 320, hdrect.h / 256));
++				SDL_BlitScaled(titlebitmap_hd, NULL, render32, &hdrect);
++				titlescreen.Render(nullptr, render32, smallfont, textscale, hdrect.y);
++			}
++			else
++			{
++				SDL_BlitSurface(render8, NULL, screen32, NULL);
++				SDL_BlitScaled(screen32, NULL, render32, &blitrect);
++			}
+ 		}
+ 
+ 		if (printscreen)
+@@ -676,7 +765,11 @@
+ 		{
+ 			SDL_UpdateTexture(rendertex, NULL, render32->pixels, render32->pitch);
+ 			SDL_RenderClear(ren);
+-			SDL_RenderCopy(ren, rendertex, NULL, NULL);
++			int outputwidth = 0;
++			int outputheight = 0;
++			SDL_GetRendererOutputSize(ren, &outputwidth, &outputheight);
++			SDL_Rect presentrect = GetAspectFitRect(renderwidth, renderheight, outputwidth, outputheight);
++			SDL_RenderCopy(ren, rendertex, NULL, &presentrect);
+ 			SDL_RenderPresent(ren);
+ 		}
+ 	}
+@@ -691,11 +784,12 @@
+ 	SDL_FreeSurface(render32);
+ 	SDL_FreeSurface(screen32);
+ 	SDL_FreeSurface(intermissionscreen);
++	SDL_FreeSurface(intermissionscreen_hd);
+ 	SDL_FreeSurface(titlebitmap);
++	SDL_FreeSurface(titlebitmap_hd);
+ 	SDL_DestroyRenderer(ren);
+ 	SDL_DestroyWindow(win);
+ 	SDL_Quit();
+ 
+ 	return 0;
+ }
+-

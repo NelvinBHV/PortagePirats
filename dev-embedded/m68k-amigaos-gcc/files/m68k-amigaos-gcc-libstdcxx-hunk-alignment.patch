@@ -1,0 +1,17 @@
+--- a/projects/gcc/libstdc++-v3/src/c++20/atomic.cc
++++ b/projects/gcc/libstdc++-v3/src/c++20/atomic.cc
+@@ -302,7 +302,14 @@ namespace __detail
+   {
+     // Don't use std::hardware_destructive_interference_size here because we
+     // don't want the layout of library types to depend on compiler options.
++#ifdef __amigaos__
++    // HUNK sections are loaded at an 8-byte boundary at most.  The generic
++    // cache-line alignment is merely an optimization for the wait-state
++    // table, whereas an over-aligned static object would be invalid here.
++    static constexpr auto _S_align = 8;
++#else
+     static constexpr auto _S_align = 64;
++#endif
+ 
+     // Count of threads blocked waiting on this state.
+     alignas(_S_align) __platform_wait_t _M_waiters = 0;

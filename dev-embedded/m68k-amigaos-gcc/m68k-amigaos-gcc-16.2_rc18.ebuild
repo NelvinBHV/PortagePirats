@@ -15,12 +15,12 @@ SRC_URI="
 	${AMIGAPORTS}/clib2/archive/78e05e255495382bbf880d0d37d20763d129f01e.tar.gz -> ${PN}-${PV}-clib2-78e05e255495382bbf880d0d37d20763d129f01e.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/bcffac5c89295baf1db033addc984312b4b4a722.tar.gz -> ${PN}-${PV}-fd2pragma-bcffac5c89295baf1db033addc984312b4b4a722.tar.gz
 	${AMIGAPORTS}/fd2sfd/archive/a0ae60d140fdfd30f889810faea07cc6968d1fd0.tar.gz -> ${PN}-${PV}-fd2sfd-a0ae60d140fdfd30f889810faea07cc6968d1fd0.tar.gz
-	${AMIGAPORTS}/gcc/archive/ff71dac2411d5a01aca34d35daa4999b29f912ec.tar.gz -> ${PN}-${PV}-gcc-ff71dac2411d5a01aca34d35daa4999b29f912ec.tar.gz
+	${AMIGAPORTS}/gcc/archive/06a35910940c8aea01ec85b8270770342aa88a88.tar.gz -> ${PN}-${PV}-gcc-06a35910940c8aea01ec85b8270770342aa88a88.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/ixemul/archive/f0dd997994263c6ac783b563222a9f53a00c013c.tar.gz -> ${PN}-${PV}-ixemul-f0dd997994263c6ac783b563222a9f53a00c013c.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libdebug/archive/76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz -> ${PN}-${PV}-libdebug-76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz
-	${AMIGAPORTS}/libnix/archive/58d43166cd55f8fa158146009b23a644c7e32ea7.tar.gz -> ${PN}-${PV}-libnix-58d43166cd55f8fa158146009b23a644c7e32ea7.tar.gz
+	${AMIGAPORTS}/libnix/archive/c4fd616d48ab29754de88589888f078259fb4565.tar.gz -> ${PN}-${PV}-libnix-c4fd616d48ab29754de88589888f078259fb4565.tar.gz
 	${AMIGAPORTS}/newlib-cygwin/archive/16731e68379f87809e9f280f565c34dd648971ec.tar.gz -> ${PN}-${PV}-newlib-cygwin-16731e68379f87809e9f280f565c34dd648971ec.tar.gz
 	${AMIGAPORTS}/sfdc/archive/4e7afc044c1ff129574fcf3b839c3351edcfe2fb.tar.gz -> ${PN}-${PV}-sfdc-4e7afc044c1ff129574fcf3b839c3351edcfe2fb.tar.gz
 	${AMIGAPORTS}/vasm/archive/de93f7dd067001532cff663730133601edb274cb.tar.gz -> ${PN}-${PV}-vasm-de93f7dd067001532cff663730133601edb274cb.tar.gz
@@ -78,12 +78,12 @@ MODULE_SOURCES=(
 	"clib2|clib2|78e05e255495382bbf880d0d37d20763d129f01e"
 	"fd2pragma|fd2pragma|bcffac5c89295baf1db033addc984312b4b4a722"
 	"fd2sfd|fd2sfd|a0ae60d140fdfd30f889810faea07cc6968d1fd0"
-	"gcc|gcc|ff71dac2411d5a01aca34d35daa4999b29f912ec"
+	"gcc|gcc|06a35910940c8aea01ec85b8270770342aa88a88"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"ixemul|ixemul|f0dd997994263c6ac783b563222a9f53a00c013c"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libdebug|libdebug|76c7dbfeaac79516117dc810e3ba9b34d5f54a69"
-	"libnix|libnix|58d43166cd55f8fa158146009b23a644c7e32ea7"
+	"libnix|libnix|c4fd616d48ab29754de88589888f078259fb4565"
 	"newlib-cygwin|newlib-cygwin|16731e68379f87809e9f280f565c34dd648971ec"
 	"sfdc|sfdc|4e7afc044c1ff129574fcf3b839c3351edcfe2fb"
 	"vasm|vasm|de93f7dd067001532cff663730133601edb274cb"

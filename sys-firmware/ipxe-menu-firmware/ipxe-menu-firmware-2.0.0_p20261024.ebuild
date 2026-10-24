@@ -5,7 +5,7 @@ EAPI=8
 
 inherit toolchain-funcs
 
-COMMIT="70f39d5b0dcf427d0dd143bf5f55c82df401c486"
+COMMIT="4b7e1df9c513d43e9e79c63463aa2470f34de7e3"
 
 DESCRIPTION="iPXE BIOS and x86_64 UEFI firmware with graphical PNG menu support"
 HOMEPAGE="https://ipxe.org/ https://github.com/ipxe/ipxe"

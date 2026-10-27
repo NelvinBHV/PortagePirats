@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake flag-o-matic
 
-COMMIT="5b18a0c32bafc1af67c4a85509684e6b397b70a8"
+COMMIT="6a3e34da3c6b44b51bed798dbd4ade86b4cbed49"
 
 DESCRIPTION="C game engine and hardware abstraction layer for classic Amiga"
 HOMEPAGE="https://github.com/AmigaPorts/ACE"

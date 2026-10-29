@@ -21,6 +21,14 @@ IUSE="+aga debug ecs"
 DEPEND=">=dev-embedded/m68k-amigaos-gcc-16.2_rc13-r1"
 BDEPEND="dev-util/amiga-cmake-cross-toolchains"
 
+PATCHES=( "${FILESDIR}/amiga-c-engine-bob-init-width.patch" )
+
+src_prepare() {
+	# Upstream uses CRLF; normalize this file before applying the fix.
+	sed -i 's/\r$//' src/ace/managers/bob.c || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	# Native CPU tuning flags (for example -march=znver4) are invalid for
 	# the m68k-amigaos cross compiler. The toolchain file supplies -m68020.

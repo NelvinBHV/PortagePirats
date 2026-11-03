@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake flag-o-matic
 
-COMMIT="6a3e34da3c6b44b51bed798dbd4ade86b4cbed49"
+COMMIT="5feb79272a71182ff55385a57ab5506ae3cfbf3b"
 
 DESCRIPTION="C game engine and hardware abstraction layer for classic Amiga"
 HOMEPAGE="https://github.com/AmigaPorts/ACE"
@@ -21,7 +21,7 @@ IUSE="+aga debug ecs"
 DEPEND=">=dev-embedded/m68k-amigaos-gcc-16.2_rc13-r1"
 BDEPEND="dev-util/amiga-cmake-cross-toolchains"
 
-PATCHES=( "${FILESDIR}/amiga-c-engine-bob-init-width.patch" )
+
 
 src_prepare() {
 	# Upstream uses CRLF; normalize this file before applying the fix.

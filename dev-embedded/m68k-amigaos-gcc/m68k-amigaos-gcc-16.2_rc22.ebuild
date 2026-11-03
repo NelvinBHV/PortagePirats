@@ -11,16 +11,16 @@ HOMEPAGE="https://github.com/AmigaPorts/m68k-amigaos-gcc"
 SRC_URI="
 	${AMIGAPORTS}/m68k-amigaos-gcc/archive/${TOP_COMMIT}.tar.gz -> ${PN}-${PV}-sources-a251f574100a9875b2fa00c1ba9e6dd925dc9970.tar.gz
 	${AMIGAPORTS}/amiga-netinclude/archive/a2529359b2e06bf9b0a92765f73a5f172378fe8b.tar.gz -> ${PN}-${PV}-amiga-netinclude-a2529359b2e06bf9b0a92765f73a5f172378fe8b.tar.gz
-	${AMIGAPORTS}/binutils-gdb/archive/95312c65a3e70dd24e80b30b5e33f8deb591fe03.tar.gz -> ${PN}-${PV}-binutils-95312c65a3e70dd24e80b30b5e33f8deb591fe03.tar.gz
-	${AMIGAPORTS}/clib2/archive/d934a6450dc488952fa6a6f8731f4696ae631668.tar.gz -> ${PN}-${PV}-clib2-d934a6450dc488952fa6a6f8731f4696ae631668.tar.gz
+	${AMIGAPORTS}/binutils-gdb/archive/182a5100c88386b6f59b38c4d89eb150235f92c2.tar.gz -> ${PN}-${PV}-binutils-182a5100c88386b6f59b38c4d89eb150235f92c2.tar.gz
+	${AMIGAPORTS}/clib2/archive/c9d0f9107b0235a8bbef3687aaa0b061fee8b3ed.tar.gz -> ${PN}-${PV}-clib2-c9d0f9107b0235a8bbef3687aaa0b061fee8b3ed.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/bcffac5c89295baf1db033addc984312b4b4a722.tar.gz -> ${PN}-${PV}-fd2pragma-bcffac5c89295baf1db033addc984312b4b4a722.tar.gz
 	${AMIGAPORTS}/fd2sfd/archive/a0ae60d140fdfd30f889810faea07cc6968d1fd0.tar.gz -> ${PN}-${PV}-fd2sfd-a0ae60d140fdfd30f889810faea07cc6968d1fd0.tar.gz
-	${AMIGAPORTS}/gcc/archive/bc3da4265c1319cf946136cb8e57b2e43638bc7f.tar.gz -> ${PN}-${PV}-gcc-bc3da4265c1319cf946136cb8e57b2e43638bc7f.tar.gz
+	${AMIGAPORTS}/gcc/archive/d207e6a140cc8735d390a032d0f6f4563234fa35.tar.gz -> ${PN}-${PV}-gcc-d207e6a140cc8735d390a032d0f6f4563234fa35.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libdebug/archive/76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz -> ${PN}-${PV}-libdebug-76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz
-	${AMIGAPORTS}/libnix/archive/779004e4ad752746dea96b8f93939f31b492e879.tar.gz -> ${PN}-${PV}-libnix-779004e4ad752746dea96b8f93939f31b492e879.tar.gz
-	${AMIGAPORTS}/newlib-cygwin/archive/06518f4f051cfd59fe3ee757ee40137dd8a36817.tar.gz -> ${PN}-${PV}-newlib-cygwin-06518f4f051cfd59fe3ee757ee40137dd8a36817.tar.gz
+	${AMIGAPORTS}/libnix/archive/c22ae4ce26571132b74972f449e7ff3ff9a78408.tar.gz -> ${PN}-${PV}-libnix-c22ae4ce26571132b74972f449e7ff3ff9a78408.tar.gz
+	${AMIGAPORTS}/newlib-cygwin/archive/a47afb456da8c456a1dbaa26fcc5c06b82bda814.tar.gz -> ${PN}-${PV}-newlib-cygwin-a47afb456da8c456a1dbaa26fcc5c06b82bda814.tar.gz
 	${AMIGAPORTS}/sfdc/archive/4c670c89a1e56708371b5e863421b10302a2e2c1.tar.gz -> ${PN}-${PV}-sfdc-4c670c89a1e56708371b5e863421b10302a2e2c1.tar.gz
 	${AMIGAPORTS}/vasm/archive/de93f7dd067001532cff663730133601edb274cb.tar.gz -> ${PN}-${PV}-vasm-de93f7dd067001532cff663730133601edb274cb.tar.gz
 	${AMIGAPORTS}/vbcc/archive/8a1ea8062b7ab1301d3a2822ef4188b917fa57f5.tar.gz -> ${PN}-${PV}-vbcc-8a1ea8062b7ab1301d3a2822ef4188b917fa57f5.tar.gz
@@ -73,16 +73,16 @@ BDEPEND="
 
 MODULE_SOURCES=(
 	"amiga-netinclude|amiga-netinclude|a2529359b2e06bf9b0a92765f73a5f172378fe8b"
-	"binutils|binutils-gdb|95312c65a3e70dd24e80b30b5e33f8deb591fe03"
-	"clib2|clib2|d934a6450dc488952fa6a6f8731f4696ae631668"
+	"binutils|binutils-gdb|182a5100c88386b6f59b38c4d89eb150235f92c2"
+	"clib2|clib2|c9d0f9107b0235a8bbef3687aaa0b061fee8b3ed"
 	"fd2pragma|fd2pragma|bcffac5c89295baf1db033addc984312b4b4a722"
 	"fd2sfd|fd2sfd|a0ae60d140fdfd30f889810faea07cc6968d1fd0"
-	"gcc|gcc|bc3da4265c1319cf946136cb8e57b2e43638bc7f"
+	"gcc|gcc|d207e6a140cc8735d390a032d0f6f4563234fa35"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libdebug|libdebug|76c7dbfeaac79516117dc810e3ba9b34d5f54a69"
-	"libnix|libnix|779004e4ad752746dea96b8f93939f31b492e879"
-	"newlib-cygwin|newlib-cygwin|06518f4f051cfd59fe3ee757ee40137dd8a36817"
+	"libnix|libnix|c22ae4ce26571132b74972f449e7ff3ff9a78408"
+	"newlib-cygwin|newlib-cygwin|a47afb456da8c456a1dbaa26fcc5c06b82bda814"
 	"sfdc|sfdc|4c670c89a1e56708371b5e863421b10302a2e2c1"
 	"vasm|vasm|de93f7dd067001532cff663730133601edb274cb"
 	"vbcc|vbcc|8a1ea8062b7ab1301d3a2822ef4188b917fa57f5"

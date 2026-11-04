@@ -730,7 +730,7 @@ CRATES="
 	zvariant_derive@5.15.0
 	zvariant_utils@4.2.0
 "
-CRAFT_LIBS_COMMIT="c5a1cbfb5f9049f9270955caffb5bee5997aebf7"
+CRAFT_LIBS_COMMIT="787a7a0f972fd1d7a7618fdbeca3a5267a0407ff"
 CRAFT_LIBS_URI="https://github.com/storytold/craft-libs"
 EGUI_COMMIT="6d518fc799681571963842f95b55a6b68431b15a"
 EGUI_URI="https://github.com/storytold/egui"
@@ -777,14 +777,14 @@ FONTS_COMMIT="b076417b5880bd4154bd22f00695b1d28c6bea83"
 DESCRIPTION="Native PDF editor and viewer with command-line tools"
 HOMEPAGE="https://github.com/storytold/pdfcraft"
 SRC_URI="
-	https://github.com/storytold/${PN}/archive/7d78f3e14474b978be014715e0cc64895d77025a.tar.gz -> ${P}.tar.gz
+	https://github.com/storytold/${PN}/archive/3936f93a1479366a951206fc6d3094680fe2d3dc.tar.gz -> ${P}.tar.gz
 	https://github.com/storytold/craft-fonts/archive/${FONTS_COMMIT}.tar.gz -> craft-fonts-${FONTS_COMMIT}.tar.gz
 	https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt -> pdfcraft-ocr-28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5.txt
 	https://ocrs-models.s3-accelerate.amazonaws.com/text-recognition.onnx -> pdfcraft-ocr-86c145c2edb96c8caed5b1ebb8f44d706408922211451c309c625157dd6061c5.onnx
 	https://ocrs-models.s3-accelerate.amazonaws.com/text-detection.onnx -> pdfcraft-ocr-a917b23dbd9524b465df7e922641b3ff2981623df4ded5a0234004ef2fee7cfe.onnx
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-7d78f3e14474b978be014715e0cc64895d77025a"
+S="${WORKDIR}/${PN}-3936f93a1479366a951206fc6d3094680fe2d3dc"
 
 LICENSE="
 	Apache-2.0
@@ -878,8 +878,8 @@ EOF
 src_configure() {
 	export CRAFT_FONTS_DIR="${WORKDIR}/craft-fonts-${FONTS_COMMIT}"
 	export CRAFT_FONTS_REQUIRED=1
-	export PDFCRAFT_BUILD_SHA="7d78f3e14474b978be014715e0cc64895d77025a"
-	export PDFCRAFT_BUILD_DATE="2026-11-01"
+	export PDFCRAFT_BUILD_SHA="3936f93a1479366a951206fc6d3094680fe2d3dc"
+	export PDFCRAFT_BUILD_DATE="2026-11-03"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -891,7 +891,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/ai.storyteller.${PN}.mime.xml ai.storyteller.${PN}.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-01/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-03/g" \
 		packaging/linux/ai.storyteller.${PN}.metainfo.xml.in \
 		> "${T}/ai.storyteller.${PN}.metainfo.xml" || die
 	doins "${T}/ai.storyteller.${PN}.metainfo.xml"

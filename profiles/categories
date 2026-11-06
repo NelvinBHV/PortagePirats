@@ -1,4 +1,9 @@
+acct-group
+acct-user
+app-admin
+app-crypt
 app-emulation
+app-metrics
 app-misc
 app-office
 app-text

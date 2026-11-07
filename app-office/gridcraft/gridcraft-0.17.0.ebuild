@@ -122,6 +122,8 @@ CRATES="
 	either@1.19.0
 	encoding_rs@0.8.42
 	endi@1.1.1
+	enum-map-derive@1.0.1
+	enum-map@3.1.0
 	enumflags2@0.7.12
 	enumflags2_derive@0.7.12
 	equivalent@1.0.2
@@ -617,8 +619,10 @@ CRATES="
 	zvariant_derive@5.15.0
 	zvariant_utils@4.2.0
 "
-CRAFT_LIBS_COMMIT="c5a1cbfb5f9049f9270955caffb5bee5997aebf7"
-CRAFT_LIBS_URI="https://github.com/storytold/craft-libs"
+CRAFT_LIBS_2E2312DDAF21BC3D85CD3395D0955C7D239306F6_COMMIT="2e2312ddaf21bc3d85cd3395d0955c7d239306f6"
+CRAFT_LIBS_2E2312DDAF21BC3D85CD3395D0955C7D239306F6_URI="https://github.com/storytold/craft-libs"
+CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT="c5a1cbfb5f9049f9270955caffb5bee5997aebf7"
+CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_URI="https://github.com/storytold/craft-libs"
 EGUI_COMMIT="6d518fc799681571963842f95b55a6b68431b15a"
 EGUI_URI="https://github.com/storytold/egui"
 WINIT_COMMIT="a517b3846ee8457d84ee4975110bfda6797c44dc"
@@ -628,12 +632,13 @@ WINPRINT_RS_417AC3C4D14D3DA5485A99C7D5CE8F05664EC312_URI="https://github.com/sto
 WINPRINT_RS_5F80B9BAF6B58937C401656634E42D33F00DDF49_COMMIT="5f80b9baf6b58937c401656634e42d33f00ddf49"
 WINPRINT_RS_5F80B9BAF6B58937C401656634E42D33F00DDF49_URI="https://github.com/storytold/winprint.rs"
 declare -A GIT_CRATES=(
-	[craft-fonts-build]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/fonts-build"
-	[craft-i18n]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/i18n"
-	[craft-print]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/print"
-	[craft-ui]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/ui"
-	[craft-update]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/update"
-	[craft-window]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/window"
+	[craft-fonts-build]="${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_URI};${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT};craft-libs-%commit%/crates/fonts-build"
+	[craft-i18n]="${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_URI};${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT};craft-libs-%commit%/crates/i18n"
+	[craft-print]="${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_URI};${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT};craft-libs-%commit%/crates/print"
+	[craft-ui]="${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_URI};${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT};craft-libs-%commit%/crates/ui"
+	[craft-update]="${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_URI};${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT};craft-libs-%commit%/crates/update"
+	[craft-web-host]="${CRAFT_LIBS_2E2312DDAF21BC3D85CD3395D0955C7D239306F6_URI};${CRAFT_LIBS_2E2312DDAF21BC3D85CD3395D0955C7D239306F6_COMMIT};craft-libs-%commit%/crates/web-host"
+	[craft-window]="${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_URI};${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT};craft-libs-%commit%/crates/window"
 	[craft-winprint-gdi]="${WINPRINT_RS_417AC3C4D14D3DA5485A99C7D5CE8F05664EC312_URI};${WINPRINT_RS_417AC3C4D14D3DA5485A99C7D5CE8F05664EC312_COMMIT};winprint.rs-%commit%/crates/gdi"
 	[ecolor]="${EGUI_URI};${EGUI_COMMIT};egui-%commit%/crates/ecolor"
 	[eframe]="${EGUI_URI};${EGUI_COMMIT};egui-%commit%/crates/eframe"
@@ -659,10 +664,10 @@ inherit cargo desktop xdg
 DESCRIPTION="Native spreadsheet with XLSX support, command-line tools and MCP server"
 HOMEPAGE="https://github.com/storytold/gridcraft"
 SRC_URI="
-	https://github.com/storytold/gridcraft/archive/e581bc95b2a17d2a744a115478a20a1c2ad1ef72.tar.gz -> ${P}.tar.gz
+	https://github.com/storytold/gridcraft/archive/a6a6a49a0415087474251b08e887a3581fab9e14.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/gridcraft-e581bc95b2a17d2a744a115478a20a1c2ad1ef72"
+S="${WORKDIR}/gridcraft-a6a6a49a0415087474251b08e887a3581fab9e14"
 
 # Includes the statically linked Rust dependencies and egui's default fonts.
 LICENSE="Apache-2.0 BSD BSD-2 Boost-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0 OFL-1.1 UbuntuFontLicense-1.0 Unicode-3.0 ZLIB"
@@ -727,15 +732,18 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/ai.storyteller.gridcraft.mime.xml ai.storyteller.gridcraft.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-05/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-06/g" \
 		packaging/linux/ai.storyteller.gridcraft.metainfo.xml.in \
 		> "${T}/ai.storyteller.gridcraft.metainfo.xml" || die
 	doins "${T}/ai.storyteller.gridcraft.metainfo.xml"
 	dodoc README.md ATTRIBUTION.md NOTICE LICENSE-MIT LICENSE-APACHE
 	docinto git-dependencies
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_COMMIT}/LICENSE-MIT" craft-libs-LICENSE-MIT
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_COMMIT}/LICENSE-APACHE" craft-libs-LICENSE-APACHE
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_COMMIT}/NOTICE" craft-libs-NOTICE
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_2E2312DDAF21BC3D85CD3395D0955C7D239306F6_COMMIT}/LICENSE-MIT" craft-libs-2e2312ddaf21bc3d85cd3395d0955c7d239306f6-LICENSE-MIT
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_2E2312DDAF21BC3D85CD3395D0955C7D239306F6_COMMIT}/LICENSE-APACHE" craft-libs-2e2312ddaf21bc3d85cd3395d0955c7d239306f6-LICENSE-APACHE
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_2E2312DDAF21BC3D85CD3395D0955C7D239306F6_COMMIT}/NOTICE" craft-libs-2e2312ddaf21bc3d85cd3395d0955c7d239306f6-NOTICE
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT}/LICENSE-MIT" craft-libs-c5a1cbfb5f9049f9270955caffb5bee5997aebf7-LICENSE-MIT
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT}/LICENSE-APACHE" craft-libs-c5a1cbfb5f9049f9270955caffb5bee5997aebf7-LICENSE-APACHE
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_C5A1CBFB5F9049F9270955CAFFB5BEE5997AEBF7_COMMIT}/NOTICE" craft-libs-c5a1cbfb5f9049f9270955caffb5bee5997aebf7-NOTICE
 	newdoc "${WORKDIR}/egui-${EGUI_COMMIT}/LICENSE-MIT" egui-LICENSE-MIT
 	newdoc "${WORKDIR}/egui-${EGUI_COMMIT}/LICENSE-APACHE" egui-LICENSE-APACHE
 	newdoc "${WORKDIR}/winit-${WINIT_COMMIT}/LICENSE" winit-LICENSE

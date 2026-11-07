@@ -556,11 +556,11 @@ inherit cargo desktop xdg
 DESCRIPTION="Native mail and calendar client with IMAP and Microsoft 365 support"
 HOMEPAGE="https://github.com/UCS-Care-Group/mailcraft"
 SRC_URI="
-	https://github.com/UCS-Care-Group/${PN}/archive/6e02c208a4b4d0289e92a55f85b9c109bc0d5af8.tar.gz -> ${P}.tar.gz
+	https://github.com/UCS-Care-Group/${PN}/archive/52c92424dcda823c3f405d80a996b2c84099b358.tar.gz -> ${P}.tar.gz
 
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-6e02c208a4b4d0289e92a55f85b9c109bc0d5af8"
+S="${WORKDIR}/${PN}-52c92424dcda823c3f405d80a996b2c84099b358"
 
 LICENSE="
 	Apache-2.0
@@ -620,8 +620,8 @@ EOF
 src_configure() {
 
 	export MAILCRAFT_MS_CLIENT_ID="6e83816e-f26c-455a-9253-494b784e61fa"
-	export MAILCRAFT_BUILD_SHA="6e02c208a4b4d0289e92a55f85b9c109bc0d5af8"
-	export MAILCRAFT_BUILD_DATE="2026-11-02"
+	export MAILCRAFT_BUILD_SHA="52c92424dcda823c3f405d80a996b2c84099b358"
+	export MAILCRAFT_BUILD_DATE="2026-11-06"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -633,7 +633,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/io.github.billsecond.mailcraft.mime.xml io.github.billsecond.mailcraft.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-02/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-06/g" \
 		packaging/linux/io.github.billsecond.mailcraft.metainfo.xml.in \
 		> "${T}/io.github.billsecond.mailcraft.metainfo.xml" || die
 	doins "${T}/io.github.billsecond.mailcraft.metainfo.xml"

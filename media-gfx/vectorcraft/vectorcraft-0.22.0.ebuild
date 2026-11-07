@@ -737,11 +737,11 @@ FONTS_COMMIT="b076417b5880bd4154bd22f00695b1d28c6bea83"
 DESCRIPTION="Native vector graphics editor with SVG and PDF support"
 HOMEPAGE="https://github.com/storytold/vectorcraft"
 SRC_URI="
-	https://github.com/storytold/${PN}/archive/f6aa4309b4e11a6844e156120560b4beabf17fe9.tar.gz -> ${P}.tar.gz
+	https://github.com/storytold/${PN}/archive/654749c16eb20b6d3182a96defb66e11d1a9649a.tar.gz -> ${P}.tar.gz
 	https://github.com/storytold/craft-fonts/archive/${FONTS_COMMIT}.tar.gz -> craft-fonts-${FONTS_COMMIT}.tar.gz
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-f6aa4309b4e11a6844e156120560b4beabf17fe9"
+S="${WORKDIR}/${PN}-654749c16eb20b6d3182a96defb66e11d1a9649a"
 
 LICENSE="
 	Apache-2.0
@@ -821,8 +821,8 @@ EOF
 src_configure() {
 	export CRAFT_FONTS_DIR="${WORKDIR}/craft-fonts-${FONTS_COMMIT}"
 	export CRAFT_FONTS_REQUIRED=1
-	export VECTORCRAFT_BUILD_SHA="f6aa4309b4e11a6844e156120560b4beabf17fe9"
-	export VECTORCRAFT_BUILD_DATE="2026-11-05"
+	export VECTORCRAFT_BUILD_SHA="654749c16eb20b6d3182a96defb66e11d1a9649a"
+	export VECTORCRAFT_BUILD_DATE="2026-11-06"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -834,7 +834,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/ai.storyteller.${PN}.mime.xml ai.storyteller.${PN}.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-05/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-06/g" \
 		packaging/linux/ai.storyteller.${PN}.metainfo.xml.in \
 		> "${T}/ai.storyteller.${PN}.metainfo.xml" || die
 	doins "${T}/ai.storyteller.${PN}.metainfo.xml"

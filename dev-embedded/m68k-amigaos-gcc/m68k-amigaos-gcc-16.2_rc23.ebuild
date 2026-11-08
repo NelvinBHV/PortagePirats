@@ -15,18 +15,18 @@ SRC_URI="
 	${AMIGAPORTS}/clib2/archive/0481d635fe852f7ef150d712a9a12726a03463e3.tar.gz -> ${PN}-${PV}-clib2-0481d635fe852f7ef150d712a9a12726a03463e3.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/bcffac5c89295baf1db033addc984312b4b4a722.tar.gz -> ${PN}-${PV}-fd2pragma-bcffac5c89295baf1db033addc984312b4b4a722.tar.gz
 	${AMIGAPORTS}/fd2sfd/archive/a0ae60d140fdfd30f889810faea07cc6968d1fd0.tar.gz -> ${PN}-${PV}-fd2sfd-a0ae60d140fdfd30f889810faea07cc6968d1fd0.tar.gz
-	${AMIGAPORTS}/gcc/archive/ae5dbe2a1853a81e53c90429880e93e2ceef3e2d.tar.gz -> ${PN}-${PV}-gcc-ae5dbe2a1853a81e53c90429880e93e2ceef3e2d.tar.gz
+	${AMIGAPORTS}/gcc/archive/9f45ba0f66bc88d796732bba4951d932d2e70e52.tar.gz -> ${PN}-${PV}-gcc-9f45ba0f66bc88d796732bba4951d932d2e70e52.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libc-test/archive/9119b55e9d6dd620c768b6d95a34b8ff22804116.tar.gz -> ${PN}-${PV}-libc-test-9119b55e9d6dd620c768b6d95a34b8ff22804116.tar.gz
 	${AMIGAPORTS}/libdebug/archive/76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz -> ${PN}-${PV}-libdebug-76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz
-	${AMIGAPORTS}/libnix/archive/484798380a1ae9306a65a301af3773b450fbc959.tar.gz -> ${PN}-${PV}-libnix-484798380a1ae9306a65a301af3773b450fbc959.tar.gz
+	${AMIGAPORTS}/libnix/archive/a5ce7231e6a5b1d2d07453c6532a046715b43665.tar.gz -> ${PN}-${PV}-libnix-a5ce7231e6a5b1d2d07453c6532a046715b43665.tar.gz
 	${AMIGAPORTS}/newlib-cygwin/archive/826e08539857e45d536eca3e2eea7db1c3067a92.tar.gz -> ${PN}-${PV}-newlib-cygwin-826e08539857e45d536eca3e2eea7db1c3067a92.tar.gz
 	${AMIGAPORTS}/sfdc/archive/4c670c89a1e56708371b5e863421b10302a2e2c1.tar.gz -> ${PN}-${PV}-sfdc-4c670c89a1e56708371b5e863421b10302a2e2c1.tar.gz
 	${AMIGAPORTS}/vasm/archive/de93f7dd067001532cff663730133601edb274cb.tar.gz -> ${PN}-${PV}-vasm-de93f7dd067001532cff663730133601edb274cb.tar.gz
 	${AMIGAPORTS}/vbcc/archive/8a1ea8062b7ab1301d3a2822ef4188b917fa57f5.tar.gz -> ${PN}-${PV}-vbcc-8a1ea8062b7ab1301d3a2822ef4188b917fa57f5.tar.gz
 	${AMIGAPORTS}/vlink/archive/ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz -> ${PN}-${PV}-vlink-ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz
-	${AMIGAPORTS}/aros-stuff/archive/2cb0958d9b1d3642132e8c63d73028438c45c265.tar.gz -> ${PN}-${PV}-aros-stuff-2cb0958d9b1d3642132e8c63d73028438c45c265.tar.gz
+	${AMIGAPORTS}/aros-stuff/archive/2e5582beca7525c77f96fcb2b8c3e1d01dd76b7d.tar.gz -> ${PN}-${PV}-aros-stuff-2e5582beca7525c77f96fcb2b8c3e1d01dd76b7d.tar.gz
 	https://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.2.1.tar.bz2 -> ${PN}-${PV}-gmp-6.2.1.tar.bz2
 	https://gcc.gnu.org/pub/gcc/infrastructure/mpc-1.2.1.tar.gz -> ${PN}-${PV}-mpc-1.2.1.tar.gz
 	https://gcc.gnu.org/pub/gcc/infrastructure/mpfr-4.1.0.tar.bz2 -> ${PN}-${PV}-mpfr-4.1.0.tar.bz2
@@ -78,18 +78,18 @@ MODULE_SOURCES=(
 	"clib2|clib2|0481d635fe852f7ef150d712a9a12726a03463e3"
 	"fd2pragma|fd2pragma|bcffac5c89295baf1db033addc984312b4b4a722"
 	"fd2sfd|fd2sfd|a0ae60d140fdfd30f889810faea07cc6968d1fd0"
-	"gcc|gcc|ae5dbe2a1853a81e53c90429880e93e2ceef3e2d"
+	"gcc|gcc|9f45ba0f66bc88d796732bba4951d932d2e70e52"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libc-test|libc-test|9119b55e9d6dd620c768b6d95a34b8ff22804116"
 	"libdebug|libdebug|76c7dbfeaac79516117dc810e3ba9b34d5f54a69"
-	"libnix|libnix|484798380a1ae9306a65a301af3773b450fbc959"
+	"libnix|libnix|a5ce7231e6a5b1d2d07453c6532a046715b43665"
 	"newlib-cygwin|newlib-cygwin|826e08539857e45d536eca3e2eea7db1c3067a92"
 	"sfdc|sfdc|4c670c89a1e56708371b5e863421b10302a2e2c1"
 	"vasm|vasm|de93f7dd067001532cff663730133601edb274cb"
 	"vbcc|vbcc|8a1ea8062b7ab1301d3a2822ef4188b917fa57f5"
 	"vlink|vlink|ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9"
-	"aros-stuff|aros-stuff|2cb0958d9b1d3642132e8c63d73028438c45c265"
+	"aros-stuff|aros-stuff|2e5582beca7525c77f96fcb2b8c3e1d01dd76b7d"
 )
 
 src_unpack() {

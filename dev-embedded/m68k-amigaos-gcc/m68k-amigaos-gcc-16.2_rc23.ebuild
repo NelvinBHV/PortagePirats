@@ -15,7 +15,7 @@ SRC_URI="
 	${AMIGAPORTS}/clib2/archive/0481d635fe852f7ef150d712a9a12726a03463e3.tar.gz -> ${PN}-${PV}-clib2-0481d635fe852f7ef150d712a9a12726a03463e3.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/bcffac5c89295baf1db033addc984312b4b4a722.tar.gz -> ${PN}-${PV}-fd2pragma-bcffac5c89295baf1db033addc984312b4b4a722.tar.gz
 	${AMIGAPORTS}/fd2sfd/archive/a0ae60d140fdfd30f889810faea07cc6968d1fd0.tar.gz -> ${PN}-${PV}-fd2sfd-a0ae60d140fdfd30f889810faea07cc6968d1fd0.tar.gz
-	${AMIGAPORTS}/gcc/archive/9f45ba0f66bc88d796732bba4951d932d2e70e52.tar.gz -> ${PN}-${PV}-gcc-9f45ba0f66bc88d796732bba4951d932d2e70e52.tar.gz
+	${AMIGAPORTS}/gcc/archive/a437b637690dfea4fc03db3489cb68114c5ca3da.tar.gz -> ${PN}-${PV}-gcc-a437b637690dfea4fc03db3489cb68114c5ca3da.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libc-test/archive/9119b55e9d6dd620c768b6d95a34b8ff22804116.tar.gz -> ${PN}-${PV}-libc-test-9119b55e9d6dd620c768b6d95a34b8ff22804116.tar.gz
@@ -78,7 +78,7 @@ MODULE_SOURCES=(
 	"clib2|clib2|0481d635fe852f7ef150d712a9a12726a03463e3"
 	"fd2pragma|fd2pragma|bcffac5c89295baf1db033addc984312b4b4a722"
 	"fd2sfd|fd2sfd|a0ae60d140fdfd30f889810faea07cc6968d1fd0"
-	"gcc|gcc|9f45ba0f66bc88d796732bba4951d932d2e70e52"
+	"gcc|gcc|a437b637690dfea4fc03db3489cb68114c5ca3da"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libc-test|libc-test|9119b55e9d6dd620c768b6d95a34b8ff22804116"

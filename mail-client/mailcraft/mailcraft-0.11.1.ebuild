@@ -245,6 +245,7 @@ CRATES="
 	nohash-hasher@0.2.0
 	nom@7.1.3
 	nom@8.0.0
+	ntapi@0.4.3
 	num-bigint@0.4.8
 	num-complex@0.4.6
 	num-conv@0.2.2
@@ -268,6 +269,7 @@ CRATES="
 	objc2-encode@4.1.0
 	objc2-foundation@0.2.2
 	objc2-foundation@0.3.2
+	objc2-io-kit@0.3.2
 	objc2-io-surface@0.3.2
 	objc2-link-presentation@0.2.2
 	objc2-metal@0.2.2
@@ -410,6 +412,7 @@ CRATES="
 	syn@3.0.8
 	synstructure@0.13.2
 	synstructure@0.14.0
+	sysinfo@0.40.1
 	tempfile@3.27.0
 	termcolor@1.4.1
 	thiserror-impl@1.0.69
@@ -480,7 +483,10 @@ CRATES="
 	wgpu-naga-bridge@30.0.1
 	wgpu-types@30.0.1
 	wgpu@30.0.1
+	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.11
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
 	windows-collections@0.3.2
 	windows-core@0.62.2
 	windows-future@0.3.2
@@ -556,11 +562,11 @@ inherit cargo desktop xdg
 DESCRIPTION="Native mail and calendar client with IMAP and Microsoft 365 support"
 HOMEPAGE="https://github.com/UCS-Care-Group/mailcraft"
 SRC_URI="
-	https://github.com/UCS-Care-Group/${PN}/archive/52c92424dcda823c3f405d80a996b2c84099b358.tar.gz -> ${P}.tar.gz
+	https://github.com/UCS-Care-Group/${PN}/archive/f1781cbeba72d36c9571ab5d88a8c8b1f85998c8.tar.gz -> ${P}.tar.gz
 
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-52c92424dcda823c3f405d80a996b2c84099b358"
+S="${WORKDIR}/${PN}-f1781cbeba72d36c9571ab5d88a8c8b1f85998c8"
 
 LICENSE="
 	Apache-2.0
@@ -620,8 +626,8 @@ EOF
 src_configure() {
 
 	export MAILCRAFT_MS_CLIENT_ID="6e83816e-f26c-455a-9253-494b784e61fa"
-	export MAILCRAFT_BUILD_SHA="52c92424dcda823c3f405d80a996b2c84099b358"
-	export MAILCRAFT_BUILD_DATE="2026-11-06"
+	export MAILCRAFT_BUILD_SHA="f1781cbeba72d36c9571ab5d88a8c8b1f85998c8"
+	export MAILCRAFT_BUILD_DATE="2026-11-08"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -633,7 +639,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/io.github.billsecond.mailcraft.mime.xml io.github.billsecond.mailcraft.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-06/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-08/g" \
 		packaging/linux/io.github.billsecond.mailcraft.metainfo.xml.in \
 		> "${T}/io.github.billsecond.mailcraft.metainfo.xml" || die
 	doins "${T}/io.github.billsecond.mailcraft.metainfo.xml"

@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="This is the Cockpit user interface for sensors"
 HOMEPAGE="https://github.com/ocristopfer/cockpit-sensors"
 KEYWORDS="amd64"
-SRC_URI="https://github.com/ocristopfer/cockpit-sensors/releases/download/2.2.4/cockpit-sensors-2.2.4.tar.xz -> cockpit-sensors-2.2.4.tar.xz"
+SRC_URI="https://github.com/ocristopfer/cockpit-sensors/releases/download/2.4.0/cockpit-sensors-2.4.0.tar.xz -> cockpit-sensors-2.4.0.tar.xz"
 
 S="${WORKDIR}/cockpit-sensors"
 LICENSE="LGPL-2.1"

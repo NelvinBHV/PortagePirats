@@ -9,7 +9,7 @@ inherit autotools pam python-single-r1 tmpfiles xdg
 DESCRIPTION="Server Administration Web Interface "
 HOMEPAGE="https://cockpit-project.org/"
 KEYWORDS="amd64"
-SRC_URI="https://github.com/cockpit-project/cockpit/releases/download/371/cockpit-371.tar.xz -> cockpit-371.tar.xz
+SRC_URI="https://github.com/cockpit-project/cockpit/releases/download/372/cockpit-372.tar.xz -> cockpit-372.tar.xz
 	https://gitweb.gentoo.org/sites/www.git/plain/assets/img/logo/gentoo-logo.png?id=00e0cb3d363e2f78e47efb8deac18463b870442e -> gentoo-logo-00e0cb3d.png"
 GENTOO_LOGO="gentoo-logo-00e0cb3d.png"
 
@@ -132,4 +132,4 @@ pkg_postinst() {
 	elog ""
 }
 
-S="${WORKDIR}/cockpit-371"
+S="${WORKDIR}/cockpit-372"

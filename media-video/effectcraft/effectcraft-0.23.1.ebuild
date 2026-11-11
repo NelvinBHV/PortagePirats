@@ -737,11 +737,11 @@ inherit cargo desktop xdg
 DESCRIPTION="Native motion graphics and visual effects editor"
 HOMEPAGE="https://github.com/storytold/effectcraft"
 SRC_URI="
-	https://github.com/storytold/${PN}/archive/921bc496cc839447f899a83652a38975007afc55.tar.gz -> ${P}.tar.gz
+	https://github.com/storytold/${PN}/archive/f5e5c8a4d8e0d5aa7e5493b527c0773969a4364a.tar.gz -> ${P}.tar.gz
 
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-921bc496cc839447f899a83652a38975007afc55"
+S="${WORKDIR}/${PN}-f5e5c8a4d8e0d5aa7e5493b527c0773969a4364a"
 
 LICENSE="
 	Apache-2.0
@@ -813,8 +813,8 @@ EOF
 
 src_configure() {
 
-	export EFFECTCRAFT_BUILD_SHA="921bc496cc839447f899a83652a38975007afc55"
-	export EFFECTCRAFT_BUILD_DATE="2026-11-09"
+	export EFFECTCRAFT_BUILD_SHA="f5e5c8a4d8e0d5aa7e5493b527c0773969a4364a"
+	export EFFECTCRAFT_BUILD_DATE="2026-11-10"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -826,7 +826,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/ai.storyteller.${PN}.mime.xml ai.storyteller.${PN}.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-09/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-10/g" \
 		packaging/linux/ai.storyteller.${PN}.metainfo.xml.in \
 		> "${T}/ai.storyteller.${PN}.metainfo.xml" || die
 	doins "${T}/ai.storyteller.${PN}.metainfo.xml"

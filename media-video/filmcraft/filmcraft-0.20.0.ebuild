@@ -744,11 +744,11 @@ FONTS_COMMIT="b076417b5880bd4154bd22f00695b1d28c6bea83"
 DESCRIPTION="Native video editor with timeline, rendering and command-line tools"
 HOMEPAGE="https://github.com/storytold/filmcraft"
 SRC_URI="
-	https://github.com/storytold/${PN}/archive/d1af238bba9fc814487c81e47b53543dff435c09.tar.gz -> ${P}.tar.gz
+	https://github.com/storytold/${PN}/archive/c5486bcd007ef0b17a6a296b6ad0999af6743640.tar.gz -> ${P}.tar.gz
 	https://github.com/storytold/craft-fonts/archive/${FONTS_COMMIT}.tar.gz -> craft-fonts-${FONTS_COMMIT}.tar.gz
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-d1af238bba9fc814487c81e47b53543dff435c09"
+S="${WORKDIR}/${PN}-c5486bcd007ef0b17a6a296b6ad0999af6743640"
 
 LICENSE="
 	Apache-2.0
@@ -821,8 +821,8 @@ EOF
 src_configure() {
 	export CRAFT_FONTS_DIR="${WORKDIR}/craft-fonts-${FONTS_COMMIT}"
 	export CRAFT_FONTS_REQUIRED=1
-	export FILMCRAFT_BUILD_SHA="d1af238bba9fc814487c81e47b53543dff435c09"
-	export FILMCRAFT_BUILD_DATE="2026-11-09"
+	export FILMCRAFT_BUILD_SHA="c5486bcd007ef0b17a6a296b6ad0999af6743640"
+	export FILMCRAFT_BUILD_DATE="2026-11-11"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -834,7 +834,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/ai.storyteller.${PN}.mime.xml ai.storyteller.${PN}.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-09/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-11/g" \
 		packaging/linux/ai.storyteller.${PN}.metainfo.xml.in \
 		> "${T}/ai.storyteller.${PN}.metainfo.xml" || die
 	doins "${T}/ai.storyteller.${PN}.metainfo.xml"

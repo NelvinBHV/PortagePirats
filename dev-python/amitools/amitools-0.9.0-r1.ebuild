@@ -22,19 +22,6 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
-src_prepare() {
-	default
-
-	# Upstream lists only the top-level package. Let setuptools discover all
-	# real subpackages instead of treating them as undeclared package data.
-	sed -i '/^packages = \["amitools"\]$/d' pyproject.toml || die
-	cat >> pyproject.toml <<-EOF_SETUPTOOLS
-
-		[tool.setuptools.packages.find]
-		include = ["amitools*"]
-	EOF_SETUPTOOLS
-}
-
 python_install() {
 	distutils-r1_python_install
 

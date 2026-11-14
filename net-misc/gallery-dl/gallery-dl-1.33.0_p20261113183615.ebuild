@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517="setuptools"
 
 inherit distutils-r1 optfeature
 
-COMMIT="a099ca55832be0087964da63450dced0b30a3bed"
+COMMIT="12a6a3a3d67a968af1325835c7fbf6cfe0c52024"
 
 DESCRIPTION="Download image galleries and collections from several image hosting sites"
 HOMEPAGE="https://codeberg.org/mikf/gallery-dl/"

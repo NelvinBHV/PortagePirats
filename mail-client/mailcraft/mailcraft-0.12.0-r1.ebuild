@@ -1,8 +1,9 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+# Generator recipe: c6a98918fdf6c59036325222d5e7ea5aad09419145a74f8af0233bcea27035ab
+# Release commit: 92eb10c080d2da131bde71dd448bf37413a74d03
 
 EAPI=8
-
 CRATES="
 	accesskit@0.25.1
 	accesskit_atspi_common@0.21.0
@@ -686,12 +687,12 @@ CRATES="
 	zvariant_derive@5.15.0
 	zvariant_utils@4.2.0
 "
-WINIT_COMMIT="951b6c131897a80d27a925af7c5da22ea522eb0d"
-WINIT_URI="https://github.com/UCS-Care-Group/winit"
+
 declare -A GIT_CRATES=(
-	[dpi]="${WINIT_URI};${WINIT_COMMIT};winit-%commit%/dpi"
-	[winit]="${WINIT_URI};${WINIT_COMMIT};winit-%commit%/."
+	[dpi]='https://github.com/UCS-Care-Group/winit;951b6c131897a80d27a925af7c5da22ea522eb0d;winit-%commit%/dpi'
+	[winit]='https://github.com/UCS-Care-Group/winit;951b6c131897a80d27a925af7c5da22ea522eb0d;winit-%commit%'
 )
+WINIT_COMMIT="951b6c131897a80d27a925af7c5da22ea522eb0d"
 RUST_MIN_VER="1.95"
 
 inherit cargo desktop xdg
@@ -705,20 +706,11 @@ SRC_URI="
 "
 S="${WORKDIR}/${PN}-92eb10c080d2da131bde71dd448bf37413a74d03"
 
-LICENSE="
-	Apache-2.0
-	BSD
-	BSD-2
-	BitstreamVera
-	Boost-1.0
-	CDLA-Permissive-2.0
-	ISC
-	MIT
-	MPL-2.0
-	OFL-1.1
-	UbuntuFontLicense-1.0
-	Unicode-3.0
-	ZLIB
+LICENSE="MIT Apache-2.0 OFL-1.1 BitstreamVera UbuntuFontLicense-1.0"
+# Dependent crate licenses
+LICENSE+="
+	Apache-2.0 BSD-2 BSD Boost-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0
+	OFL-1.1 UbuntuFontLicense-1.0 Unicode-3.0 ZLIB
 "
 SLOT="0"
 KEYWORDS="amd64"

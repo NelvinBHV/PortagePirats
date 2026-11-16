@@ -1,7 +1,7 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # Generator recipe: c6a98918fdf6c59036325222d5e7ea5aad09419145a74f8af0233bcea27035ab
-# Release commit: 92eb10c080d2da131bde71dd448bf37413a74d03
+# Release commit: 240d1d42fe394cf3274402b180663ba9b43ca180
 
 EAPI=8
 CRATES="
@@ -18,7 +18,7 @@ CRATES="
 	aes-gcm@0.10.3
 	aes-kw@0.2.1
 	aes@0.8.4
-	aes@0.9.3
+	aes@0.9.4
 	ahash@0.8.12
 	aho-corasick@1.1.5
 	allocator-api2@0.2.21
@@ -28,6 +28,7 @@ CRATES="
 	anyhow@1.0.104
 	apple-native-keyring-store@1.0.2
 	arboard@3.7.0
+	arc-swap@1.9.5
 	argon2@0.5.3
 	arrayref@0.3.9
 	arrayvec@0.7.8
@@ -88,6 +89,7 @@ CRATES="
 	calloop@0.13.0
 	calloop@0.14.5
 	camellia@0.1.0
+	camino@1.2.6
 	cast5@0.11.1
 	cbc@0.2.1
 	cc@1.8.0
@@ -125,6 +127,7 @@ CRATES="
 	crossbeam-channel@0.5.17
 	crossbeam-deque@0.8.8
 	crossbeam-epoch@0.9.21
+	crossbeam-queue@0.3.14
 	crossbeam-utils@0.8.23
 	crunchy@0.2.4
 	crypto-bigint@0.5.5
@@ -218,7 +221,9 @@ CRATES="
 	foreign-types-macros@0.2.4
 	foreign-types-shared@0.3.1
 	foreign-types@0.5.0
+	fs-err@3.3.2
 	funty@2.0.0
+	futures-channel@0.3.34
 	futures-core@0.3.34
 	futures-io@0.3.34
 	futures-lite@2.6.1
@@ -288,6 +293,7 @@ CRATES="
 	khronos-egl@6.0.0
 	khronos_api@3.1.0
 	kittest@0.5.0
+	ksni@0.3.7
 	kurbo@0.13.1
 	lazy_static@1.5.1
 	libc@0.2.191
@@ -379,6 +385,7 @@ CRATES="
 	parking_lot@0.12.5
 	parking_lot_core@0.9.12
 	password-hash@0.5.0
+	pastey@0.2.3
 	pbkdf2@0.13.0
 	pem-rfc7468@0.7.0
 	pem-rfc7468@1.0.0
@@ -540,6 +547,7 @@ CRATES="
 	synstructure@0.14.0
 	sysinfo@0.40.1
 	tap@1.0.1
+	task-local@0.1.1
 	tempfile@3.27.0
 	termcolor@1.4.1
 	thiserror-impl@1.0.69
@@ -557,14 +565,15 @@ CRATES="
 	tls_codec@0.4.2
 	tls_codec_derive@0.4.2
 	tokio@1.53.3
-	toml@1.1.8+spec-1.1.0
+	toml@1.2.0+spec-1.1.0
 	toml_datetime@1.1.2+spec-1.1.0
 	toml_edit@0.25.17+spec-1.1.0
 	toml_parser@1.1.5+spec-1.1.0
-	toml_writer@1.1.3+spec-1.1.0
+	toml_writer@1.2.0+spec-1.1.0
 	tracing-attributes@0.1.31
 	tracing-core@0.1.36
 	tracing@0.1.44
+	tray-icon@0.26.1
 	tree_magic_mini@3.2.2
 	twofish@0.7.1
 	type-map@0.5.1
@@ -577,6 +586,12 @@ CRATES="
 	unicode-segmentation@1.13.3
 	unicode-width@0.2.2
 	unicode-xid@0.2.6
+	uniffi@0.32.2
+	uniffi_core@0.32.2
+	uniffi_internal_macros@0.32.2
+	uniffi_macros@0.32.2
+	uniffi_meta@0.32.2
+	uniffi_pipeline@0.32.2
 	universal-hash@0.5.1
 	untrusted@0.9.0
 	usvg@0.49.0
@@ -689,10 +704,10 @@ CRATES="
 "
 
 declare -A GIT_CRATES=(
-	[dpi]='https://github.com/UCS-Care-Group/winit;951b6c131897a80d27a925af7c5da22ea522eb0d;winit-%commit%/dpi'
-	[winit]='https://github.com/UCS-Care-Group/winit;951b6c131897a80d27a925af7c5da22ea522eb0d;winit-%commit%'
+	[dpi]='https://github.com/UCS-Care-Group/winit;1477b126a8c3d3d2add446c93492454ba833074d;winit-%commit%/dpi'
+	[winit]='https://github.com/UCS-Care-Group/winit;1477b126a8c3d3d2add446c93492454ba833074d;winit-%commit%'
 )
-WINIT_COMMIT="951b6c131897a80d27a925af7c5da22ea522eb0d"
+WINIT_COMMIT="1477b126a8c3d3d2add446c93492454ba833074d"
 RUST_MIN_VER="1.95"
 
 inherit cargo desktop xdg
@@ -700,17 +715,17 @@ inherit cargo desktop xdg
 DESCRIPTION="Native mail and calendar client with IMAP and Microsoft 365 support"
 HOMEPAGE="https://github.com/UCS-Care-Group/mailcraft"
 SRC_URI="
-	https://github.com/UCS-Care-Group/${PN}/archive/92eb10c080d2da131bde71dd448bf37413a74d03.tar.gz -> ${P}.tar.gz
+	https://github.com/UCS-Care-Group/${PN}/archive/240d1d42fe394cf3274402b180663ba9b43ca180.tar.gz -> ${P}.tar.gz
 
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-92eb10c080d2da131bde71dd448bf37413a74d03"
+S="${WORKDIR}/${PN}-240d1d42fe394cf3274402b180663ba9b43ca180"
 
 LICENSE="MIT Apache-2.0 OFL-1.1 BitstreamVera UbuntuFontLicense-1.0"
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 BSD-2 BSD Boost-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0
-	OFL-1.1 UbuntuFontLicense-1.0 Unicode-3.0 ZLIB
+	OFL-1.1 UbuntuFontLicense-1.0 Unicode-3.0 Unlicense ZLIB
 "
 SLOT="0"
 KEYWORDS="amd64"
@@ -746,7 +761,7 @@ src_prepare() {
 	# Override registry-to-Git patches directly for offline preparation.
 	cat >> "${CARGO_HOME}/config.toml" <<-EOF || die
 [patch.crates-io]
-winit = { path = "${WORKDIR}/winit-951b6c131897a80d27a925af7c5da22ea522eb0d/." }
+winit = { path = "${WORKDIR}/winit-1477b126a8c3d3d2add446c93492454ba833074d/." }
 EOF
 	# Refresh only the source identities replaced by the local Git patches.
 	cargo_env "${CARGO}" metadata --offline --format-version 1 > /dev/null || die
@@ -755,8 +770,8 @@ EOF
 src_configure() {
 
 	export MAILCRAFT_MS_CLIENT_ID="6e83816e-f26c-455a-9253-494b784e61fa"
-	export MAILCRAFT_BUILD_SHA="92eb10c080d2da131bde71dd448bf37413a74d03"
-	export MAILCRAFT_BUILD_DATE="2026-11-12"
+	export MAILCRAFT_BUILD_SHA="240d1d42fe394cf3274402b180663ba9b43ca180"
+	export MAILCRAFT_BUILD_DATE="2026-11-15"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -768,7 +783,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/io.github.billsecond.mailcraft.mime.xml io.github.billsecond.mailcraft.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-12/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-15/g" \
 		packaging/linux/io.github.billsecond.mailcraft.metainfo.xml.in \
 		> "${T}/io.github.billsecond.mailcraft.metainfo.xml" || die
 	doins "${T}/io.github.billsecond.mailcraft.metainfo.xml"

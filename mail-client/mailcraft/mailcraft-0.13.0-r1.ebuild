@@ -1,6 +1,6 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# Generator recipe: c6a98918fdf6c59036325222d5e7ea5aad09419145a74f8af0233bcea27035ab
+# Generator recipe: 34cdbfb4ed2d082732027c12446fe14f090e224b725e2cfb76eb251a85c49630
 # Release commit: 240d1d42fe394cf3274402b180663ba9b43ca180
 
 EAPI=8
@@ -768,6 +768,10 @@ EOF
 }
 
 src_configure() {
+	# Rust1.99/LLVM23 Zen4 codegen workaround, matching PDFCraft.
+	# Preserve target CPU; avoid the failing SLP and ThinLTO paths.
+	export CARGO_PROFILE_RELEASE_LTO="off"
+	RUSTFLAGS+=" -C no-vectorize-slp"
 
 	export MAILCRAFT_MS_CLIENT_ID="6e83816e-f26c-455a-9253-494b784e61fa"
 	export MAILCRAFT_BUILD_SHA="240d1d42fe394cf3274402b180663ba9b43ca180"

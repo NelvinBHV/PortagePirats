@@ -8,8 +8,8 @@ PYTHON_REQ_USE="ensurepip(-)"
 
 inherit ninja-utils python-any-r1 toolchain-funcs
 
-QEMU_VERSION="11.0.1"
-AMIBERRY_RELEASE="11.0.1-amiberry.7"
+QEMU_VERSION="11.1.3"
+AMIBERRY_RELEASE="11.1.3-amiberry.1"
 
 DESCRIPTION="QEMU-based PowerPC plugin for UAE-compatible Amiga emulators"
 HOMEPAGE="https://github.com/BlitterStudio/amiberry-qemu-uae https://www.qemu.org/"

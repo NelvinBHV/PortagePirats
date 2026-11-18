@@ -15,16 +15,16 @@ SRC_URI="
 	${AMIGAPORTS}/clib2/archive/25ecf61ef872785ff21007e326457931a62c32ed.tar.gz -> ${PN}-${PV}-clib2-25ecf61ef872785ff21007e326457931a62c32ed.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/bcffac5c89295baf1db033addc984312b4b4a722.tar.gz -> ${PN}-${PV}-fd2pragma-bcffac5c89295baf1db033addc984312b4b4a722.tar.gz
 	${AMIGAPORTS}/fd2sfd/archive/d130fde17f9b42c84970705030f6c0469054561f.tar.gz -> ${PN}-${PV}-fd2sfd-d130fde17f9b42c84970705030f6c0469054561f.tar.gz
-	${AMIGAPORTS}/gcc/archive/1e968368837ab0d32ce190f88e675e94eb9908e4.tar.gz -> ${PN}-${PV}-gcc-1e968368837ab0d32ce190f88e675e94eb9908e4.tar.gz
+	${AMIGAPORTS}/gcc/archive/a940f30f083bb0accf632699a8926d0081554cd2.tar.gz -> ${PN}-${PV}-gcc-a940f30f083bb0accf632699a8926d0081554cd2.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libc-test/archive/f171934890caaccdb93b6afe0f7362488e09029b.tar.gz -> ${PN}-${PV}-libc-test-f171934890caaccdb93b6afe0f7362488e09029b.tar.gz
 	${AMIGAPORTS}/libdebug/archive/76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz -> ${PN}-${PV}-libdebug-76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz
-	${AMIGAPORTS}/libnix/archive/209ac0c39c5dbc3ac5b9e974da4d950e3c6ef9f4.tar.gz -> ${PN}-${PV}-libnix-209ac0c39c5dbc3ac5b9e974da4d950e3c6ef9f4.tar.gz
-	${AMIGAPORTS}/newlib-cygwin/archive/ba37f2bf65c73a14f5d26edc99a0484b1f1abee8.tar.gz -> ${PN}-${PV}-newlib-cygwin-ba37f2bf65c73a14f5d26edc99a0484b1f1abee8.tar.gz
-	${AMIGAPORTS}/sfdc/archive/a05565519002a55610cdb448c6107b1f07a8a87c.tar.gz -> ${PN}-${PV}-sfdc-a05565519002a55610cdb448c6107b1f07a8a87c.tar.gz
+	${AMIGAPORTS}/libnix/archive/1ee8fa1788ebfacf2878b8f0b1bfc1fc0c3dc585.tar.gz -> ${PN}-${PV}-libnix-1ee8fa1788ebfacf2878b8f0b1bfc1fc0c3dc585.tar.gz
+	${AMIGAPORTS}/newlib-cygwin/archive/83f68e2abdc22af3d110c8782044d66900360e2e.tar.gz -> ${PN}-${PV}-newlib-cygwin-83f68e2abdc22af3d110c8782044d66900360e2e.tar.gz
+	${AMIGAPORTS}/sfdc/archive/840cbbae9fe9e9d9cf7a1e6460d68af26880ca15.tar.gz -> ${PN}-${PV}-sfdc-840cbbae9fe9e9d9cf7a1e6460d68af26880ca15.tar.gz
 	${AMIGAPORTS}/vasm/archive/de93f7dd067001532cff663730133601edb274cb.tar.gz -> ${PN}-${PV}-vasm-de93f7dd067001532cff663730133601edb274cb.tar.gz
-	${AMIGAPORTS}/vbcc/archive/8a1ea8062b7ab1301d3a2822ef4188b917fa57f5.tar.gz -> ${PN}-${PV}-vbcc-8a1ea8062b7ab1301d3a2822ef4188b917fa57f5.tar.gz
+	${AMIGAPORTS}/vbcc/archive/98908e530eb6747ae4d68dc83c032873f6163339.tar.gz -> ${PN}-${PV}-vbcc-98908e530eb6747ae4d68dc83c032873f6163339.tar.gz
 	${AMIGAPORTS}/vlink/archive/ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz -> ${PN}-${PV}-vlink-ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz
 	${AMIGAPORTS}/aros-stuff/archive/f486880385ff2fe0eefb3fe5ba74bd2bb16567fe.tar.gz -> ${PN}-${PV}-aros-stuff-f486880385ff2fe0eefb3fe5ba74bd2bb16567fe.tar.gz
 	https://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.2.1.tar.bz2 -> ${PN}-${PV}-gmp-6.2.1.tar.bz2
@@ -78,16 +78,16 @@ MODULE_SOURCES=(
 	"clib2|clib2|25ecf61ef872785ff21007e326457931a62c32ed"
 	"fd2pragma|fd2pragma|bcffac5c89295baf1db033addc984312b4b4a722"
 	"fd2sfd|fd2sfd|d130fde17f9b42c84970705030f6c0469054561f"
-	"gcc|gcc|1e968368837ab0d32ce190f88e675e94eb9908e4"
+	"gcc|gcc|a940f30f083bb0accf632699a8926d0081554cd2"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libc-test|libc-test|f171934890caaccdb93b6afe0f7362488e09029b"
 	"libdebug|libdebug|76c7dbfeaac79516117dc810e3ba9b34d5f54a69"
-	"libnix|libnix|209ac0c39c5dbc3ac5b9e974da4d950e3c6ef9f4"
-	"newlib-cygwin|newlib-cygwin|ba37f2bf65c73a14f5d26edc99a0484b1f1abee8"
-	"sfdc|sfdc|a05565519002a55610cdb448c6107b1f07a8a87c"
+	"libnix|libnix|1ee8fa1788ebfacf2878b8f0b1bfc1fc0c3dc585"
+	"newlib-cygwin|newlib-cygwin|83f68e2abdc22af3d110c8782044d66900360e2e"
+	"sfdc|sfdc|840cbbae9fe9e9d9cf7a1e6460d68af26880ca15"
 	"vasm|vasm|de93f7dd067001532cff663730133601edb274cb"
-	"vbcc|vbcc|8a1ea8062b7ab1301d3a2822ef4188b917fa57f5"
+	"vbcc|vbcc|98908e530eb6747ae4d68dc83c032873f6163339"
 	"vlink|vlink|ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9"
 	"aros-stuff|aros-stuff|f486880385ff2fe0eefb3fe5ba74bd2bb16567fe"
 )

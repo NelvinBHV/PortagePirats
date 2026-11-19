@@ -15,7 +15,7 @@ SRC_URI="
 	${AMIGAPORTS}/clib2/archive/25ecf61ef872785ff21007e326457931a62c32ed.tar.gz -> ${PN}-${PV}-clib2-25ecf61ef872785ff21007e326457931a62c32ed.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/bcffac5c89295baf1db033addc984312b4b4a722.tar.gz -> ${PN}-${PV}-fd2pragma-bcffac5c89295baf1db033addc984312b4b4a722.tar.gz
 	${AMIGAPORTS}/fd2sfd/archive/d130fde17f9b42c84970705030f6c0469054561f.tar.gz -> ${PN}-${PV}-fd2sfd-d130fde17f9b42c84970705030f6c0469054561f.tar.gz
-	${AMIGAPORTS}/gcc/archive/a940f30f083bb0accf632699a8926d0081554cd2.tar.gz -> ${PN}-${PV}-gcc-a940f30f083bb0accf632699a8926d0081554cd2.tar.gz
+	${AMIGAPORTS}/gcc/archive/11a20e48c9fa107e4866a62c918c4cec93917505.tar.gz -> ${PN}-${PV}-gcc-11a20e48c9fa107e4866a62c918c4cec93917505.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libc-test/archive/f171934890caaccdb93b6afe0f7362488e09029b.tar.gz -> ${PN}-${PV}-libc-test-f171934890caaccdb93b6afe0f7362488e09029b.tar.gz
@@ -26,7 +26,7 @@ SRC_URI="
 	${AMIGAPORTS}/vasm/archive/de93f7dd067001532cff663730133601edb274cb.tar.gz -> ${PN}-${PV}-vasm-de93f7dd067001532cff663730133601edb274cb.tar.gz
 	${AMIGAPORTS}/vbcc/archive/98908e530eb6747ae4d68dc83c032873f6163339.tar.gz -> ${PN}-${PV}-vbcc-98908e530eb6747ae4d68dc83c032873f6163339.tar.gz
 	${AMIGAPORTS}/vlink/archive/ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz -> ${PN}-${PV}-vlink-ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz
-	${AMIGAPORTS}/aros-stuff/archive/f486880385ff2fe0eefb3fe5ba74bd2bb16567fe.tar.gz -> ${PN}-${PV}-aros-stuff-f486880385ff2fe0eefb3fe5ba74bd2bb16567fe.tar.gz
+	${AMIGAPORTS}/aros-stuff/archive/ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2.tar.gz -> ${PN}-${PV}-aros-stuff-ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2.tar.gz
 	https://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.2.1.tar.bz2 -> ${PN}-${PV}-gmp-6.2.1.tar.bz2
 	https://gcc.gnu.org/pub/gcc/infrastructure/mpc-1.2.1.tar.gz -> ${PN}-${PV}-mpc-1.2.1.tar.gz
 	https://gcc.gnu.org/pub/gcc/infrastructure/mpfr-4.1.0.tar.bz2 -> ${PN}-${PV}-mpfr-4.1.0.tar.bz2
@@ -78,7 +78,7 @@ MODULE_SOURCES=(
 	"clib2|clib2|25ecf61ef872785ff21007e326457931a62c32ed"
 	"fd2pragma|fd2pragma|bcffac5c89295baf1db033addc984312b4b4a722"
 	"fd2sfd|fd2sfd|d130fde17f9b42c84970705030f6c0469054561f"
-	"gcc|gcc|a940f30f083bb0accf632699a8926d0081554cd2"
+	"gcc|gcc|11a20e48c9fa107e4866a62c918c4cec93917505"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libc-test|libc-test|f171934890caaccdb93b6afe0f7362488e09029b"
@@ -89,7 +89,7 @@ MODULE_SOURCES=(
 	"vasm|vasm|de93f7dd067001532cff663730133601edb274cb"
 	"vbcc|vbcc|98908e530eb6747ae4d68dc83c032873f6163339"
 	"vlink|vlink|ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9"
-	"aros-stuff|aros-stuff|f486880385ff2fe0eefb3fe5ba74bd2bb16567fe"
+	"aros-stuff|aros-stuff|ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2"
 )
 
 src_unpack() {

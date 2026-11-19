@@ -5,7 +5,7 @@ EAPI=8
 
 inherit toolchain-funcs
 
-COMMIT="e6555a5609ef62c2dfdf24720a0493302ba34b9e"
+COMMIT="cb7718c14ae680f084398aa94b34ed285d5b011f"
 
 DESCRIPTION="iPXE BIOS and x86_64 UEFI firmware with graphical PNG menu support"
 HOMEPAGE="https://ipxe.org/ https://github.com/ipxe/ipxe"
@@ -53,6 +53,7 @@ src_compile() {
 		CROSS=/usr/bin/x86_64-pc-linux-gnu- \
 		HOST_CC="/usr/bin/$(tc-getBUILD_CC)" \
 		VERSION="${PV}" \
+		GITVERSION="${COMMIT}" \
 		bin/undionly.kpxe
 
 	# iPXE derives one architecture per make invocation.  Mixing pcbios and
@@ -61,6 +62,7 @@ src_compile() {
 		CROSS=/usr/bin/x86_64-pc-linux-gnu- \
 		HOST_CC="/usr/bin/$(tc-getBUILD_CC)" \
 		VERSION="${PV}" \
+		GITVERSION="${COMMIT}" \
 		bin-x86_64-efi/ipxe.efi
 }
 

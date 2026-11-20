@@ -1,7 +1,7 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # Generator recipe: 34cdbfb4ed2d082732027c12446fe14f090e224b725e2cfb76eb251a85c49630
-# Release commit: 240d1d42fe394cf3274402b180663ba9b43ca180
+# Release commit: 979953f012636fa7c2380124fd307152404c29bf
 
 EAPI=8
 CRATES="
@@ -715,11 +715,11 @@ inherit cargo desktop xdg
 DESCRIPTION="Native mail and calendar client with IMAP and Microsoft 365 support"
 HOMEPAGE="https://github.com/UCS-Care-Group/mailcraft"
 SRC_URI="
-	https://github.com/UCS-Care-Group/${PN}/archive/240d1d42fe394cf3274402b180663ba9b43ca180.tar.gz -> ${P}.tar.gz
+	https://github.com/UCS-Care-Group/${PN}/archive/979953f012636fa7c2380124fd307152404c29bf.tar.gz -> ${P}.tar.gz
 
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-240d1d42fe394cf3274402b180663ba9b43ca180"
+S="${WORKDIR}/${PN}-979953f012636fa7c2380124fd307152404c29bf"
 
 LICENSE="MIT Apache-2.0 OFL-1.1 BitstreamVera UbuntuFontLicense-1.0"
 # Dependent crate licenses
@@ -774,8 +774,8 @@ src_configure() {
 	RUSTFLAGS+=" -C no-vectorize-slp"
 
 	export MAILCRAFT_MS_CLIENT_ID="6e83816e-f26c-455a-9253-494b784e61fa"
-	export MAILCRAFT_BUILD_SHA="240d1d42fe394cf3274402b180663ba9b43ca180"
-	export MAILCRAFT_BUILD_DATE="2026-11-15"
+	export MAILCRAFT_BUILD_SHA="979953f012636fa7c2380124fd307152404c29bf"
+	export MAILCRAFT_BUILD_DATE="2026-11-19"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -787,7 +787,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/io.github.billsecond.mailcraft.mime.xml io.github.billsecond.mailcraft.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-15/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-19/g" \
 		packaging/linux/io.github.billsecond.mailcraft.metainfo.xml.in \
 		> "${T}/io.github.billsecond.mailcraft.metainfo.xml" || die
 	doins "${T}/io.github.billsecond.mailcraft.metainfo.xml"

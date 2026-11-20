@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Tools for development with classic Amiga m68k systems"
 HOMEPAGE="https://github.com/AmigaPorts/amitools https://pypi.org/project/amitools/"
-SRC_URI="https://files.pythonhosted.org/packages/0c/16/a53249d97fa7a74d4604135515ae70ae9dd04454ea2b6d16864a33e4d7bb/${P}.tar.gz"
+SRC_URI="https://files.pythonhosted.org/packages/bc/15/7b93329a86880c73709f746fe5701d0116c6c5ee73bead802c7747e17e7c/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -1,7 +1,7 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # Generator recipe: 34cdbfb4ed2d082732027c12446fe14f090e224b725e2cfb76eb251a85c49630
-# Release commit: 979953f012636fa7c2380124fd307152404c29bf
+# Release commit: 448ad7a7026d97b9dd8538bce55ff6232f9ae94c
 
 EAPI=8
 CRATES="
@@ -110,7 +110,7 @@ CRATES="
 	colored@2.2.0
 	combine@4.6.8
 	concurrent-queue@2.5.0
-	const-oid@0.10.2
+	const-oid@0.10.3
 	const-oid@0.9.6
 	convert_case@0.10.0
 	core-foundation-sys@0.8.7
@@ -211,7 +211,7 @@ CRATES="
 	find-msvc-tools@0.1.14
 	fixedbitset@0.5.7
 	flagset@0.4.7
-	flate2@1.1.10
+	flate2@1.1.11
 	float-cmp@0.9.0
 	fmv-macos-events@0.1.0
 	fnv@1.0.7
@@ -275,10 +275,10 @@ CRATES="
 	is-wsl@0.4.0
 	itertools@0.15.0
 	itoa@1.0.18
-	jiff-core@0.1.4
-	jiff-static@0.2.42
-	jiff-tzdb@0.1.9
-	jiff@0.2.42
+	jiff-core@0.1.8
+	jiff-static@0.2.46
+	jiff-tzdb@0.1.10
+	jiff@0.2.46
 	jni-macros@0.22.4
 	jni-sys-macros@0.4.1
 	jni-sys@0.3.1
@@ -342,12 +342,17 @@ CRATES="
 	objc2-app-kit@0.2.2
 	objc2-app-kit@0.3.2
 	objc2-cloud-kit@0.2.2
+	objc2-cloud-kit@0.3.2
 	objc2-contacts@0.2.2
 	objc2-core-data@0.2.2
+	objc2-core-data@0.3.2
 	objc2-core-foundation@0.3.2
 	objc2-core-graphics@0.3.2
 	objc2-core-image@0.2.2
+	objc2-core-image@0.3.2
 	objc2-core-location@0.2.2
+	objc2-core-text@0.3.2
+	objc2-core-video@0.3.2
 	objc2-encode@4.1.0
 	objc2-foundation@0.2.2
 	objc2-foundation@0.3.2
@@ -362,6 +367,7 @@ CRATES="
 	objc2-ui-kit@0.2.2
 	objc2-ui-kit@0.3.2
 	objc2-uniform-type-identifiers@0.2.2
+	objc2-uniform-type-identifiers@0.3.2
 	objc2-user-notifications@0.2.2
 	objc2-user-notifications@0.3.2
 	objc2@0.5.3
@@ -392,7 +398,7 @@ CRATES="
 	peniko@0.6.1
 	percent-encoding@2.3.2
 	petgraph@0.8.3
-	pgp@0.21.0
+	pgp@0.21.1
 	phf@0.14.0
 	phf_generator@0.14.0
 	phf_macros@0.14.0
@@ -411,7 +417,6 @@ CRATES="
 	plain@0.2.3
 	png@0.18.1
 	polling@3.11.0
-	pollster@0.4.0
 	pollster@1.0.1
 	polycool@0.4.0
 	polyval@0.6.2
@@ -449,7 +454,7 @@ CRATES="
 	rayon@1.12.0
 	rcgen@0.14.10
 	read-fonts@0.41.0
-	read-fonts@0.46.0
+	read-fonts@0.47.0
 	redox_syscall@0.4.1
 	redox_syscall@0.5.18
 	redox_syscall@0.9.4
@@ -458,10 +463,10 @@ CRATES="
 	regex@1.13.1
 	renderdoc-sys@1.1.0
 	replace_with@0.1.8
-	resvg@0.49.0
+	resvg@0.50.0
 	rfc6979@0.4.0
 	rfc6979@0.6.0
-	rfd@0.17.2
+	rfd@0.18.0
 	rgb@0.8.53
 	ring@0.17.14
 	ripemd@0.1.3
@@ -501,7 +506,7 @@ CRATES="
 	serde_derive@1.0.229
 	serde_json@1.0.154
 	serde_repr@0.1.21
-	serde_spanned@1.1.2
+	serde_spanned@1.1.3
 	serdect@0.2.0
 	serdect@0.3.0
 	serdect@0.4.3
@@ -521,7 +526,7 @@ CRATES="
 	simplecss@0.2.2
 	siphasher@1.0.4
 	skrifa@0.44.0
-	skrifa@0.49.0
+	skrifa@0.50.0
 	slab@0.4.12
 	slotmap@1.1.1
 	smallvec@1.16.3
@@ -531,6 +536,7 @@ CRATES="
 	smol_str@0.2.2
 	snafu-derive@0.9.2
 	snafu@0.9.2
+	spellkit@0.4.2
 	spin@0.9.9
 	spirv@0.4.0+sdk-1.4.341.0
 	spki@0.7.3
@@ -545,7 +551,7 @@ CRATES="
 	syn@3.0.8
 	synstructure@0.13.2
 	synstructure@0.14.0
-	sysinfo@0.40.1
+	sysinfo@0.40.3
 	tap@1.0.1
 	task-local@0.1.1
 	tempfile@3.27.0
@@ -565,8 +571,8 @@ CRATES="
 	tls_codec@0.4.2
 	tls_codec_derive@0.4.2
 	tokio@1.53.3
-	toml@1.2.0+spec-1.1.0
-	toml_datetime@1.1.2+spec-1.1.0
+	toml@1.2.1+spec-1.1.0
+	toml_datetime@1.1.3+spec-1.1.0
 	toml_edit@0.25.17+spec-1.1.0
 	toml_parser@1.1.5+spec-1.1.0
 	toml_writer@1.2.0+spec-1.1.0
@@ -594,7 +600,7 @@ CRATES="
 	uniffi_pipeline@0.32.2
 	universal-hash@0.5.1
 	untrusted@0.9.0
-	usvg@0.49.0
+	usvg@0.50.0
 	uuid@1.28.0
 	vello_common@0.2.0
 	vello_cpu@0.2.0
@@ -669,7 +675,9 @@ CRATES="
 	wyz@0.5.1
 	x11-dl@2.21.0
 	x11rb-protocol@0.13.2
+	x11rb-protocol@0.14.0
 	x11rb@0.13.2
+	x11rb@0.14.0
 	x25519-dalek@2.0.1
 	x509-cert@0.3.0
 	x509-parser@0.18.1
@@ -715,11 +723,11 @@ inherit cargo desktop xdg
 DESCRIPTION="Native mail and calendar client with IMAP and Microsoft 365 support"
 HOMEPAGE="https://github.com/UCS-Care-Group/mailcraft"
 SRC_URI="
-	https://github.com/UCS-Care-Group/${PN}/archive/979953f012636fa7c2380124fd307152404c29bf.tar.gz -> ${P}.tar.gz
+	https://github.com/UCS-Care-Group/${PN}/archive/448ad7a7026d97b9dd8538bce55ff6232f9ae94c.tar.gz -> ${P}.tar.gz
 
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-979953f012636fa7c2380124fd307152404c29bf"
+S="${WORKDIR}/${PN}-448ad7a7026d97b9dd8538bce55ff6232f9ae94c"
 
 LICENSE="MIT Apache-2.0 OFL-1.1 BitstreamVera UbuntuFontLicense-1.0"
 # Dependent crate licenses
@@ -774,8 +782,8 @@ src_configure() {
 	RUSTFLAGS+=" -C no-vectorize-slp"
 
 	export MAILCRAFT_MS_CLIENT_ID="6e83816e-f26c-455a-9253-494b784e61fa"
-	export MAILCRAFT_BUILD_SHA="979953f012636fa7c2380124fd307152404c29bf"
-	export MAILCRAFT_BUILD_DATE="2026-11-19"
+	export MAILCRAFT_BUILD_SHA="448ad7a7026d97b9dd8538bce55ff6232f9ae94c"
+	export MAILCRAFT_BUILD_DATE="2026-11-22"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -787,7 +795,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/io.github.billsecond.mailcraft.mime.xml io.github.billsecond.mailcraft.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-19/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-22/g" \
 		packaging/linux/io.github.billsecond.mailcraft.metainfo.xml.in \
 		> "${T}/io.github.billsecond.mailcraft.metainfo.xml" || die
 	doins "${T}/io.github.billsecond.mailcraft.metainfo.xml"

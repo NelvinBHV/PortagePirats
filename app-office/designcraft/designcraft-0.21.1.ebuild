@@ -13,11 +13,14 @@ CRATES="
 	accesskit_windows@0.35.2
 	accesskit_winit@0.34.2
 	adler2@2.0.1
+	aes@0.9.4
 	ahash@0.8.12
 	aho-corasick@1.1.5
 	aliasable@0.1.3
 	alloc-no-stdlib@2.0.4
+	alloc-no-stdlib@3.0.0
 	alloc-stdlib@0.2.4
+	alloc-stdlib@0.3.0
 	allocator-api2@0.2.21
 	android-activity@0.6.1
 	android-properties@0.2.2
@@ -55,15 +58,18 @@ CRATES="
 	bit-vec@0.10.1
 	bit-vec@0.8.0
 	bit-vec@0.9.1
+	bit_field@0.10.4
 	bitflags@1.3.2
 	bitflags@2.13.2
 	block-buffer@0.10.4
+	block-buffer@0.12.1
 	block2@0.5.1
 	block2@0.6.2
 	blocking@1.7.0
 	borsh-derive@1.8.1
 	borsh@1.8.1
 	brotli-decompressor@5.0.3
+	brotli-decompressor@6.3.1
 	brotli@8.0.4
 	bumpalo@3.20.3
 	bytemuck@1.25.2
@@ -82,8 +88,10 @@ CRATES="
 	cgl@0.3.2
 	chacha20@0.10.2
 	chrono@0.4.45
+	cipher@0.5.2
 	clipboard-win@5.4.3
 	cmake@0.1.58
+	cmov@0.5.4
 	cmpv2@0.2.0
 	cms@0.2.3
 	cobs@0.3.0
@@ -93,6 +101,7 @@ CRATES="
 	colored@2.2.0
 	combine@4.6.9
 	concurrent-queue@2.5.0
+	const-oid@0.10.3
 	const-oid@0.9.6
 	core-foundation-sys@0.8.7
 	core-foundation@0.10.1
@@ -102,6 +111,7 @@ CRATES="
 	core-text@20.1.0
 	core_detect@1.0.0
 	core_maths@0.1.1
+	cpubits@0.1.1
 	cpufeatures@0.2.17
 	cpufeatures@0.3.1
 	crc32fast@1.5.3
@@ -112,6 +122,8 @@ CRATES="
 	crossbeam-utils@0.8.23
 	crunchy@0.2.4
 	crypto-common@0.1.7
+	crypto-common@0.2.2
+	ctutils@0.4.8
 	cursor-icon@1.2.0
 	data-url@0.3.2
 	der@0.7.10
@@ -120,6 +132,7 @@ CRATES="
 	derive_arbitrary@1.5.0
 	dify@0.8.0
 	digest@0.10.7
+	digest@0.11.3
 	dispatch2@0.3.1
 	dispatch@0.2.0
 	displaydoc@0.2.7
@@ -141,6 +154,7 @@ CRATES="
 	euclid@0.22.14
 	event-listener-strategy@0.5.4
 	event-listener@5.4.2
+	exr@1.74.3
 	fancy-regex@0.19.2
 	fastrand@2.5.0
 	fax@0.2.7
@@ -164,6 +178,7 @@ CRATES="
 	font-types@0.12.7
 	fontconfig-parser@0.5.8
 	fontdb@0.23.0
+	fontdb@0.24.0
 	foreign-types-macros@0.2.4
 	foreign-types-shared@0.3.1
 	foreign-types@0.5.0
@@ -209,10 +224,12 @@ CRATES="
 	heck@0.5.0
 	hermit-abi@0.5.3
 	hex@0.4.3
+	hmac@0.13.0
 	http-body-util@0.1.5
 	http-body@1.1.0
 	http@1.5.0
 	httparse@1.10.1
+	hybrid-array@0.4.15
 	hyper-rustls@0.27.10
 	hyper-util@0.1.21
 	hyper@1.12.0
@@ -238,7 +255,9 @@ CRATES="
 	image-webp@0.2.4
 	image@0.25.10
 	imagesize@0.14.0
+	imagesize@0.15.0
 	indexmap@2.14.2
+	inout@0.2.6
 	ipnet@2.12.2
 	is-docker@0.2.0
 	is-wsl@0.4.0
@@ -251,6 +270,7 @@ CRATES="
 	jni-sys@0.4.1
 	jni@0.22.4
 	jobserver@0.1.35
+	jpeg-encoder@0.6.1
 	js-sys@0.3.106
 	keyboard-types@0.8.3
 	khronos-egl@6.0.0
@@ -259,12 +279,12 @@ CRATES="
 	krilla-svg@0.8.1
 	kurbo@0.13.1
 	lazy_static@1.5.1
+	lebe@0.5.3
 	libc@0.2.191
 	libloading@0.8.9
 	libm@0.2.16
 	libredox@0.1.25
 	linebender_resource_handle@0.1.1
-	linesweeper@0.5.0
 	linux-raw-sys@0.12.1
 	linux-raw-sys@0.4.15
 	litemap@0.8.3
@@ -272,6 +292,7 @@ CRATES="
 	lock_api@0.4.14
 	log@0.4.34
 	lru-slab@0.1.3
+	md-5@0.10.6
 	memchr@2.8.3
 	memmap2@0.9.12
 	memoffset@0.9.1
@@ -282,6 +303,8 @@ CRATES="
 	mio@1.2.4
 	moxcms@0.8.1
 	muda@0.21.2
+	multiversion-macros@0.8.1
+	multiversion@0.8.1
 	multiversion_no_op@1.0.0
 	naga-types@30.0.1
 	naga@30.0.1
@@ -378,6 +401,7 @@ CRATES="
 	profiling@1.0.18
 	proptest@1.12.0
 	pxfm@0.1.30
+	qoi@0.4.1
 	qrcodegen@1.8.0
 	quick-error@1.2.3
 	quick-error@2.0.1
@@ -412,6 +436,7 @@ CRATES="
 	renderdoc-sys@1.1.0
 	reqwest@0.13.5
 	resvg@0.47.0
+	resvg@0.48.1
 	rfd@0.17.2
 	rgb@0.8.53
 	ring@0.17.14
@@ -453,7 +478,9 @@ CRATES="
 	serde_spanned@1.1.2
 	serde_urlencoded@0.7.1
 	sha1@0.10.7
+	sha1@0.11.0
 	sha2@0.10.9
+	sha2@0.11.1
 	shlex@2.0.1
 	signal-hook-registry@1.4.8
 	signature@2.2.0
@@ -501,6 +528,7 @@ CRATES="
 	system-configuration-sys@0.6.0
 	system-configuration@0.7.0
 	tar@0.4.46
+	target-features@0.1.6
 	tempfile@3.27.0
 	termcolor@1.4.1
 	thiserror-impl@1.0.69
@@ -560,14 +588,13 @@ CRATES="
 	ureq@3.5.0
 	url@2.5.8
 	usvg@0.47.0
+	usvg@0.48.1
 	utf16_iter@1.0.5
 	utf8-zero@0.8.1
 	utf8_iter@1.0.4
 	uuid@1.29.0
-	vello_common@0.0.8
 	vello_common@0.0.9
 	vello_common@0.2.0
-	vello_cpu@0.0.8
 	vello_cpu@0.2.0
 	verifysign@1.0.1
 	version_check@0.9.5
@@ -681,42 +708,74 @@ CRATES="
 	zmij@1.0.23
 	zopfli@0.8.4
 	zune-core@0.5.3
+	zune-inflate@0.2.54
 	zune-jpeg@0.5.15
+	zune-jpegxl@0.5.2
 	zvariant@5.15.1
 	zvariant_derive@5.15.1
 	zvariant_utils@4.2.0
 "
-CRAFT_LIBS_1A11A4897865F7410C40D25CA6E452CE399A1A2C_COMMIT="1a11a4897865f7410c40d25ca6e452ce399a1a2c"
-CRAFT_LIBS_1A11A4897865F7410C40D25CA6E452CE399A1A2C_URI="https://github.com/storytold/craft-libs"
-CRAFT_LIBS_6E03F65BF45181DB77BA6229716E6624DB9EB25B_COMMIT="6e03f65bf45181db77ba6229716e6624db9eb25b"
-CRAFT_LIBS_6E03F65BF45181DB77BA6229716E6624DB9EB25B_URI="https://github.com/storytold/craft-libs"
-CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT="92d392cff132eaf53e13afff77f38b5c11b73aa0"
-CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI="https://github.com/storytold/craft-libs"
+CRAFT_LIBS_COMMIT="33be35625e252cc4f06aa375b3b428521faea37d"
+CRAFT_LIBS_URI="https://github.com/storytold/craft-libs"
 EGUI_COMMIT="6d518fc799681571963842f95b55a6b68431b15a"
 EGUI_URI="https://github.com/storytold/egui"
 INDD_UTILS_COMMIT="7f3060e5bce78d21ea70e0d5eacb96edce15dfbe"
 INDD_UTILS_URI="https://github.com/storytold/indd-utils"
+VECTORCRAFT_COMMIT="6b3a6b8788ebcb420d69449199cbdf323888d27e"
+VECTORCRAFT_URI="https://github.com/storytold/vectorcraft"
 WINIT_COMMIT="a517b3846ee8457d84ee4975110bfda6797c44dc"
 WINIT_URI="https://github.com/storytold/winit"
-WINPRINT_RS_417AC3C4D14D3DA5485A99C7D5CE8F05664EC312_COMMIT="417ac3c4d14d3da5485a99c7d5ce8f05664ec312"
-WINPRINT_RS_417AC3C4D14D3DA5485A99C7D5CE8F05664EC312_URI="https://github.com/storytold/winprint.rs"
-WINPRINT_RS_5F80B9BAF6B58937C401656634E42D33F00DDF49_COMMIT="5f80b9baf6b58937c401656634e42d33f00ddf49"
-WINPRINT_RS_5F80B9BAF6B58937C401656634E42D33F00DDF49_URI="https://github.com/storytold/winprint.rs"
+WINPRINT_RS_64E7AFD4D1483512385012C340ECAAAF0F3BEB7F_COMMIT="64e7afd4d1483512385012c340ecaaaf0f3beb7f"
+WINPRINT_RS_64E7AFD4D1483512385012C340ECAAAF0F3BEB7F_URI="https://github.com/storytold/winprint.rs"
+WINPRINT_RS_8AE097EF941B432B0E7671B1EC3A506800E65E57_COMMIT="8ae097ef941b432b0e7671b1ec3a506800e65e57"
+WINPRINT_RS_8AE097EF941B432B0E7671B1EC3A506800E65E57_URI="https://github.com/storytold/winprint.rs"
 declare -A GIT_CRATES=(
-	[craft-atomic]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/atomic"
-	[craft-cms]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/cms"
-	[craft-dialogs]="${CRAFT_LIBS_1A11A4897865F7410C40D25CA6E452CE399A1A2C_URI};${CRAFT_LIBS_1A11A4897865F7410C40D25CA6E452CE399A1A2C_COMMIT};craft-libs-%commit%/crates/dialogs"
-	[craft-docpath]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/docpath"
-	[craft-fonts-build]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/fonts-build"
-	[craft-i18n]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/i18n"
-	[craft-keymap]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/keymap"
-	[craft-pdf]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/pdf"
-	[craft-prepress]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/prepress"
-	[craft-print]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/print"
-	[craft-ui]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/ui"
-	[craft-update]="${CRAFT_LIBS_6E03F65BF45181DB77BA6229716E6624DB9EB25B_URI};${CRAFT_LIBS_6E03F65BF45181DB77BA6229716E6624DB9EB25B_COMMIT};craft-libs-%commit%/crates/update"
-	[craft-window]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/crates/window"
-	[craft-winprint-gdi]="${WINPRINT_RS_417AC3C4D14D3DA5485A99C7D5CE8F05664EC312_URI};${WINPRINT_RS_417AC3C4D14D3DA5485A99C7D5CE8F05664EC312_COMMIT};winprint.rs-%commit%/crates/gdi"
+	[craft-atomic]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/atomic"
+	[craft-cfb]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/cfb"
+	[craft-cms]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/cms"
+	[craft-codepage]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/codepage"
+	[craft-csv]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/csv"
+	[craft-dds]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/dds"
+	[craft-designcraft-format]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/designcraft-format"
+	[craft-dialogs]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/dialogs"
+	[craft-docpath]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/docpath"
+	[craft-document-bundle]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/document-bundle"
+	[craft-docx]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/docx"
+	[craft-drawingml]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/drawingml"
+	[craft-eps]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/eps"
+	[craft-epub]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/epub"
+	[craft-file-formats]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/file-formats"
+	[craft-fonts-build]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/fonts-build"
+	[craft-i18n]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/i18n"
+	[craft-idml]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/idml"
+	[craft-image-codecs]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/image-codecs"
+	[craft-indd]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/indd"
+	[craft-jpeg]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/jpeg"
+	[craft-keymap]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/keymap"
+	[craft-math]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/math"
+	[craft-mcp-server]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/mcp-server"
+	[craft-metadata]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/metadata"
+	[craft-mime]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/mime"
+	[craft-offcrypto]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/offcrypto"
+	[craft-opc]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/opc"
+	[craft-pdf]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/pdf"
+	[craft-pptx]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/pptx"
+	[craft-prepress]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/prepress"
+	[craft-print]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/print"
+	[craft-ps]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/ps"
+	[craft-psd]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/psd"
+	[craft-rtf]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/rtf"
+	[craft-sheet]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/sheet"
+	[craft-svg]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/svg"
+	[craft-tiff]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/tiff"
+	[craft-ui]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/ui"
+	[craft-update]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/update"
+	[craft-window]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/window"
+	[craft-winprint-gdi]="${WINPRINT_RS_64E7AFD4D1483512385012C340ECAAAF0F3BEB7F_URI};${WINPRINT_RS_64E7AFD4D1483512385012C340ECAAAF0F3BEB7F_COMMIT};winprint.rs-%commit%/crates/gdi"
+	[craft-wordmodel]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/wordmodel"
+	[craft-xlsx]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/xlsx"
+	[craft-xml]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/xml"
+	[craft-zip]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/crates/zip"
 	[ecolor]="${EGUI_URI};${EGUI_COMMIT};egui-%commit%/crates/ecolor"
 	[eframe]="${EGUI_URI};${EGUI_COMMIT};egui-%commit%/crates/eframe"
 	[egui-wgpu]="${EGUI_URI};${EGUI_COMMIT};egui-%commit%/crates/egui-wgpu"
@@ -731,16 +790,21 @@ declare -A GIT_CRATES=(
 	[emath]="${EGUI_URI};${EGUI_COMMIT};egui-%commit%/crates/emath"
 	[epaint]="${EGUI_URI};${EGUI_COMMIT};egui-%commit%/crates/epaint"
 	[epaint_default_fonts]="${EGUI_URI};${EGUI_COMMIT};egui-%commit%/crates/epaint_default_fonts"
-	[hayro-cmap]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/vendor/hayro-cmap"
-	[hayro-interpret]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/vendor/hayro-interpret"
-	[hayro-jbig2]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/vendor/hayro-jbig2"
-	[hayro-postscript]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/vendor/hayro-postscript"
-	[hayro-syntax]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/vendor/hayro-syntax"
-	[hayro]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/vendor/hayro"
+	[hayro-cmap]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/hayro-cmap"
+	[hayro-interpret]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/hayro-interpret"
+	[hayro-jbig2]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/hayro-jbig2"
+	[hayro-postscript]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/hayro-postscript"
+	[hayro-syntax]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/hayro-syntax"
+	[hayro]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/hayro"
 	[indd]="${INDD_UTILS_URI};${INDD_UTILS_COMMIT};indd-utils-%commit%/."
-	[krilla]="${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_URI};${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT};craft-libs-%commit%/vendor/krilla"
+	[krilla]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/krilla"
+	[linesweeper]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/linesweeper"
+	[vectorcraft-geom]="${VECTORCRAFT_URI};${VECTORCRAFT_COMMIT};vectorcraft-%commit%/crates/geom"
+	[vectorcraft-pathops]="${VECTORCRAFT_URI};${VECTORCRAFT_COMMIT};vectorcraft-%commit%/crates/pathops"
+	[vello_common]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/vello_common"
+	[vello_cpu]="${CRAFT_LIBS_URI};${CRAFT_LIBS_COMMIT};craft-libs-%commit%/vendor/vello_cpu"
 	[winit]="${WINIT_URI};${WINIT_COMMIT};winit-%commit%/."
-	[winprint]="${WINPRINT_RS_5F80B9BAF6B58937C401656634E42D33F00DDF49_URI};${WINPRINT_RS_5F80B9BAF6B58937C401656634E42D33F00DDF49_COMMIT};winprint.rs-%commit%/."
+	[winprint]="${WINPRINT_RS_8AE097EF941B432B0E7671B1EC3A506800E65E57_URI};${WINPRINT_RS_8AE097EF941B432B0E7671B1EC3A506800E65E57_COMMIT};winprint.rs-%commit%/."
 )
 RUST_MIN_VER="1.95"
 
@@ -751,11 +815,11 @@ FONTS_COMMIT="b076417b5880bd4154bd22f00695b1d28c6bea83"
 DESCRIPTION="Native desktop publishing and page layout application"
 HOMEPAGE="https://github.com/storytold/designcraft"
 SRC_URI="
-	https://github.com/storytold/${PN}/archive/33a467872268c98536231491865b4011b0275b17.tar.gz -> ${P}.tar.gz
+	https://github.com/storytold/${PN}/archive/7470feae15b824534c842b7888952e63f6493003.tar.gz -> ${P}.tar.gz
 	https://github.com/storytold/craft-fonts/archive/${FONTS_COMMIT}.tar.gz -> craft-fonts-${FONTS_COMMIT}.tar.gz
 	${CARGO_CRATE_URIS}
 "
-S="${WORKDIR}/${PN}-33a467872268c98536231491865b4011b0275b17"
+S="${WORKDIR}/${PN}-7470feae15b824534c842b7888952e63f6493003"
 
 LICENSE="
 	Apache-2.0
@@ -764,6 +828,7 @@ LICENSE="
 	BitstreamVera
 	Boost-1.0
 	CDLA-Permissive-2.0
+	IJG
 	ISC
 	MIT
 	MPL-2.0
@@ -819,13 +884,16 @@ egui_system_font_provider = { path = "${WORKDIR}/egui-6d518fc799681571963842f95b
 emath = { path = "${WORKDIR}/egui-6d518fc799681571963842f95b55a6b68431b15a/crates/emath" }
 epaint = { path = "${WORKDIR}/egui-6d518fc799681571963842f95b55a6b68431b15a/crates/epaint" }
 epaint_default_fonts = { path = "${WORKDIR}/egui-6d518fc799681571963842f95b55a6b68431b15a/crates/epaint_default_fonts" }
-hayro = { path = "${WORKDIR}/craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0/vendor/hayro" }
-hayro-cmap = { path = "${WORKDIR}/craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0/vendor/hayro-cmap" }
-hayro-interpret = { path = "${WORKDIR}/craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0/vendor/hayro-interpret" }
-hayro-jbig2 = { path = "${WORKDIR}/craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0/vendor/hayro-jbig2" }
-hayro-postscript = { path = "${WORKDIR}/craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0/vendor/hayro-postscript" }
-hayro-syntax = { path = "${WORKDIR}/craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0/vendor/hayro-syntax" }
-krilla = { path = "${WORKDIR}/craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0/vendor/krilla" }
+hayro = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/hayro" }
+hayro-cmap = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/hayro-cmap" }
+hayro-interpret = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/hayro-interpret" }
+hayro-jbig2 = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/hayro-jbig2" }
+hayro-postscript = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/hayro-postscript" }
+hayro-syntax = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/hayro-syntax" }
+krilla = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/krilla" }
+linesweeper = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/linesweeper" }
+vello_common = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/vello_common" }
+vello_cpu = { path = "${WORKDIR}/craft-libs-33be35625e252cc4f06aa375b3b428521faea37d/vendor/vello_cpu" }
 winit = { path = "${WORKDIR}/winit-a517b3846ee8457d84ee4975110bfda6797c44dc/." }
 EOF
 	# Refresh only the source identities replaced by the local Git patches.
@@ -835,8 +903,8 @@ EOF
 src_configure() {
 	export CRAFT_FONTS_DIR="${WORKDIR}/craft-fonts-${FONTS_COMMIT}"
 	export CRAFT_FONTS_REQUIRED=1
-	export DESIGNCRAFT_BUILD_SHA="33a467872268c98536231491865b4011b0275b17"
-	export DESIGNCRAFT_BUILD_DATE="2026-11-12"
+	export DESIGNCRAFT_BUILD_SHA="7470feae15b824534c842b7888952e63f6493003"
+	export DESIGNCRAFT_BUILD_DATE="2026-11-23"
 	cargo_src_configure --frozen -p ${PN} -p ${PN}-cli
 }
 
@@ -848,7 +916,7 @@ src_install() {
 	insinto /usr/share/mime/packages
 	newins packaging/linux/ai.storyteller.${PN}.mime.xml ai.storyteller.${PN}.xml
 	insinto /usr/share/metainfo
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-12/g" \
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-23/g" \
 		packaging/linux/ai.storyteller.${PN}.metainfo.xml.in \
 		> "${T}/ai.storyteller.${PN}.metainfo.xml" || die
 	doins "${T}/ai.storyteller.${PN}.metainfo.xml"
@@ -879,22 +947,19 @@ src_install() {
 	docinto egui-fonts
 	dodoc "${WORKDIR}/egui-6d518fc799681571963842f95b55a6b68431b15a/crates/epaint_default_fonts/fonts/"*.txt
 	docinto git-dependencies
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_1A11A4897865F7410C40D25CA6E452CE399A1A2C_COMMIT}/LICENSE-MIT" craft-libs-1a11a4897865f7410c40d25ca6e452ce399a1a2c-LICENSE-MIT
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_1A11A4897865F7410C40D25CA6E452CE399A1A2C_COMMIT}/LICENSE-APACHE" craft-libs-1a11a4897865f7410c40d25ca6e452ce399a1a2c-LICENSE-APACHE
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_1A11A4897865F7410C40D25CA6E452CE399A1A2C_COMMIT}/NOTICE" craft-libs-1a11a4897865f7410c40d25ca6e452ce399a1a2c-NOTICE
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_6E03F65BF45181DB77BA6229716E6624DB9EB25B_COMMIT}/LICENSE-MIT" craft-libs-6e03f65bf45181db77ba6229716e6624db9eb25b-LICENSE-MIT
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_6E03F65BF45181DB77BA6229716E6624DB9EB25B_COMMIT}/LICENSE-APACHE" craft-libs-6e03f65bf45181db77ba6229716e6624db9eb25b-LICENSE-APACHE
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_6E03F65BF45181DB77BA6229716E6624DB9EB25B_COMMIT}/NOTICE" craft-libs-6e03f65bf45181db77ba6229716e6624db9eb25b-NOTICE
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT}/LICENSE-MIT" craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0-LICENSE-MIT
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT}/LICENSE-APACHE" craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0-LICENSE-APACHE
-	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_92D392CFF132EAF53E13AFFF77F38B5C11B73AA0_COMMIT}/NOTICE" craft-libs-92d392cff132eaf53e13afff77f38b5c11b73aa0-NOTICE
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_COMMIT}/LICENSE-MIT" craft-libs-LICENSE-MIT
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_COMMIT}/LICENSE-APACHE" craft-libs-LICENSE-APACHE
+	newdoc "${WORKDIR}/craft-libs-${CRAFT_LIBS_COMMIT}/NOTICE" craft-libs-NOTICE
 	newdoc "${WORKDIR}/egui-${EGUI_COMMIT}/LICENSE-MIT" egui-LICENSE-MIT
 	newdoc "${WORKDIR}/egui-${EGUI_COMMIT}/LICENSE-APACHE" egui-LICENSE-APACHE
 	newdoc "${WORKDIR}/indd-utils-${INDD_UTILS_COMMIT}/LICENSE-MIT" indd-utils-LICENSE-MIT
 	newdoc "${WORKDIR}/indd-utils-${INDD_UTILS_COMMIT}/LICENSE-APACHE" indd-utils-LICENSE-APACHE
+	newdoc "${WORKDIR}/vectorcraft-${VECTORCRAFT_COMMIT}/LICENSE-MIT" vectorcraft-LICENSE-MIT
+	newdoc "${WORKDIR}/vectorcraft-${VECTORCRAFT_COMMIT}/LICENSE-APACHE" vectorcraft-LICENSE-APACHE
+	newdoc "${WORKDIR}/vectorcraft-${VECTORCRAFT_COMMIT}/NOTICE" vectorcraft-NOTICE
 	newdoc "${WORKDIR}/winit-${WINIT_COMMIT}/LICENSE" winit-LICENSE
-	newdoc "${WORKDIR}/winprint.rs-${WINPRINT_RS_417AC3C4D14D3DA5485A99C7D5CE8F05664EC312_COMMIT}/LICENSE.md" winprint-rs-417ac3c4d14d3da5485a99c7d5ce8f05664ec312-LICENSE.md
-	newdoc "${WORKDIR}/winprint.rs-${WINPRINT_RS_5F80B9BAF6B58937C401656634E42D33F00DDF49_COMMIT}/LICENSE.md" winprint-rs-5f80b9baf6b58937c401656634e42d33f00ddf49-LICENSE.md
+	newdoc "${WORKDIR}/winprint.rs-${WINPRINT_RS_64E7AFD4D1483512385012C340ECAAAF0F3BEB7F_COMMIT}/LICENSE.md" winprint-rs-64e7afd4d1483512385012c340ecaaaf0f3beb7f-LICENSE.md
+	newdoc "${WORKDIR}/winprint.rs-${WINPRINT_RS_8AE097EF941B432B0E7671B1EC3A506800E65E57_COMMIT}/LICENSE.md" winprint-rs-8ae097ef941b432b0e7671b1ec3a506800e65e57-LICENSE.md
 }
 
 pkg_postinst() {

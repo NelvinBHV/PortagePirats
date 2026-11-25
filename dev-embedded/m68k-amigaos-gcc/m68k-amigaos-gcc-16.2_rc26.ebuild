@@ -3,28 +3,27 @@
 
 EAPI=8
 
-TOP_COMMIT="b9724f01717ed295a056dce1eb554bbf5d14aa4d"
+TOP_COMMIT="be1ea9cd0fac0470cf9eb41748dde6ddce07692b"
 AMIGAPORTS="https://github.com/AmigaPorts"
 
 DESCRIPTION="Complete GCC cross-development toolchain for classic m68k AmigaOS"
 HOMEPAGE="https://github.com/AmigaPorts/m68k-amigaos-gcc"
 SRC_URI="
-	${AMIGAPORTS}/m68k-amigaos-gcc/archive/${TOP_COMMIT}.tar.gz -> ${PN}-${PV}-sources-b9724f01717ed295a056dce1eb554bbf5d14aa4d.tar.gz
+	${AMIGAPORTS}/m68k-amigaos-gcc/archive/${TOP_COMMIT}.tar.gz -> ${PN}-${PV}-sources-be1ea9cd0fac0470cf9eb41748dde6ddce07692b.tar.gz
 	${AMIGAPORTS}/amiga-netinclude/archive/459f2e17ce90b2967e4ff44115fd6b9405e9aa14.tar.gz -> ${PN}-${PV}-amiga-netinclude-459f2e17ce90b2967e4ff44115fd6b9405e9aa14.tar.gz
-	${AMIGAPORTS}/binutils-gdb/archive/efedb54c363ec88022d418be2d2b05b41d234c32.tar.gz -> ${PN}-${PV}-binutils-efedb54c363ec88022d418be2d2b05b41d234c32.tar.gz
-	${AMIGAPORTS}/clib2/archive/5d4a6b2f6293fe70afe9fc24b7d5111e23318fe4.tar.gz -> ${PN}-${PV}-clib2-5d4a6b2f6293fe70afe9fc24b7d5111e23318fe4.tar.gz
-	${AMIGAPORTS}/fd2pragma/archive/bcffac5c89295baf1db033addc984312b4b4a722.tar.gz -> ${PN}-${PV}-fd2pragma-bcffac5c89295baf1db033addc984312b4b4a722.tar.gz
-	${AMIGAPORTS}/fd2sfd/archive/d130fde17f9b42c84970705030f6c0469054561f.tar.gz -> ${PN}-${PV}-fd2sfd-d130fde17f9b42c84970705030f6c0469054561f.tar.gz
-	${AMIGAPORTS}/gcc/archive/f7cd37bc29d2c384f93bec47ebe23722e5f0ed24.tar.gz -> ${PN}-${PV}-gcc-f7cd37bc29d2c384f93bec47ebe23722e5f0ed24.tar.gz
+	${AMIGAPORTS}/binutils-gdb/archive/4f956c6e687f3437392884f5f14306cab572a054.tar.gz -> ${PN}-${PV}-binutils-4f956c6e687f3437392884f5f14306cab572a054.tar.gz
+	${AMIGAPORTS}/clib2/archive/3808cf7f9b8ef63d9c3b5d82ea38824f0754de56.tar.gz -> ${PN}-${PV}-clib2-3808cf7f9b8ef63d9c3b5d82ea38824f0754de56.tar.gz
+	${AMIGAPORTS}/fd2pragma/archive/351b3b9d6eb3afeac9cc28343c08643324770f54.tar.gz -> ${PN}-${PV}-fd2pragma-351b3b9d6eb3afeac9cc28343c08643324770f54.tar.gz
+	${AMIGAPORTS}/gcc/archive/dd2a045336e7fd312352af7d902ca742143764fb.tar.gz -> ${PN}-${PV}-gcc-dd2a045336e7fd312352af7d902ca742143764fb.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libc-test/archive/f171934890caaccdb93b6afe0f7362488e09029b.tar.gz -> ${PN}-${PV}-libc-test-f171934890caaccdb93b6afe0f7362488e09029b.tar.gz
 	${AMIGAPORTS}/libdebug/archive/76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz -> ${PN}-${PV}-libdebug-76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz
-	${AMIGAPORTS}/libnix/archive/1ee8fa1788ebfacf2878b8f0b1bfc1fc0c3dc585.tar.gz -> ${PN}-${PV}-libnix-1ee8fa1788ebfacf2878b8f0b1bfc1fc0c3dc585.tar.gz
-	${AMIGAPORTS}/newlib-cygwin/archive/83f68e2abdc22af3d110c8782044d66900360e2e.tar.gz -> ${PN}-${PV}-newlib-cygwin-83f68e2abdc22af3d110c8782044d66900360e2e.tar.gz
-	${AMIGAPORTS}/sfdc/archive/840cbbae9fe9e9d9cf7a1e6460d68af26880ca15.tar.gz -> ${PN}-${PV}-sfdc-840cbbae9fe9e9d9cf7a1e6460d68af26880ca15.tar.gz
+	${AMIGAPORTS}/libnix/archive/ff299a01469b1179d71c2e68bb289aa9c9ee2045.tar.gz -> ${PN}-${PV}-libnix-ff299a01469b1179d71c2e68bb289aa9c9ee2045.tar.gz
+	${AMIGAPORTS}/newlib-cygwin/archive/205b59d32730b76f018e45330fbc034f89c5fd88.tar.gz -> ${PN}-${PV}-newlib-cygwin-205b59d32730b76f018e45330fbc034f89c5fd88.tar.gz
+	${AMIGAPORTS}/sfdc/archive/e6353c61efbc1f2837695fd5bd72d4257ec2f25f.tar.gz -> ${PN}-${PV}-sfdc-e6353c61efbc1f2837695fd5bd72d4257ec2f25f.tar.gz
 	${AMIGAPORTS}/vasm/archive/de93f7dd067001532cff663730133601edb274cb.tar.gz -> ${PN}-${PV}-vasm-de93f7dd067001532cff663730133601edb274cb.tar.gz
-	${AMIGAPORTS}/vbcc/archive/98908e530eb6747ae4d68dc83c032873f6163339.tar.gz -> ${PN}-${PV}-vbcc-98908e530eb6747ae4d68dc83c032873f6163339.tar.gz
+	${AMIGAPORTS}/vbcc/archive/37301d148f6e34526b08855f5665d9dc1df4089e.tar.gz -> ${PN}-${PV}-vbcc-37301d148f6e34526b08855f5665d9dc1df4089e.tar.gz
 	${AMIGAPORTS}/vlink/archive/ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz -> ${PN}-${PV}-vlink-ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz
 	${AMIGAPORTS}/aros-stuff/archive/ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2.tar.gz -> ${PN}-${PV}-aros-stuff-ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2.tar.gz
 	https://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.2.1.tar.bz2 -> ${PN}-${PV}-gmp-6.2.1.tar.bz2
@@ -37,9 +36,9 @@ SRC_URI="
 	https://github.com/madler/zlib/releases/download/v1.4/zlib-1.4.tar.gz -> ${PN}-${PV}-zlib-1.4.tar.gz
 	https://sourceforge.net/projects/libpng/files/libpng16/1.6.58/libpng-1.6.58.tar.xz -> ${PN}-${PV}-libpng-1.6.58.tar.xz
 	https://downloads.sourceforge.net/project/freetype/freetype2/2.12.1/freetype-2.12.1.tar.xz -> ${PN}-${PV}-freetype-2.12.1.tar.xz
-	https://github.com/sidick/volamos/releases/download/v0.20.0/volamos-v0.20.0-x86_64-unknown-linux-musl.tar.gz -> ${PN}-${PV}-volamos-v0.20.0-x86_64-unknown-linux-musl.tar.gz
-	https://github.com/sidick/volamos/releases/download/v0.20.0/volamos-v0.20.0-aarch64-unknown-linux-musl.tar.gz -> ${PN}-${PV}-volamos-v0.20.0-aarch64-unknown-linux-musl.tar.gz
-	https://github.com/sidick/volamos/releases/download/v0.20.0/volamos-v0.20.0-aarch64-apple-darwin.tar.gz -> ${PN}-${PV}-volamos-v0.20.0-aarch64-apple-darwin.tar.gz
+	https://github.com/sidick/volamos/releases/download/v0.23.0/volamos-v0.23.0-x86_64-unknown-linux-musl.tar.gz -> ${PN}-${PV}-volamos-v0.23.0-x86_64-unknown-linux-musl.tar.gz
+	https://github.com/sidick/volamos/releases/download/v0.23.0/volamos-v0.23.0-aarch64-unknown-linux-musl.tar.gz -> ${PN}-${PV}-volamos-v0.23.0-aarch64-unknown-linux-musl.tar.gz
+	https://github.com/sidick/volamos/releases/download/v0.23.0/volamos-v0.23.0-aarch64-apple-darwin.tar.gz -> ${PN}-${PV}-volamos-v0.23.0-aarch64-apple-darwin.tar.gz
 "
 S="${WORKDIR}/m68k-amigaos-gcc-${TOP_COMMIT}"
 
@@ -74,20 +73,19 @@ BDEPEND="
 
 MODULE_SOURCES=(
 	"amiga-netinclude|amiga-netinclude|459f2e17ce90b2967e4ff44115fd6b9405e9aa14"
-	"binutils|binutils-gdb|efedb54c363ec88022d418be2d2b05b41d234c32"
-	"clib2|clib2|5d4a6b2f6293fe70afe9fc24b7d5111e23318fe4"
-	"fd2pragma|fd2pragma|bcffac5c89295baf1db033addc984312b4b4a722"
-	"fd2sfd|fd2sfd|d130fde17f9b42c84970705030f6c0469054561f"
-	"gcc|gcc|f7cd37bc29d2c384f93bec47ebe23722e5f0ed24"
+	"binutils|binutils-gdb|4f956c6e687f3437392884f5f14306cab572a054"
+	"clib2|clib2|3808cf7f9b8ef63d9c3b5d82ea38824f0754de56"
+	"fd2pragma|fd2pragma|351b3b9d6eb3afeac9cc28343c08643324770f54"
+	"gcc|gcc|dd2a045336e7fd312352af7d902ca742143764fb"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libc-test|libc-test|f171934890caaccdb93b6afe0f7362488e09029b"
 	"libdebug|libdebug|76c7dbfeaac79516117dc810e3ba9b34d5f54a69"
-	"libnix|libnix|1ee8fa1788ebfacf2878b8f0b1bfc1fc0c3dc585"
-	"newlib-cygwin|newlib-cygwin|83f68e2abdc22af3d110c8782044d66900360e2e"
-	"sfdc|sfdc|840cbbae9fe9e9d9cf7a1e6460d68af26880ca15"
+	"libnix|libnix|ff299a01469b1179d71c2e68bb289aa9c9ee2045"
+	"newlib-cygwin|newlib-cygwin|205b59d32730b76f018e45330fbc034f89c5fd88"
+	"sfdc|sfdc|e6353c61efbc1f2837695fd5bd72d4257ec2f25f"
 	"vasm|vasm|de93f7dd067001532cff663730133601edb274cb"
-	"vbcc|vbcc|98908e530eb6747ae4d68dc83c032873f6163339"
+	"vbcc|vbcc|37301d148f6e34526b08855f5665d9dc1df4089e"
 	"vlink|vlink|ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9"
 	"aros-stuff|aros-stuff|ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2"
 )
@@ -126,12 +124,12 @@ src_unpack() {
 	printf "%s  %s\n" "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775" "${S}/download/libpng-1.6.58.tar.xz" | sha256sum -c - || die
 	cp "${DISTDIR}/${PN}-${PV}-freetype-2.12.1.tar.xz" "${S}/download/freetype-2.12.1.tar.xz" || die
 	printf "%s  %s\n" "4766f20157cc4cf0cd292f80bf917f92d1c439b243ac3018debf6b9140c41a7f" "${S}/download/freetype-2.12.1.tar.xz" | sha256sum -c - || die
-	cp "${DISTDIR}/${PN}-${PV}-volamos-v0.20.0-x86_64-unknown-linux-musl.tar.gz" "${S}/download/volamos-v0.20.0-x86_64-unknown-linux-musl.tar.gz" || die
-	printf "%s  %s\n" "f23bc6d600d3e14296c0bdc71db074e45765cab7c514db5d139b8451734a083d" "${S}/download/volamos-v0.20.0-x86_64-unknown-linux-musl.tar.gz" | sha256sum -c - || die
-	cp "${DISTDIR}/${PN}-${PV}-volamos-v0.20.0-aarch64-unknown-linux-musl.tar.gz" "${S}/download/volamos-v0.20.0-aarch64-unknown-linux-musl.tar.gz" || die
-	printf "%s  %s\n" "c76cac3d45b0fb802f759a0c082dbc2a1dfae40f8571323370ba33cfe88afde6" "${S}/download/volamos-v0.20.0-aarch64-unknown-linux-musl.tar.gz" | sha256sum -c - || die
-	cp "${DISTDIR}/${PN}-${PV}-volamos-v0.20.0-aarch64-apple-darwin.tar.gz" "${S}/download/volamos-v0.20.0-aarch64-apple-darwin.tar.gz" || die
-	printf "%s  %s\n" "0b8325dd1e98523df40073438357b0f16c854ea3cf32eebcc9b4506769df3c46" "${S}/download/volamos-v0.20.0-aarch64-apple-darwin.tar.gz" | sha256sum -c - || die
+	cp "${DISTDIR}/${PN}-${PV}-volamos-v0.23.0-x86_64-unknown-linux-musl.tar.gz" "${S}/download/volamos-v0.23.0-x86_64-unknown-linux-musl.tar.gz" || die
+	printf "%s  %s\n" "ca9c95bd370d3c31fb01e982450ad0fd3f82819e4359ad9011dbdd0f0d492a0a" "${S}/download/volamos-v0.23.0-x86_64-unknown-linux-musl.tar.gz" | sha256sum -c - || die
+	cp "${DISTDIR}/${PN}-${PV}-volamos-v0.23.0-aarch64-unknown-linux-musl.tar.gz" "${S}/download/volamos-v0.23.0-aarch64-unknown-linux-musl.tar.gz" || die
+	printf "%s  %s\n" "de2d54527fb2da2cd8aaaed3768675367dc738d6c94d95dd3dd045be7338e5af" "${S}/download/volamos-v0.23.0-aarch64-unknown-linux-musl.tar.gz" | sha256sum -c - || die
+	cp "${DISTDIR}/${PN}-${PV}-volamos-v0.23.0-aarch64-apple-darwin.tar.gz" "${S}/download/volamos-v0.23.0-aarch64-apple-darwin.tar.gz" || die
+	printf "%s  %s\n" "170b803268a4db10e018587111c4ef9b48737fc1f0390f4a9882b8386d4b843e" "${S}/download/volamos-v0.23.0-aarch64-apple-darwin.tar.gz" | sha256sum -c - || die
 }
 
 src_prepare() {

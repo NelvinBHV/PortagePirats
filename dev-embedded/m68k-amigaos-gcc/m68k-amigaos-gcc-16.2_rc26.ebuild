@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/AmigaPorts/m68k-amigaos-gcc"
 SRC_URI="
 	${AMIGAPORTS}/m68k-amigaos-gcc/archive/${TOP_COMMIT}.tar.gz -> ${PN}-${PV}-sources-be1ea9cd0fac0470cf9eb41748dde6ddce07692b.tar.gz
 	${AMIGAPORTS}/amiga-netinclude/archive/459f2e17ce90b2967e4ff44115fd6b9405e9aa14.tar.gz -> ${PN}-${PV}-amiga-netinclude-459f2e17ce90b2967e4ff44115fd6b9405e9aa14.tar.gz
-	${AMIGAPORTS}/binutils-gdb/archive/4f956c6e687f3437392884f5f14306cab572a054.tar.gz -> ${PN}-${PV}-binutils-4f956c6e687f3437392884f5f14306cab572a054.tar.gz
+	${AMIGAPORTS}/binutils-gdb/archive/343c60a8698bff31bb4c9d630a02e4242f6feac0.tar.gz -> ${PN}-${PV}-binutils-343c60a8698bff31bb4c9d630a02e4242f6feac0.tar.gz
 	${AMIGAPORTS}/clib2/archive/3808cf7f9b8ef63d9c3b5d82ea38824f0754de56.tar.gz -> ${PN}-${PV}-clib2-3808cf7f9b8ef63d9c3b5d82ea38824f0754de56.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/351b3b9d6eb3afeac9cc28343c08643324770f54.tar.gz -> ${PN}-${PV}-fd2pragma-351b3b9d6eb3afeac9cc28343c08643324770f54.tar.gz
 	${AMIGAPORTS}/gcc/archive/dd2a045336e7fd312352af7d902ca742143764fb.tar.gz -> ${PN}-${PV}-gcc-dd2a045336e7fd312352af7d902ca742143764fb.tar.gz
@@ -73,7 +73,7 @@ BDEPEND="
 
 MODULE_SOURCES=(
 	"amiga-netinclude|amiga-netinclude|459f2e17ce90b2967e4ff44115fd6b9405e9aa14"
-	"binutils|binutils-gdb|4f956c6e687f3437392884f5f14306cab572a054"
+	"binutils|binutils-gdb|343c60a8698bff31bb4c9d630a02e4242f6feac0"
 	"clib2|clib2|3808cf7f9b8ef63d9c3b5d82ea38824f0754de56"
 	"fd2pragma|fd2pragma|351b3b9d6eb3afeac9cc28343c08643324770f54"
 	"gcc|gcc|dd2a045336e7fd312352af7d902ca742143764fb"

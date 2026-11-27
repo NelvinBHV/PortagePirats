@@ -12,9 +12,9 @@ SRC_URI="
 	${AMIGAPORTS}/m68k-amigaos-gcc/archive/${TOP_COMMIT}.tar.gz -> ${PN}-${PV}-sources-be1ea9cd0fac0470cf9eb41748dde6ddce07692b.tar.gz
 	${AMIGAPORTS}/amiga-netinclude/archive/459f2e17ce90b2967e4ff44115fd6b9405e9aa14.tar.gz -> ${PN}-${PV}-amiga-netinclude-459f2e17ce90b2967e4ff44115fd6b9405e9aa14.tar.gz
 	${AMIGAPORTS}/binutils-gdb/archive/343c60a8698bff31bb4c9d630a02e4242f6feac0.tar.gz -> ${PN}-${PV}-binutils-343c60a8698bff31bb4c9d630a02e4242f6feac0.tar.gz
-	${AMIGAPORTS}/clib2/archive/3808cf7f9b8ef63d9c3b5d82ea38824f0754de56.tar.gz -> ${PN}-${PV}-clib2-3808cf7f9b8ef63d9c3b5d82ea38824f0754de56.tar.gz
+	${AMIGAPORTS}/clib2/archive/8db129bc3a63ef5505efeededab90d18241180a2.tar.gz -> ${PN}-${PV}-clib2-8db129bc3a63ef5505efeededab90d18241180a2.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/351b3b9d6eb3afeac9cc28343c08643324770f54.tar.gz -> ${PN}-${PV}-fd2pragma-351b3b9d6eb3afeac9cc28343c08643324770f54.tar.gz
-	${AMIGAPORTS}/gcc/archive/dd2a045336e7fd312352af7d902ca742143764fb.tar.gz -> ${PN}-${PV}-gcc-dd2a045336e7fd312352af7d902ca742143764fb.tar.gz
+	${AMIGAPORTS}/gcc/archive/f3c64ce8460fcc991b8c3f43155fc30f5b5d1785.tar.gz -> ${PN}-${PV}-gcc-f3c64ce8460fcc991b8c3f43155fc30f5b5d1785.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libc-test/archive/f171934890caaccdb93b6afe0f7362488e09029b.tar.gz -> ${PN}-${PV}-libc-test-f171934890caaccdb93b6afe0f7362488e09029b.tar.gz
@@ -74,9 +74,9 @@ BDEPEND="
 MODULE_SOURCES=(
 	"amiga-netinclude|amiga-netinclude|459f2e17ce90b2967e4ff44115fd6b9405e9aa14"
 	"binutils|binutils-gdb|343c60a8698bff31bb4c9d630a02e4242f6feac0"
-	"clib2|clib2|3808cf7f9b8ef63d9c3b5d82ea38824f0754de56"
+	"clib2|clib2|8db129bc3a63ef5505efeededab90d18241180a2"
 	"fd2pragma|fd2pragma|351b3b9d6eb3afeac9cc28343c08643324770f54"
-	"gcc|gcc|dd2a045336e7fd312352af7d902ca742143764fb"
+	"gcc|gcc|f3c64ce8460fcc991b8c3f43155fc30f5b5d1785"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libc-test|libc-test|f171934890caaccdb93b6afe0f7362488e09029b"

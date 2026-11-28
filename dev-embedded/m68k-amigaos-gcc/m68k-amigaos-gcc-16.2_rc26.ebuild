@@ -11,21 +11,21 @@ HOMEPAGE="https://github.com/AmigaPorts/m68k-amigaos-gcc"
 SRC_URI="
 	${AMIGAPORTS}/m68k-amigaos-gcc/archive/${TOP_COMMIT}.tar.gz -> ${PN}-${PV}-sources-be1ea9cd0fac0470cf9eb41748dde6ddce07692b.tar.gz
 	${AMIGAPORTS}/amiga-netinclude/archive/459f2e17ce90b2967e4ff44115fd6b9405e9aa14.tar.gz -> ${PN}-${PV}-amiga-netinclude-459f2e17ce90b2967e4ff44115fd6b9405e9aa14.tar.gz
-	${AMIGAPORTS}/binutils-gdb/archive/343c60a8698bff31bb4c9d630a02e4242f6feac0.tar.gz -> ${PN}-${PV}-binutils-343c60a8698bff31bb4c9d630a02e4242f6feac0.tar.gz
+	${AMIGAPORTS}/binutils-gdb/archive/51050a779a5bf87b05a83326782fd4d7f87aec48.tar.gz -> ${PN}-${PV}-binutils-51050a779a5bf87b05a83326782fd4d7f87aec48.tar.gz
 	${AMIGAPORTS}/clib2/archive/8db129bc3a63ef5505efeededab90d18241180a2.tar.gz -> ${PN}-${PV}-clib2-8db129bc3a63ef5505efeededab90d18241180a2.tar.gz
 	${AMIGAPORTS}/fd2pragma/archive/351b3b9d6eb3afeac9cc28343c08643324770f54.tar.gz -> ${PN}-${PV}-fd2pragma-351b3b9d6eb3afeac9cc28343c08643324770f54.tar.gz
-	${AMIGAPORTS}/gcc/archive/f3c64ce8460fcc991b8c3f43155fc30f5b5d1785.tar.gz -> ${PN}-${PV}-gcc-f3c64ce8460fcc991b8c3f43155fc30f5b5d1785.tar.gz
+	${AMIGAPORTS}/gcc/archive/2f55d901e46777b4b3db9b00a3c3da50e3b0c06f.tar.gz -> ${PN}-${PV}-gcc-2f55d901e46777b4b3db9b00a3c3da50e3b0c06f.tar.gz
 	${AMIGAPORTS}/ira/archive/bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz -> ${PN}-${PV}-ira-bb7c11384a32c409341fdb0d16d715b7959a0290.tar.gz
 	${AMIGAPORTS}/lha/archive/979815dc8699a9c5018de067946737c83ec6f697.tar.gz -> ${PN}-${PV}-lha-979815dc8699a9c5018de067946737c83ec6f697.tar.gz
 	${AMIGAPORTS}/libc-test/archive/f171934890caaccdb93b6afe0f7362488e09029b.tar.gz -> ${PN}-${PV}-libc-test-f171934890caaccdb93b6afe0f7362488e09029b.tar.gz
 	${AMIGAPORTS}/libdebug/archive/76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz -> ${PN}-${PV}-libdebug-76c7dbfeaac79516117dc810e3ba9b34d5f54a69.tar.gz
-	${AMIGAPORTS}/libnix/archive/ff299a01469b1179d71c2e68bb289aa9c9ee2045.tar.gz -> ${PN}-${PV}-libnix-ff299a01469b1179d71c2e68bb289aa9c9ee2045.tar.gz
+	${AMIGAPORTS}/libnix/archive/594b108b2e945b8cb6cb75565236482b3f97c1eb.tar.gz -> ${PN}-${PV}-libnix-594b108b2e945b8cb6cb75565236482b3f97c1eb.tar.gz
 	${AMIGAPORTS}/newlib-cygwin/archive/205b59d32730b76f018e45330fbc034f89c5fd88.tar.gz -> ${PN}-${PV}-newlib-cygwin-205b59d32730b76f018e45330fbc034f89c5fd88.tar.gz
 	${AMIGAPORTS}/sfdc/archive/e6353c61efbc1f2837695fd5bd72d4257ec2f25f.tar.gz -> ${PN}-${PV}-sfdc-e6353c61efbc1f2837695fd5bd72d4257ec2f25f.tar.gz
 	${AMIGAPORTS}/vasm/archive/de93f7dd067001532cff663730133601edb274cb.tar.gz -> ${PN}-${PV}-vasm-de93f7dd067001532cff663730133601edb274cb.tar.gz
 	${AMIGAPORTS}/vbcc/archive/37301d148f6e34526b08855f5665d9dc1df4089e.tar.gz -> ${PN}-${PV}-vbcc-37301d148f6e34526b08855f5665d9dc1df4089e.tar.gz
 	${AMIGAPORTS}/vlink/archive/ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz -> ${PN}-${PV}-vlink-ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9.tar.gz
-	${AMIGAPORTS}/aros-stuff/archive/ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2.tar.gz -> ${PN}-${PV}-aros-stuff-ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2.tar.gz
+	${AMIGAPORTS}/aros-stuff/archive/10a3e262c49e7778034d033691a1e16a6dc7c0c6.tar.gz -> ${PN}-${PV}-aros-stuff-10a3e262c49e7778034d033691a1e16a6dc7c0c6.tar.gz
 	https://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.2.1.tar.bz2 -> ${PN}-${PV}-gmp-6.2.1.tar.bz2
 	https://gcc.gnu.org/pub/gcc/infrastructure/mpc-1.2.1.tar.gz -> ${PN}-${PV}-mpc-1.2.1.tar.gz
 	https://gcc.gnu.org/pub/gcc/infrastructure/mpfr-4.1.0.tar.bz2 -> ${PN}-${PV}-mpfr-4.1.0.tar.bz2
@@ -73,21 +73,21 @@ BDEPEND="
 
 MODULE_SOURCES=(
 	"amiga-netinclude|amiga-netinclude|459f2e17ce90b2967e4ff44115fd6b9405e9aa14"
-	"binutils|binutils-gdb|343c60a8698bff31bb4c9d630a02e4242f6feac0"
+	"binutils|binutils-gdb|51050a779a5bf87b05a83326782fd4d7f87aec48"
 	"clib2|clib2|8db129bc3a63ef5505efeededab90d18241180a2"
 	"fd2pragma|fd2pragma|351b3b9d6eb3afeac9cc28343c08643324770f54"
-	"gcc|gcc|f3c64ce8460fcc991b8c3f43155fc30f5b5d1785"
+	"gcc|gcc|2f55d901e46777b4b3db9b00a3c3da50e3b0c06f"
 	"ira|ira|bb7c11384a32c409341fdb0d16d715b7959a0290"
 	"lha|lha|979815dc8699a9c5018de067946737c83ec6f697"
 	"libc-test|libc-test|f171934890caaccdb93b6afe0f7362488e09029b"
 	"libdebug|libdebug|76c7dbfeaac79516117dc810e3ba9b34d5f54a69"
-	"libnix|libnix|ff299a01469b1179d71c2e68bb289aa9c9ee2045"
+	"libnix|libnix|594b108b2e945b8cb6cb75565236482b3f97c1eb"
 	"newlib-cygwin|newlib-cygwin|205b59d32730b76f018e45330fbc034f89c5fd88"
 	"sfdc|sfdc|e6353c61efbc1f2837695fd5bd72d4257ec2f25f"
 	"vasm|vasm|de93f7dd067001532cff663730133601edb274cb"
 	"vbcc|vbcc|37301d148f6e34526b08855f5665d9dc1df4089e"
 	"vlink|vlink|ce46ccfda0e30eda5b12b9a5d0259d8eaefdefe9"
-	"aros-stuff|aros-stuff|ba339d7ec082842bfc223e5f6d54e4e8d9fdffb2"
+	"aros-stuff|aros-stuff|10a3e262c49e7778034d033691a1e16a6dc7c0c6"
 )
 
 src_unpack() {
